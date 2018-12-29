@@ -5,8 +5,7 @@
             <div class="dd" v-if="data">
                 <ul class="clearfix" :style="{ width : data.length * 2.3+'rem'}">
                     <li class="fl" v-for="(item,index) in data" :key="item.id" @click="tolink(index)">
-                        <!-- <img v-lazy="URL + item.pic_url"> -->
-                        <img v-lazy="'./static/shop.jpg'">
+                        <img v-lazy="URL + item.pic_url">
                         <div class="title">
                             <p class="desi text2-hidden">{{item.title}}</p>
                         </div>

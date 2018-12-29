@@ -3,7 +3,7 @@
     <div class="flash-wrap">
         <ul class="flash-dd clearfix">
             <li class="fl" v-for="(n,index) in nav" :key="n.id" @click="link(index)">
-                    <img v-lazy="newdata.imgSrc[index]">
+                    <img v-lazy="URL + newdata.imgSrc[index]">
                 <p>{{n.nav_titile}}</p>
             </li>
         </ul>
@@ -25,8 +25,7 @@
         data() {
             return {
                 newdata:{
-
-                    imgSrc:['./static/navimg-1.png','./static/navimg-2.png','./static/navimg-3.png','./static/navimg-4.png','./static/navimg-5.png','./static/navimg-6.png','./static/navimg-7.png','./static/navimg-8.png',],
+                    imgSrc:['/Uploads/navimg/navimg-1.png','/Uploads/navimg/navimg-2.png','/Uploads/navimg/navimg-3.png','/Uploads/navimg/navimg-4.png','/Uploads/navimg/navimg-5.png','/Uploads/navimg/navimg-6.png','/Uploads/navimg/navimg-7.png','/Uploads/navimg/navimg-8.png',],
                     text:['最新促销','尾货清仓','品牌馆','积分商城','家用电器','手机数码','电脑办公','更多']
                 }
             }

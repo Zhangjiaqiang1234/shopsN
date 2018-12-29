@@ -1,13 +1,11 @@
 <template>
     <div>
         <div class="banner-hd" v-for="item in banner" :key="item.id">
-            <!-- <img v-lazy="URL + item.pic_url"> -->
-            <img v-lazy="'./static/ad.jpg'">
+            <img v-lazy="URL + item.pic_url">
         </div>
         <ul class="content-wrap clearfix">
             <li v-for="(item,index) in data" :key="item.id" class="fl text-center" @click="tolink(index)">
-                <!-- <img v-lazy="URL + item.pic_url"> -->
-                <img v-lazy="'./static/shop.jpg'">
+                <img v-lazy="URL + item.pic_url">
                 <p class="text-left text-single-hidden">{{item.title}}</p>
             </li>
         </ul>

@@ -15,8 +15,7 @@
                          <img v-lazy="URL+item.pic_url" v-if="item.pic_url" @click="tolink(item)">
                         <ul class="con clearfix" v-if="item.child">
                             <li class="fl" v-for="(con,index) in item.child" :key="con.id"  @click="to(con)">
-                                <!-- <img v-lazy="URL + con.pic_url"> -->
-                                <img v-lazy="'./static/shop.jpg'">
+                                <img v-lazy="URL + con.pic_url">
                                 <p class="text1-hidden">{{con.class_name}}</p>
                             </li>
                         </ul>

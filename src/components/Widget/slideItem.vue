@@ -7,8 +7,7 @@
                     <span class="timer">{{set}}</span>
                     <span class="state">{{status}}</span>
                 </div>
-                <!-- <img v-lazy="URL + item.pic_url"> -->
-                <img v-lazy="'./static/shop.jpg'">
+                <img v-lazy="URL + item.pic_url">
                 <p class="desi">{{item.title}}</p>
                 <p class="price">￥<i class="newPrice">{{item.price_market}}</i><span class="bPrice">/￥<s>{{item.price_member}}</s></span></p>
             </li>

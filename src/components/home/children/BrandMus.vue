@@ -2,13 +2,11 @@
     <div>
         <ul class="brand-wrap clearfix">
             <li class="fl" v-for="(item,index) in data" :key="item.id" @click="toLink(index)">
-                <!-- <img v-lazy="URL + item.brand_logo"> -->
-                <img v-lazy="'./static/brand.jpg'">
+                <img v-lazy="URL + item.brand_logo">
             </li>
         </ul>
         <div class="banner" v-for="item in banner" :key="item.id">
-            <!-- <img v-lazy="URL + item.pic_url"> -->
-            <img v-lazy="'./static/ad.jpg'">
+            <img v-lazy="URL + item.pic_url">
         </div>
     </div>
 </template>

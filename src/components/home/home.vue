@@ -4,8 +4,7 @@
         <home-header :userName="getData"></home-header>
         <mt-swipe :auto="4000">
             <mt-swipe-item v-for="(item,index) in $store.state.home_data.banner" :key="item.id">
-                <!-- <img v-lazy="URL + item.pic_url"> -->
-                <img v-lazy="'./static/banner.jpg'">
+                <img v-lazy="URL + item.pic_url">
             </mt-swipe-item>
         </mt-swipe>
         <news-flash :nav="$store.state.home_data.nav"    :data="$store.state.home_data.announcement" v-if="$store.state.home_data.announcement"></news-flash>
@@ -16,8 +15,7 @@
         <!-- 活动 限时商品组件 -->
         <limited-activity :data="$store.state.home_data.poopClear" :endTime="Number($store.state.home_data.endtime)"></limited-activity>
         <div class="limit-banner" v-for="item in $store.state.home_data.poopClear_img" :key="item.id">
-            <!-- <img v-lazy="URL + item.pic_url"> -->
-            <img v-lazy="'./static/ad.jpg'">
+            <img v-lazy="URL + item.pic_url">
         </div>
         <limited-hd :text="text[1]" :toLink="'/brandList'"></limited-hd>
         <brand-mus :data="$store.state.home_data.brand" :banner="$store.state.home_data.brand_img"></brand-mus>

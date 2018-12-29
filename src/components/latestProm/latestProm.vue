@@ -4,8 +4,7 @@
         <latest-header></latest-header>
         <mt-swipe :auto="4000">
             <mt-swipe-item v-for="item in data.top_img" :key="item.id">
-                <!-- <img v-lazy="URL + item.pic_url"> -->
-                <img v-lazy="'./static/banner.jpg'">
+                <img v-lazy="URL + item.pic_url">
             </mt-swipe-item>
         </mt-swipe>
         <latest-pro :banner="hot_promotion_img" :data="data"></latest-pro>
