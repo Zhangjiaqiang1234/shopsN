@@ -1,5 +1,5 @@
 
-window.API_URL='http://api.shopsn.net/';
+window.API_URL='http://api.abochain.io/';
 // window.API_URL='http://api.shopsn.cn/';
 
 (function (w){
