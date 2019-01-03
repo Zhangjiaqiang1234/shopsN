@@ -53,7 +53,7 @@
             return {
                 title:'ShopsN登录',
                 logo:require('@/assets/logoIn.png'),
-                show:true,
+                show:false, // 是否显示第三方登录 UI 
                 userName:'',
                 passWord:'',
                 cancelText:'取消',
