@@ -107,7 +107,7 @@
                     sessionId:this.sessionId
                 })).then((res) => {
                     Toast(res.data.msg);
-                    if(res.status == 1){
+                    if(res.data.status == 1){
                         this.$router.push('/LogoIn');
                     }
                 }).catch((err) => {
