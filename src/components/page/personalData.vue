@@ -99,6 +99,8 @@
             setSex(index){
                 this.popupVisible = false;
                 if(index == 'del')return;
+                console.log(this);
+                console.log(this.data);
                 this.data.sex = this.sex[index];
             },
             modify(v){

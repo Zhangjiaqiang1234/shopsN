@@ -50,6 +50,7 @@
                     url:API_URL + 'Home/Goods/my_love',
                     method:'get',
                     params:{
+                        access_token: sessionStorage.getItem('token'),
                         app_user_id:sessionStorage.getItem('user_ID')
                     }
                 }).then((res) => {

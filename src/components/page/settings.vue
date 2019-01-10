@@ -77,10 +77,13 @@
                     message: '退出登录',
                     showCancelButton: true
                 }).then(action => {
-                    if(action == 'cancel')reutrn;
+                    if(action == 'cancel') return;
+                    // 清空token的信息
                     sessionStorage.removeItem('user_ID');
                     sessionStorage.removeItem('set_address');
                     localStorage.removeItem('user_ID');
+                    sessionStorage.removeItem('token');
+                    localStorage.removeItem('token');
                     this.$router.push('/home');
                 });
             }
@@ -88,7 +91,8 @@
         mounted(){
             
             this.axios.post(API_URL + 'Home/Pcenter/userinfo',qs.stringify({
-                app_user_id:sessionStorage.getItem('user_ID')
+                app_user_id:sessionStorage.getItem('user_ID'),
+                access_token: sessionStorage.getItem('token')
             })).then((res) => {
                 this.data = res.data.data;
             }).catch((err) => {

@@ -43,6 +43,8 @@ Vue.directive('title', {
     }
 });
 
+const verificationList = ['/seetin'];
+
 router.beforeEach((to, from, next) => {
     Indicator.open('初始化...');
     switch (to.path) {
@@ -62,6 +64,9 @@ router.beforeEach((to, from, next) => {
             sessionStorage.setItem('router_index', 4);
             break;
     };
+    if(verificationList.indexOf(to.path)!==-1 && !sessionStorage.getItem('user_ID')){
+        next('/logoIn') // 需要用户信息的页面如果缺失 user_ID 则重定向到登录页登录
+    }
     next();
 });
 router.afterEach(router => {

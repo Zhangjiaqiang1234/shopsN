@@ -8,11 +8,11 @@
             <div class="from">
                 <div class="input-main userName">
                     <span class="icon"></span>
-                    <input type="text" placeholder="邮箱/用户名/已验证手机" v-model="userName" @focus="focu" @blur="blu">
+                    <input type="text" placeholder="请输入手机号" v-model="userName" @focus="focu" @blur="blu">
                 </div>
                 <div class="input-main passWord">
                     <span class="icon"></span>
-                    <input type="password" placeholder="请输入密码...." v-model="passWord" @focus="focu" @blur="blu">
+                    <input ref="password" type="password" placeholder="请输入密码...." v-model="passWord" @focus="focu" @blur="blu">
                 </div>
                 <button class="btn-in" @click="logoIn">登&nbsp;&nbsp;录</button>
             </div>
@@ -21,7 +21,7 @@
                 <li class="fl" @click="goNow">现在注册 ></li>
             </ul>
         </div>
-        <dl class="tplogin" v-show="show">
+        <dl class="tplogin" v-if="false">
             <dt>
                 社交账号一键登录
                 <span></span><span></span>
@@ -45,6 +45,7 @@
     </div>
 </template>
 <script>
+    import axios from 'axios'
     import { Toast } from 'mint-ui';
     import QS from 'qs';
     export default {
@@ -101,23 +102,66 @@
                     return;
                 }
                 this.load = true;
-                this.axios.post(API_URL + 'Home/Register/login_account',QS.stringify({
-                    account:this.userName,
+                // 先进行 ABO 的用户登录，获取 token
+                this.axios.post(JAVA_API_URL + 'api/export/authTokens',{
+                    phoneNumber: this.userName,
                     password:this.passWord
-                })).then((res) => {
-                    Toast(res.data.msg);
-                    this.load = false;
-                    if(res.data.status == 1){
-                        localStorage.setItem('user_ID', res.data.data.app_user_id);
-                        sessionStorage.setItem('user_ID', res.data.data.app_user_id);
-                        this.$router.push({
-                            path : '/home'
+                }).then((res) => {
+                    if(res.status === 200){ // 如果获取 token 成功
+                        const token = res.data.authToken;
+                        // 二次发送授权请求
+                        this.axios.get(API_URL + 'Home/UserMigration/checkUser',{params:{
+                            access_token: token,
+                            mobile: this.userName,
+                            password: this.passWord,
+                        }}).then((res) => {
+                            this.load = false;
+                            Toast(res.data.msg);
+                            if(res.data.status === 1){ // 获取授权成功，保存 token
+                                localStorage.setItem('token', token);
+                                sessionStorage.setItem('token', token);
+                                localStorage.setItem('user_ID', res.data.data.app_user_id);
+                                sessionStorage.setItem('user_ID', res.data.data.app_user_id);
+                                this.$router.push({ // 跳转至首页
+                                    path : '/home'
+                                });
+                            }
+                        }).catch((err) => {
+                            this.load = false;
+                            Toast('手机号或密码不正确');
+                            console.log(err);
                         });
-                        this.show = false;
+                    }else{ // 登录失败
+                        this.load = false;
+                        Toast('手机号或密码不正确');
+                        this.$refs.password.focus();
                     }
                 }).catch((err) => {
-                    console.log(err)
+                    console.log(err);
+                    this.load = false;
+                    Toast('手机号或密码不正确');
+                    this.load = false;
+                    this.$refs.password.focus();
                 });
+
+
+                // this.axios.post(API_URL + 'Home/Register/login_account',QS.stringify({
+                //     account:this.userName,
+                //     password:this.passWord
+                // })).then((res) => {
+                //     Toast(res.data.msg);
+                //     this.load = false;
+                //     if(res.data.status == 1){
+                //         localStorage.setItem('user_ID', res.data.data.app_user_id);
+                //         sessionStorage.setItem('user_ID', res.data.data.app_user_id);
+                //         this.$router.push({
+                //             path : '/home'
+                //         });
+                //         this.show = false;
+                //     }
+                // }).catch((err) => {
+                //     console.log(err)
+                // });
             },
             goNow(){//跳转注册页
                 this.$router.push({

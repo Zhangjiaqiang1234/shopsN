@@ -1,6 +1,7 @@
 
-window.API_URL='http://api.abochain.io/';
-// window.API_URL='http://api.shopsn.cn/';
+window.API_URL='http://39.108.217.205:8083/'; // 正式服商城 API 接口 正常的 的
+window.JAVA_API_URL='http://39.108.217.205:8060/'; // 正式服商城 API 接口 特殊需要的 java 接口，用于请求一开始的 ABO 用户登录
+// window.API_URL='http://api.abochain.io/';
 
 (function (w){
 

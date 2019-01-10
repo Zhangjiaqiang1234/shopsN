@@ -67,6 +67,8 @@
                     url:API_URL + 'Home/class/category',
                     method:'get',
                     params:{
+                        access_token: sessionStorage.getItem('token'),
+                        app_user_id:sessionStorage.getItem('user_ID'),
                         'fid':this.status
                     }
                 }).then((suc) => {
@@ -125,13 +127,17 @@
             this.$refs.content.style.height = `${clHeight - hdH - navH}px`;
             this.axios({
                 url:API_URL + 'Home/class/navigation',
-                method:'get'
+                method:'get',
+                params:{
+                    access_token: sessionStorage.getItem('token'),
+                    app_user_id:sessionStorage.getItem('user_ID') 
+                }
             }).then((res) => {
                 this.data = res.data.data;
                 this.status = res.data.data[0].id;
                 this.succ();
             }).catch((err) => {
-                console.log(res);
+                console.log(err);
             });
         },
         updated(){

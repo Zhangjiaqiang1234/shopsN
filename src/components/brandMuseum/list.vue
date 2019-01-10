@@ -16,6 +16,7 @@
     </div>
 </template>
 <script>
+    import QS from 'qs';
     import listHeader from '@/components/page/children/header.vue';
     import Shopsn from '@/components/page/Shopsn.vue';
     import { IndexList, IndexSection } from 'mint-ui';
@@ -53,7 +54,11 @@
             document.body.scrollTop = 0;
             this.axios({
                 url:API_URL + 'Home/brand/brandList',
-                method:'post'
+                method:'post',
+                data:QS.stringify({
+                    access_token: sessionStorage.getItem('token'),
+                    app_user_id:sessionStorage.getItem('user_ID')
+                })
             }).then(res => {
                 this.data = res.data.data;
             }).catch(err => {

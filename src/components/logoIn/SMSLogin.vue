@@ -20,7 +20,7 @@
             <li class="fl" @click="toAcclogoIn">账号登录</li>
             <li class="fl" @click="goNow">现在注册 ></li>
         </ul>
-        <dl class="tplogin" v-show="show">
+        <dl class="tplogin" v-if="false">
             <dt>
                 社交账号一键登录
                 <span></span><span></span>
@@ -39,7 +39,7 @@
         data(){
             return {
                 title:'ShopsN短信登录',
-                show:true,
+                show:false, // 是否使用第三方登录
                 userName:'',
                 passWord:'',
                 isActive:false,

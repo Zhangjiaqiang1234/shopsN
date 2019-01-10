@@ -84,6 +84,8 @@
                         break;
                 }
                 this.axios.post(API_URL + 'Home/Brand/brandDetail',QS.stringify({
+                    access_token: sessionStorage.getItem('token'),
+                    app_user_id:sessionStorage.getItem('user_ID'),
                     id:this.$route.params.ID,
                     sort:this.sort_id
                 })).then(res => {
