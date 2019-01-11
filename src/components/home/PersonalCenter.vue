@@ -157,9 +157,7 @@
             }).catch((err) => {
                 console.log(err)
             });
-            this.axios.post(API_URL + 'Home/Pcenter/my_wallet',qs.stringify({
-                app_user_id:sessionStorage.getItem('user_ID'),
-            })).then((res) => {
+            this.axios.post(API_URL + 'Home/Pcenter/my_wallet').then((res) => {
                 this.$store.state.my_wallet = res.data.data;
             }).catch((err) => {
                 console.log(err)

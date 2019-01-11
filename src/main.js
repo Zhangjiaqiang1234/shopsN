@@ -11,6 +11,7 @@ import './style/base.css'
 import 'mint-ui/lib/style.css'
 import MintUI from 'mint-ui'
 import VueLazyLoad from 'vue-lazyload'
+import QS from 'qs';
 Vue.use(VueLazyLoad,{
     preLoad:1.3,
     error:'./static/ggt@2x.png',
@@ -43,7 +44,57 @@ Vue.directive('title', {
     }
 });
 
-const verificationList = ['/seetin'];
+let isJson = (str) => {
+    if (typeof str == 'string') {
+        try {
+            var obj=JSON.parse(str);
+            if(typeof obj == 'object' && obj ){
+                return true;
+            }else{
+                return false;
+            }
+        } catch(e) {
+            console.log('error：'+str+'!!!'+e);
+            return false;
+        }
+    }
+    console.log('It is not a string!');
+};
+
+// request interceptor
+axios.interceptors.request.use(config => {
+    console.log('前',config.data);
+    if(undefined === config.data || '' === config.data){ // 如果没有参数，直接加参数
+        config.data = 'access_token='+sessionStorage.getItem('token')+'&app_user_id='+sessionStorage.getItem('user_ID');
+    }else if(typeof config.data === 'string'){ // 如果是字符串
+        if(isJson(config.data)){ // 如果是 JSON 形式的字符串
+            config.data = JSON.parse(config.data);
+            config.data.access_token = sessionStorage.getItem('token')
+            config.data.app_user_id = sessionStorage.getItem('user_ID')
+            config.data = JSON.stringify(config.data)
+        }else{ // 如果只是普通的字符串
+            if(config.data.length > 0){
+                config.data += '&';
+            }
+            config.data += 'access_token='+sessionStorage.getItem('token')+'&app_user_id='+sessionStorage.getItem('user_ID');
+        }
+        
+    }else{ // 如果是JSON对象
+        config.data.access_token = sessionStorage.getItem('token')
+        config.data.app_user_id = sessionStorage.getItem('user_ID')
+    }
+
+    
+    console.log('后',config.data);
+    return config
+}, error => {
+  // Do something with request error
+  Promise.reject(error)
+})
+
+
+
+const verificationList = ['/seetin']; // 设置登录验证路由，当跳转至这些页面没有登录信息的话，会跳转至登录页要求登录
 
 router.beforeEach((to, from, next) => {
     Indicator.open('初始化...');

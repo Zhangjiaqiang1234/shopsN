@@ -90,10 +90,7 @@
         },
         mounted(){
             
-            this.axios.post(API_URL + 'Home/Pcenter/userinfo',qs.stringify({
-                app_user_id:sessionStorage.getItem('user_ID'),
-                access_token: sessionStorage.getItem('token')
-            })).then((res) => {
+            this.axios.post(API_URL + 'Home/Pcenter/userinfo').then((res) => {
                 this.data = res.data.data;
             }).catch((err) => {
                 console.log(err)

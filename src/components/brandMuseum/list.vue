@@ -54,11 +54,7 @@
             document.body.scrollTop = 0;
             this.axios({
                 url:API_URL + 'Home/brand/brandList',
-                method:'post',
-                data:QS.stringify({
-                    access_token: sessionStorage.getItem('token'),
-                    app_user_id:sessionStorage.getItem('user_ID')
-                })
+                method:'post'
             }).then(res => {
                 this.data = res.data.data;
             }).catch(err => {
