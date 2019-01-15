@@ -40,7 +40,7 @@
     .hd{
         padding:.2rem;
         .title{
-            border-left:3px solid #f02b2b;
+            border-left:3px solid #4591f2;
             padding-left:.2rem;
             font-size:.32rem;
             color:#111111;

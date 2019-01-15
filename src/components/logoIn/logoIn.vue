@@ -107,8 +107,10 @@
                     phoneNumber: this.userName,
                     password:this.passWord
                 }).then((res) => {
-                    if(res.status === 200){ // 如果获取 token 成功
+                    if(res.status === 200){ // 如果获取 token 成功 保存 token
                         const token = res.data.authToken;
+                        localStorage.setItem('token', token);
+                        sessionStorage.setItem('token', token);
                         // 二次发送授权请求
                         this.axios.get(API_URL + 'Home/UserMigration/checkUser',{params:{
                             access_token: token,
@@ -117,9 +119,7 @@
                         }}).then((res) => {
                             this.load = false;
                             Toast(res.data.msg);
-                            if(res.data.status === 1){ // 获取授权成功，保存 token
-                                localStorage.setItem('token', token);
-                                sessionStorage.setItem('token', token);
+                            if(res.data.status === 1){ // 获取授权成功，保存 user_id
                                 localStorage.setItem('user_ID', res.data.data.app_user_id);
                                 sessionStorage.setItem('user_ID', res.data.data.app_user_id);
                                 this.$router.push({ // 跳转至首页
@@ -129,6 +129,8 @@
                         }).catch((err) => {
                             this.load = false;
                             Toast('手机号或密码不正确');
+                            localStorage.removeItem('token');
+                            sessionStorage.removeItem('token');
                             console.log(err);
                         });
                     }else{ // 登录失败

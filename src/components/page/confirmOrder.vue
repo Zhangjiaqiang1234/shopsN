@@ -156,6 +156,8 @@
                 });
             },
             toOrder(){
+                console.log('goods = ');
+                console.log(this.$store.state.goods);
                     this.axios.post(API_URL + 'Home/Order/orderBegin', qs.stringify({
                         app_user_id: sessionStorage.getItem('user_ID'), //用户ID
                         goods: this.$store.state.goods,  //将要购买的商品 二维数组

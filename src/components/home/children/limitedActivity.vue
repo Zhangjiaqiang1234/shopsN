@@ -58,7 +58,7 @@
                 position:relative;
                 padding-left:.4rem;
                 font-size:.32rem;
-                color:#f02b2b;
+                color:#4591f2;
                 line-height: .5rem;
                 i{
                     width:.27rem;

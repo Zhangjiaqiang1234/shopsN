@@ -54,7 +54,7 @@ let isJson = (str) => {
                 return false;
             }
         } catch(e) {
-            console.log('error：'+str+'!!!'+e);
+            console.log('isJson error：'+str+'!!!'+e);
             return false;
         }
     }
@@ -63,8 +63,13 @@ let isJson = (str) => {
 
 // request interceptor
 axios.interceptors.request.use(config => {
+    console.log(config.url);
+    console.log(config);
     console.log('前',config.data);
-    if(undefined === config.data || '' === config.data){ // 如果没有参数，直接加参数
+    if(config.method == 'get' && config.params){ // 如果是用 get 请求并且参数是放到 url 中的话 直接添加
+        config.params.app_user_id = sessionStorage.getItem('user_ID');
+        config.params.access_token = sessionStorage.getItem('token');
+    }else if(undefined === config.data || '' === config.data){ // 如果没有参数，直接加参数
         config.data = 'access_token='+sessionStorage.getItem('token')+'&app_user_id='+sessionStorage.getItem('user_ID');
     }else if(typeof config.data === 'string'){ // 如果是字符串
         if(isJson(config.data)){ // 如果是 JSON 形式的字符串
@@ -86,6 +91,7 @@ axios.interceptors.request.use(config => {
 
     
     console.log('后',config.data);
+    console.log('---');
     return config
 }, error => {
   // Do something with request error
@@ -94,7 +100,7 @@ axios.interceptors.request.use(config => {
 
 
 
-const verificationList = ['/seetin']; // 设置登录验证路由，当跳转至这些页面没有登录信息的话，会跳转至登录页要求登录
+const verificationList = ['seetin','order','person']; // 设置登录验证路由，当跳转至这些页面没有登录信息的话，会跳转至登录页要求登录
 
 router.beforeEach((to, from, next) => {
     Indicator.open('初始化...');
@@ -115,8 +121,8 @@ router.beforeEach((to, from, next) => {
             sessionStorage.setItem('router_index', 4);
             break;
     };
-    if(verificationList.indexOf(to.path)!==-1 && !sessionStorage.getItem('user_ID')){
-        next('/logoIn') // 需要用户信息的页面如果缺失 user_ID 则重定向到登录页登录
+    if(verificationList.indexOf(to.name)!==-1 && (!sessionStorage.getItem('user_ID') || !sessionStorage.getItem('token'))){
+        next('/logoIn') // 需要用户信息的页面如果缺失 user_ID 或 token 则重定向到登录页登录
     }
     next();
 });

@@ -1,12 +1,13 @@
+<!-- 顶部组件 -->
 <template>
   <div class="header clearfix">
-    <div class="logo fl"><img :src="logoImg"></div>
+    <!-- <div class="logo fl"><img :src="logoImg"></div> -->
     <router-link class="input-main fl" to='/search'><input type="text" value="搜索商品..." disabled></router-link>
     <div class="scode fl">
         <span class="active" @click="tolink('/myNews')"></span>
     </div>
     <div class="logoIn fl" @click="toLogoIn" v-if="!user_name">登录</div>
-    <div class="my fl" v-if="user_name"></div>
+    <!-- <div class="my fl" v-if="user_name"></div> -->
   </div>
 </template>
 
@@ -56,7 +57,7 @@
             }
         }
         .input-main {
-            width: 3.75rem;
+            width: 6.2rem;
             height: .62rem;
             border-radius: 100px;
             background:#f7f7f7 url(../../../assets/search1.png) no-repeat .24rem center;

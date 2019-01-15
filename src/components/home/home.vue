@@ -12,6 +12,7 @@
         <limited-hd :text="text[0]" :toLink="'/latestProm'"></limited-hd>
         <!-- 推荐位推荐列表内容部分组件 -->
         <limited-dd :data="$store.state.home_data.promotions" :banner="$store.state.home_data.promotions_img"></limited-dd>
+        555
         <!-- 活动 限时商品组件 -->
         <limited-activity :data="$store.state.home_data.poopClear" :endTime="Number($store.state.home_data.endtime)"></limited-activity>
         <div class="limit-banner" v-for="item in $store.state.home_data.poopClear_img" :key="item.id">

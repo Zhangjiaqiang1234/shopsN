@@ -94,7 +94,7 @@
                 .data{
                     width:.68rem;
                     height:.66rem;
-                    background:#f02b2b;
+                    background:#4591f2;
                     position:absolute;
                     left:-1px;
                     top:-1px;
@@ -102,7 +102,7 @@
                     z-index:2;
                     span:nth-child(1){
                         background:#fff;
-                        color:#f02b2b;
+                        color:#4591f2;
                     }
                     span{
                         font-size:.2rem;

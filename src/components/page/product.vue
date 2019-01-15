@@ -87,7 +87,7 @@
             myLove(){
                 this.axios({//猜你喜欢
                     url:API_URL + 'Home/Goods/my_love',
-                    method:'get'
+                    method:'post'
                 }).then((res) => {
                     this.$store.state.dataLeave = res.data.data;
                 }).catch((err) => {
