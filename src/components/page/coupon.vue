@@ -90,7 +90,7 @@
             border:none;
         }
         li.active{
-            color:#d0111b;
+            color:#4591f2;
         }
     }
     .content-wrap{

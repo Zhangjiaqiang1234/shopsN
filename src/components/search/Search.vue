@@ -132,7 +132,7 @@
     .Search-wap {
         height: .6rem;
         padding: .1rem .2rem;
-        background: #d0111b;
+        background: #4591f2;
         .return-btn {
             width: .8rem;
             height: .6rem;

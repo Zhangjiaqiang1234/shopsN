@@ -105,7 +105,7 @@
                     padding-top:.2rem;
                     span{
                         font-size:.28rem;
-                        color:#d0111b;
+                        color:#4591f2;
                         font-weight: bold;
                     }
                 }

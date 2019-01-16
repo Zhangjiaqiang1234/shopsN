@@ -74,7 +74,7 @@
             em{
                 font-style:normal;
                 font-size:.32rem;
-                color:#d0111b;
+                color:#4591f2;
             }
         }
         .seat{
@@ -122,7 +122,7 @@
             .imm{
                 width:2.5rem;
                 height:100%;
-                background:#d0111b;
+                background:#4591f2;
                 color:#fff;
                 font-size:.32rem;
                 line-height:1rem;

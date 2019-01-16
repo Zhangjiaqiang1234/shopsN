@@ -60,7 +60,7 @@
     .status{
         .danger{
             font-size:.28rem;
-            color:#d0111b;
+            color:#4591f2;
         }
         .turnOut{
             font-size:.32rem;

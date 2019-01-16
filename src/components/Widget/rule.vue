@@ -99,7 +99,7 @@
                 height: 1rem;
                 line-height:1rem;
                 font-size:.42rem;
-                color:#d0111b;
+                color:#4591f2;
             }
             .rule-main{
                 height: 6.5rem;

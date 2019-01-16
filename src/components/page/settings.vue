@@ -166,7 +166,7 @@
         bottom:0;
         text-align:center;
         line-height:.9rem;
-        background:#d0111b;
+        background:#4591f2;
         color:#fff;
         width:100%;
         font-size:.32rem;

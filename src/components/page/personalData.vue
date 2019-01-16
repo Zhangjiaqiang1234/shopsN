@@ -240,7 +240,7 @@
                     color:#3d4245;
                     span{
                         font-size:.32rem;
-                        color:#d0111b;
+                        color:#4591f2;
                     }
                 }
                 .userName{
@@ -268,7 +268,7 @@
         height:.9rem;
         text-align:center;
         line-height:.9rem;
-        background:#d0111b;
+        background:#4591f2;
         border-radius:20px;
         box-sizing:border-box;
         color:#fff;
@@ -285,7 +285,7 @@
         position:relative;
         span{
             font-size:.32rem;
-            color:#d0111b;
+            color:#4591f2;
             position:absolute;
             top:50%;
             left:3.1rem;

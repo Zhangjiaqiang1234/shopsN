@@ -50,7 +50,7 @@
         }
           .status{
             font-size:.32rem;
-            color:#d0111b;
+            color:#4591f2;
             line-height:.8rem;
           }
           .status.Profit{

@@ -175,7 +175,7 @@
                 }
                 .status{
                     font-size:.2rem;
-                    color:#d0111b;
+                    color:#4591f2;
                 }
             }
         }

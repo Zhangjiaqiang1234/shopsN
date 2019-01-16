@@ -216,7 +216,7 @@
                         position:absolute;
                         right:-1.38rem;
                         top:0;
-                        background:url(../../assets/bg2.png) no-repeat #d0111b center .71rem;
+                        background:url(../../assets/bg2.png) no-repeat #4591f2 center .71rem;
                         background-size:.58rem .57rem;
                         color:#fff;
                         font-size: .24rem;

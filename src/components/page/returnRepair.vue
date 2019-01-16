@@ -152,8 +152,8 @@
         }
         li.active{
             span{
-                color:#d0111b;
-                border-bottom:2px solid #d0111b;
+                color:#4591f2;
+                border-bottom:2px solid #4591f2;
                 box-sizing: border-box;
             }
         }
@@ -245,7 +245,7 @@
                             box-sizing: border-box;
                         }
                         button.active{
-                            background:#d0111b;
+                            background:#4591f2;
                             border:none;
                             color:#fff;
                         }

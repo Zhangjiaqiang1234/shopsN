@@ -298,7 +298,7 @@
                     width:2.72rem;
                     height:1rem;
                     line-height:1rem;
-                    background:#d0111b;
+                    background:#4591f2;
                     color:#fff;
                     text-align:center;
                     font-size:.36rem;
@@ -310,7 +310,7 @@
                     border:none;
                     text-align:center;
                     line-height:1rem;
-                    background:#d0111b;
+                    background:#4591f2;
                     font-size:.36rem;
                 }
                 .total{

@@ -114,7 +114,7 @@
             border-radius:20px;
             outline:none;
             margin-top:.3rem;
-            background:#d0111b;
+            background:#4591f2;
             font-size:.36rem;
             color:#fff;
             margin-bottom:.5rem;

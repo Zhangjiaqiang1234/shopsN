@@ -544,7 +544,7 @@
                     height:1rem;
                     color:#fff;
                     border:none;
-                    background:#d0111b;
+                    background:#4591f2;
                     font-size:.36rem;
                 }
                 .money{
@@ -575,7 +575,7 @@
                 }
                 span.fr{
                     font-size:.28rem;
-                    color:#d0111b;
+                    color:#4591f2;
                     overflow: hidden;
                     height: 100%;
                     i{

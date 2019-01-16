@@ -152,7 +152,7 @@
     .header {
         width: 100%;
         height: .62rem;
-        background: #d0111b;
+        background: #4591f2;
         padding: .16rem 0;
         text-align:center;
         color:#fff;

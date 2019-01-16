@@ -135,7 +135,7 @@
             line-height:.9rem;
             text-align:center;
             font-size:.36rem;
-            color:#d0111b;
+            color:#4591f2;
             position:relative;
             .btn-back{
                 width:1.3rem;
@@ -229,7 +229,7 @@
                 border-radius:20px;
                 outline:none;
                 margin-top:.3rem;
-                background:#d0111b;
+                background:#4591f2;
                 font-size:.36rem;
                 color:#fff;
                 margin-bottom:.5rem;

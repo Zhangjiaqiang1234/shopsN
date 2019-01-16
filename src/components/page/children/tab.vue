@@ -156,7 +156,7 @@
             .mint-tab-item{
                 height:100%;
                 padding:0;
-                border-color:#d0111b;
+                border-color:#4591f2;
                 line-height:.75rem;
             }
         }

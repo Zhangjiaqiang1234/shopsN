@@ -238,7 +238,7 @@
             box-sizing:border-box;
         }
         li.active{
-            color:#d0111b;
+            color:#4591f2;
         }
     }
 </style>

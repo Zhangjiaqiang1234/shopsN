@@ -224,7 +224,7 @@
         }
         .status{
             font-size:.32rem;
-            color:#d0111b;
+            color:#4591f2;
             width: 1rem;
             overflow:hidden;
             height: 100%;
@@ -294,7 +294,7 @@
             height:.9rem;
             line-height:.9rem;
             font-size:.32rem;
-            color:#d0111b;
+            color:#4591f2;
             border-bottom:1px solid #dfdfdd;
         }
         .content-main{
@@ -400,7 +400,7 @@
             }
             .price{
                 font-size:.28rem;
-                color:#d0111b;
+                color:#4591f2;
                 em{
                     font-size:.28rem;
                     color:#666;

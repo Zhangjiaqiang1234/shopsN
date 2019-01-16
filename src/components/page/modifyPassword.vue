@@ -130,7 +130,7 @@
         color:#fff;
         font-size:.32rem;
         color:#fff;
-        background:#d0111b;
+        background:#4591f2;
         text-align:center;
         line-height:.9rem;
         text-align:center;
