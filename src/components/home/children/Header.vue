@@ -44,7 +44,7 @@
             width: 1.66rem;
             height: 100%;
             position: relative;
-            background:#ce0a14;
+            background:#4591f2;
             img {
                 width: 1.38rem;
                 height: .31rem;

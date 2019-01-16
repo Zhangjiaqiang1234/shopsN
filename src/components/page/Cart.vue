@@ -278,7 +278,7 @@
                 height:1rem;
                 background:#fff;
                 .chicked.active{
-                    color:#ce0a14;
+                    color:#4591f2;
                     span{
                         border:none;
                         background:url(../../assets/check_bj.png) no-repeat;
@@ -401,7 +401,7 @@
                     }
                     .price{
                         padding-left:.2rem;
-                        color:#e02828;
+                        color:#4591f2;
                         font-size:.3rem;
                         span{
                             font-size:.36rem;
@@ -429,7 +429,7 @@
     .cart-header{
         width: 100%;
         height: .62rem;
-        background: #ce0a14;
+        background: #4591f2;
         padding: .16rem 0;
         overflow: hidden;
         text-align:center;
@@ -554,7 +554,7 @@
                     padding-top:.4rem;
                     .price{
                         font-size:.26rem;
-                        color:#e02828;
+                        color:#4591f2;
                         span{
                             font-size:.38rem;
                         }
@@ -566,7 +566,7 @@
                 }
             }
             .checkBox.active{
-                color:#ce0a14;
+                color:#4591f2;
                 span{
                     border:none;
                     background:url(../../assets/check_bj.png) no-repeat;

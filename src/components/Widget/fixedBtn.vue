@@ -130,7 +130,7 @@
             color:#fff;
             width: 100%;
             height: .9rem;
-            background:#e02828;
+            background:#4591f2;
             outline: none;
         }
         button:active{

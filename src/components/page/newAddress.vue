@@ -254,8 +254,8 @@
                         border-bottom: 1px solid #ccc;
                     }
                     li.active {
-                        border-bottom: 1px solid #e02828;
-                        color: #e02828;
+                        border-bottom: 1px solid #4591f2;
+                        color: #4591f2;
                     }
                 }
                 .address-city {

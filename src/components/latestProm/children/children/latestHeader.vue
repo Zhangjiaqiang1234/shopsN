@@ -18,6 +18,6 @@
         background:url(../../../../assets/latest-bj.png) no-repeat center #f1f1f1;
         background-size:1.88rem .04rem;
         font-size:.28rem;
-        color:#ce0a14;
+        color:#4591f2;
     }
 </style>

@@ -72,7 +72,7 @@
             line-height:.9rem;
             .pull-left{
                 font-size:.28rem;
-                color:#e02828;
+                color:#4591f2;
             }
             .pull-left.active{
                 color:#333;
@@ -103,7 +103,7 @@
                     padding-top:.1rem;
                 }
                 .price{
-                    color:#e02828;
+                    color:#4591f2;
                     font-size:.2rem;
                     padding:.1rem 0;
                     span{

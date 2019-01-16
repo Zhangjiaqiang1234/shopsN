@@ -48,7 +48,7 @@
         name : 'register',
         data(){
             return {
-                title:'ShopsN注册',
+                title:'ABON注册',
                 username : '',
                 mobile:'',
                 message:'',

@@ -147,7 +147,7 @@
                 background-size:.39rem .39rem;
             }
             span:nth-child(3).active{
-                color:#e02828;
+                color:#4591f2;
                 background:url(../../assets/Bad_active.png) .5rem center no-repeat;
                 background-size:.39rem .39rem;
             }
@@ -247,7 +247,7 @@
         button{
             width: 7.1rem;
             height: .9rem;
-            background:#e02828;
+            background:#4591f2;
             border:none;
             color:#fff;
             font-size: .32rem;

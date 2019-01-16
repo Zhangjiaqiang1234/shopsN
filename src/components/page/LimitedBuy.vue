@@ -240,7 +240,7 @@
                     }
                     .price{
                         padding-left:.2rem;
-                        color:#e02828;
+                        color:#4591f2;
                         font-size:.3rem;
                         span{
                             font-size:.36rem;

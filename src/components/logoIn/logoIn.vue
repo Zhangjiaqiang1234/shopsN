@@ -167,12 +167,16 @@
             },
             goNow(){//跳转注册页
                 this.$router.push({
-                    path : '/Register'
+                    path : '/Jump'
                 });
                 this.show = false;
             },
             other(){//无法登录
-                this.isActive = true;
+                // this.isActive = true;
+                this.$router.push({
+                    path : '/Jump'
+                });
+                this.show = false;
             },
             increment(){
                 this.isActive = false;

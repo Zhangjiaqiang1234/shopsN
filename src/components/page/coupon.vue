@@ -133,7 +133,7 @@
             }
             .status{
                 font-size:.24rem;
-                color:#e02828;
+                color:#4591f2;
                 padding-top:.1rem;
             }
             .term{
@@ -154,7 +154,7 @@
                 color:#f29a15;
             }
             button{
-                background:#e02828;
+                background:#4591f2;
                 box-shadow: .08rem .08rem 0 #da8a12;
             }
         }

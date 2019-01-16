@@ -20,6 +20,7 @@ const repair = r => require(['@/components/page/returnRepair'], r); //退货返�
 const Search = r => require(['@/components/search/Search'], r); //首页热搜
 const LogoIn = r => require(['@/components/logoIn/logoIn'], r); //登录
 const Register = r => require(['@/components/logoIn/register'], r); //注册
+const Jump = r => require(['@/components/logoIn/jump'], r); //提醒跳转至 ABO 下载页
 const Sms = r => require(['@/components/logoIn/SMSLogin'], r); //短信登录
 const bachWord = r => require(['@/components/logoIn/retrievePassword'], r); //找回密码
 const logoInBind = r => require(['@/components/logoIn/logoInBind'], r); //绑定
@@ -120,6 +121,11 @@ const router = new Router({
                 path: '/Register',
                 name: 'register',
                 component: Register
+            },
+            { //提醒跳转至 ABO 下载页
+                path: '/Jump',
+                name: 'jump',
+                component: Jump
             },
             { //找回密码
                 path: '/bachWord',

@@ -103,7 +103,7 @@
                 }
                 .newPrice{
                     font-size:.24rem;
-                    color:#e02828;
+                    color:#4591f2;
                     em{
                         font-style:normal;
                         font-size:.3rem;

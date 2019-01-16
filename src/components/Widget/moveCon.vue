@@ -86,7 +86,7 @@
                     .price{
                         position:relative;
                         font-size:.22rem;
-                        color:#e02828;
+                        color:#4591f2;
                         padding-top: .1rem;
                         padding-bottom:.05rem;
                         .icon{
@@ -100,7 +100,7 @@
                         }
                         .newPrice{
                             font-size:.28rem;
-                            color:#e02828;
+                            color:#4591f2;
                             font-style: normal;
                             font-weight:bold;
                         }

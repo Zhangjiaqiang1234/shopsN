@@ -180,7 +180,7 @@
         }
         .timer{
             font-size:.25rem;
-            color:#e02828;
+            color:#4591f2;
             padding:.3rem 0;
         }
         .price.active{
@@ -202,7 +202,7 @@
         .price{
             padding-top:.2rem;
             .orc{
-                color:#e02828;
+                color:#4591f2;
                 font-size:.32rem;
                 em{
                     font-style:normal;

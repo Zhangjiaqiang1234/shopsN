@@ -159,7 +159,7 @@
             button{
                 width: 100%;
                 height: .9rem;
-                background:#e02828;
+                background:#4591f2;
                 border:none;
                 color:#fff;
                 font-size:.32rem;

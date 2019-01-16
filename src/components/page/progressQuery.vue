@@ -112,7 +112,7 @@
             }
             .status{
                 font-size:.3rem;
-                color:#e02828;
+                color:#4591f2;
                 line-height: 1.1rem;
             }
         }
@@ -191,14 +191,14 @@
                     top:0;
                     width: .33rem;
                     height: .33rem;
-                    border:.05rem solid #e02828;
+                    border:.05rem solid #4591f2;
                     box-sizing: border-box;
                     border-radius:50%;
                     background:#fff;
                 }
                 p{
                     font-size:.25rem;
-                    color:#e02828;
+                    color:#4591f2;
                     padding-bottom:.2rem;
                 }
                 p.name{
@@ -210,7 +210,7 @@
             width: 100%;
             height: .9rem;
             line-height: .9rem;
-            background:#e02828;
+            background:#4591f2;
             border:none;
             margin-top:.5rem;
             font-size:.32rem;

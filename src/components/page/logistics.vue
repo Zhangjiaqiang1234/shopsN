@@ -112,12 +112,12 @@
         }
         .list-item.active{
             .con{
-                color:#e02828;
+                color:#4591f2;
             }
             .status-icon-wrap{
                 .icon{
-                    background:#e02828;
-                    border-color: #e02828;
+                    background:#4591f2;
+                    border-color: #4591f2;
                     box-shadow: 0 0 .1rem .05rem rgba(224, 40, 40, .5);
                 }
             }

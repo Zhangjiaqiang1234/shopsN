@@ -459,7 +459,7 @@
                         width:5rem;
                         .price{
                             font-size:.26rem;
-                            color:#e02828;
+                            color:#4591f2;
                             span{
                                 font-size:.38rem;
                             }
