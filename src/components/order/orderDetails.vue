@@ -19,7 +19,7 @@
             <div class="bg-bottom"></div>
         </div>
         <div class="market-wrap">
-            <h2 class="title">ShopsN商场</h2>
+            <h2 class="title">ABO商场</h2>
             <ul class="content-main">
                 <li v-for="(item,index) in $store.state.order_details.child" :key="item.id" class="clearfix">
                     <img :src="URL + item.img" class="fl">

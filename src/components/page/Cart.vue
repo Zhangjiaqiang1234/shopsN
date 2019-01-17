@@ -3,7 +3,7 @@
         <div v-title data-title="我的购物车">我的购物车</div>
         <header class="cart-header">我的购物车({{$store.state.cart_data.length}})<router-link to="/myNews"><span></span></router-link></header>
         <dl class="mark-wrap" v-if="$store.state.cart_data">
-            <dt>shopSN商城
+            <dt>ABO商城
                 <span class="clearfix" @click="deit">
                     <i class="fl">{{total.fn}}</i>
                     <em class="fl"></em>

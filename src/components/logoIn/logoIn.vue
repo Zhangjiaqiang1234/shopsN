@@ -52,7 +52,7 @@
         name : 'logoIn',
         data(){
             return {
-                title:'ShopsN登录',
+                title:'ABO登录',
                 logo:require('@/assets/logoIn.png'),
                 show:false, // 是否显示第三方登录 UI 
                 userName:'',

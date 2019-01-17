@@ -29,7 +29,7 @@
         name : 'logoIn',
         data(){
             return {
-                title:'shopsn登录绑定',
+                title:'ABO登录绑定',
                 logo:require('@/assets/logoIn.png'),
                 show:true,
                 userName:'',

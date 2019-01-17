@@ -23,7 +23,7 @@
         name : 'recharge',
         data(){
             return {
-                title:'shopsn充值',
+                title:' ABO商城充值',
                 text:'立即充值',
                 disabled:false,
                 otherdata:{

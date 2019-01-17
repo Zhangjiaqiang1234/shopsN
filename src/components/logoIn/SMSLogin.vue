@@ -1,6 +1,6 @@
 <template>
     <div class="logoin-main" ref="con">
-        <div v-title data-title="ShopsN短信登录">{{title}}</div>
+        <div v-title data-title="ABO短信登录">{{title}}</div>
         <header class="logoIn-header">
            <span @click="remove" class="btn-back">取消</span>{{title}}
         </header>
@@ -38,7 +38,7 @@
         name : 'logoIn',
         data(){
             return {
-                title:'ShopsN短信登录',
+                title:'ABO短信登录',
                 show:false, // 是否使用第三方登录
                 userName:'',
                 passWord:'',

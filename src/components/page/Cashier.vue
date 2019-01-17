@@ -66,7 +66,7 @@ export default {
     name: 'cashier',
     data() {
         return {
-            title: 'shopsn收银台',
+            title: 'ABO收银台',
             text: '立即支付',
             btn: '订单中心',
             scrollWatch: true,

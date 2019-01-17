@@ -4,7 +4,7 @@
         <div class="order-wrap">
             <div class="order-list" v-for="(item,index) in $store.state.order" :key="item.id">
                 <div class="hd clearfix">
-                    <span class="title fl">ShopsN商城</span>
+                    <span class="title fl">ABO商城</span>
                     <span class="status fr" v-if="item.order_status == 0">待付款</span>
                     <span class="status fr" v-if="item.order_status == 1">待发货</span>
                     <span class="status fr" v-if="item.order_status == 3">待收货</span>
