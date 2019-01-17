@@ -21,7 +21,7 @@ Vue.use(VueLazyLoad,{
 // import { Spinner } from 'mint-ui'
 import '../config/globle.js'  //常量
 const user_id = sessionStorage.getItem('user_ID') || '',
-    URl = 'http://shop.abochain.io', // 图片的 baseUrl
+    URl = 'http://aboshops.com', // 图片的 baseUrl
     // URl = 'http://demo.shopsn.net',
     // URl = 'http://www.shopsn.cn',
     client_type = 1,  //1浏览器，2 app
