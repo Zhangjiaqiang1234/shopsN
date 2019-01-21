@@ -1,24 +1,24 @@
 <template>
 	<div class="box">
-		<img class="title" src="static/recom_b_title.png">
+		<img class="title" v-lazy="'static/recom_b_title.png'">
 		<ul class="list">
 			<li>
-				<img class="cover" src="static/goods.png">
+				<img class="cover" v-lazy="'static/goods.png'">
 				<h1 class="title text1-hidden">智能手环测心率</h1>
 				<span class="price">&yen;7388</span>
 			</li>
 			<li>
-				<img class="cover" src="static/goods.png">
+				<img class="cover" v-lazy="'static/goods.png'">
 				<h1 class="title text1-hidden">智能手环测心率</h1>
 				<span class="price">&yen;7388</span>
 			</li>
 			<li>
-				<img class="cover" src="static/goods.png">
+				<img class="cover" v-lazy="'static/goods.png'">
 				<h1 class="title text1-hidden">智能手环测心率</h1>
 				<span class="price">&yen;7388</span>
 			</li>
 			<li>
-				<img class="cover" src="static/goods.png">
+				<img class="cover" v-lazy="'static/goods.png'">
 				<h1 class="title text1-hidden">智能手环测心率</h1>
 				<span class="price">&yen;7388</span>
 			</li>

@@ -2,13 +2,13 @@
     <div class="per-center">
         <div v-title data-title="个人中心">个人中心</div>
         <div class="header-wrap">
-            <div class="header-hd">个人中心<router-link to="/myNews"><span></span></router-link></div>
+            <div class="header-hd">个人中心</div>
             <div class="header-dd-center">
                 <!--<div class="setUp"></div>-->
-                <div class="icon-wrap" @click="toLink('/seetin')">
-                    <img :src="URL+ $store.state.user_Imag">
+                <div class="icon-wrap">
+                    <img src="static/man.png">
                 </div>
-                <div class="admin" @click="toLink('/seetin')"><span></span>账户管理</div>
+                <div class="admin" @click="signOut"><span></span>退出登录</div>
             </div>
             <div class="status">
                 <span class="name">{{data.user_name}}</span>
@@ -55,13 +55,14 @@
 <script>
     import qs from 'qs';
     import Shopsn from '@/components/page/Shopsn.vue';
+    import { MessageBox } from 'mint-ui';
     export default {
         name : 'MyAiguxuan',
         data(){
             return {
                 more:{
-                    icon:[require('@/assets/yhq.png'),require('@/assets/jfsc.png'),require('@/assets/my_ico_01.png'),require('@/assets/my_ico_04.png'),require('@/assets/wdpj.png'),require('@/assets/my_ico_02@3x.png'),require('@/assets/my_ico_03.png'),require('@/assets/my_ico_08.png')],
-                    name:['优惠券','积分商城','我的收藏','足迹','我的评价','收货地址','客服中心','意见反馈']
+                    icon:[require('@/assets/yhq.png'),require('@/assets/jfsc.png'),require('@/assets/my_ico_01.png'),require('@/assets/my_ico_02@3x.png')],
+                    name:['优惠券','积分商城','我的收藏','收货地址']
                 },
                 Imag:'',
                 navCon:[
@@ -79,6 +80,22 @@
             Shopsn
         },
         methods:{
+            signOut(){
+                MessageBox({
+                    title: '提示',
+                    message: '退出登录',
+                    showCancelButton: true
+                }).then(action => {
+                    if(action == 'cancel') return;
+                    // 清空token的信息
+                    sessionStorage.removeItem('user_ID');
+                    sessionStorage.removeItem('set_address');
+                    localStorage.removeItem('user_ID');
+                    sessionStorage.removeItem('token');
+                    localStorage.removeItem('token');
+                    this.$router.push('/LogoIn');
+                });
+            },
             toOrder(sta){
                 if(sta == 5){
                     this.$router.push('/repair')

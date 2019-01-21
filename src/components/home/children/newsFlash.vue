@@ -25,7 +25,7 @@
         data() {
             return {
                 newdata:{
-                    imgSrc:['/static/navIcon1.png','/static/navIcon2.png','/static/navIcon3.png','/static/navIcon4.png']
+                    imgSrc:['static/navIcon1.png','static/navIcon2.png','static/navIcon3.png','static/navIcon4.png']
                 }
             }
         },
@@ -175,8 +175,8 @@
                 width:25%;
                 text-align:center;
                 img{
-                    width:1.26rem;
-                    height:1.26rem;
+                    width:.98rem;
+                    height:.98rem;
                 }
                 p{
                     font-size:.28rem;

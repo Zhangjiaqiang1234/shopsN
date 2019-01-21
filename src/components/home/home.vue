@@ -18,15 +18,9 @@
             <img v-lazy="URL + item.pic_url">
         </div>
     
-        <div class="limit-banner"><img v-for="item in $store.state.home_data.integral_foot_img" :key="item.id" v-lazy="URL + item.pic_url"></div>
-
-        <div class="banner-3"><img v-for="item in $store.state.home_data.appliances_img" :key="item.id" v-lazy="URL + item.pic_url"></div>
-        
-        <div class="banner-3"><img v-for="item in $store.state.home_data.phone_digital_img" :key="item.id" v-lazy="URL + item.pic_url"></div>
       
         <!-- 本月特卖 -->
         <recommend-b></recommend-b>
-
 
 
         <Shopsn></Shopsn>

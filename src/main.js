@@ -12,6 +12,7 @@ import 'mint-ui/lib/style.css'
 import MintUI from 'mint-ui'
 import VueLazyLoad from 'vue-lazyload'
 import QS from 'qs';
+import { Toast } from 'mint-ui';
 Vue.use(VueLazyLoad,{
     preLoad:1.3,
     error:'./static/ggt@2x.png',
@@ -35,6 +36,8 @@ Vue.prototype.load_wrap = load_wrap;
 Vue.prototype.user_id = user_id;
 
 const showLog = false; // 是否输出调试信息
+
+const ERR_MSG = '用户访问权限认证失败';
 
 
 Vue.use(MintUI);
@@ -63,7 +66,7 @@ let isJson = (str) => {
     console.log('It is not a string!');
 };
 
-// request interceptor
+// 请求发出前
 axios.interceptors.request.use(config => {
     if(showLog){
         console.log(config.url);
@@ -97,11 +100,39 @@ axios.interceptors.request.use(config => {
         console.log('后',config.data);
         console.log('---');
     }
-    return config
+    return config;
 }, error => {
   // Do something with request error
-  Promise.reject(error)
-})
+  Promise.reject(error);
+});
+
+// 获得响应后
+axios.interceptors.response.use(
+    response => {
+        if (response.data.msg == ERR_MSG) {
+          Toast({
+            message: '请重新登录',
+            type: 'error',
+            duration: 5 * 1000
+          })
+          console.log('返回接口 status == 0 url ==');
+          console.log(response.config.url);
+          // localStorage.clear();
+          // sessionStorage.clear();
+          // this.$router.push({ path: '/LogoIn' });
+        }
+        return response;
+    },
+    error => {
+        console.log('err' + error) // for debug
+        Toast({
+          message: error.message,
+          type: 'error',
+          duration: 5 * 1000
+        })
+        return Promise.reject(error);
+    }
+);
 
 
 

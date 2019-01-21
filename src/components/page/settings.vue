@@ -88,6 +88,11 @@
                 });
             }
         },
+        created(){
+            this.$router.push({ // 直接跳转首页，h5不需要账户管理功能
+                path:'/Home'
+            });
+        },
         mounted(){
             
             this.axios.post(API_URL + 'Home/Pcenter/userinfo').then((res) => {

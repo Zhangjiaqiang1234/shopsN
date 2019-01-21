@@ -31,7 +31,7 @@
 </template>
 <script>
 	export default {
-
+		
 	};
 </script>
 <style lang="less" scoped>
@@ -39,7 +39,7 @@
 		width:100%;
 		height:auto;
 		box-sizing:border-box;
-		padding:.15rem .28rem;
+		padding:.15rem .28rem 0;
 		display:flex;
 		justify-content: space-between;
 		.title{
