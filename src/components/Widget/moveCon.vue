@@ -28,10 +28,6 @@
                 
             }
         },
-        created:function(){
-            console.log('data = ');
-            console.log(this.data);
-        },
         props:{
             data:null,
             url:null,

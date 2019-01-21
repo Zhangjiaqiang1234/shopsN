@@ -3,11 +3,11 @@
     <div class="flash-wrap">
         <ul class="flash-dd clearfix">
             <li class="fl" v-for="(n,index) in nav" :key="n.id" @click="link(index)">
-                    <img v-lazy="URL + newdata.imgSrc[index]">
+                    <img v-lazy="newdata.imgSrc[index]">
                 <p>{{n.nav_titile}}</p>
             </li>
         </ul>
-        <div class="flash-dt clearfix">
+        <div v-if="false" class="flash-dt clearfix">
             <div class="flash-news fl text-center">公告</div>
             <div class="flash-content fl">
             <em></em>
@@ -25,8 +25,7 @@
         data() {
             return {
                 newdata:{
-                    imgSrc:['/Uploads/navimg/navimg-1.png','/Uploads/navimg/navimg-2.png','/Uploads/navimg/navimg-3.png','/Uploads/navimg/navimg-4.png','/Uploads/navimg/navimg-5.png','/Uploads/navimg/navimg-6.png','/Uploads/navimg/navimg-7.png','/Uploads/navimg/navimg-8.png',],
-                    text:['最新促销','尾货清仓','品牌馆','积分商城','家用电器','手机数码','电脑办公','更多']
+                    imgSrc:['/static/navIcon1.png','/static/navIcon2.png','/static/navIcon3.png','/static/navIcon4.png']
                 }
             }
         },
@@ -104,7 +103,7 @@
                 }
             }
         }
-    }
+    };
 </script>
 <style lang="less" scoped>
     .flash-wrap{
@@ -181,12 +180,11 @@
                 }
                 p{
                     font-size:.28rem;
-                    color:#333;
+                    color:#8C8C8C;
                     padding:.2rem 0;
                     line-height:100%;
                     font-weight:400;
                     font-size:.28rem;
-                    color:#333;
                 }
             }
         }

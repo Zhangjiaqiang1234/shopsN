@@ -34,6 +34,8 @@ Vue.prototype.URL = URl;
 Vue.prototype.load_wrap = load_wrap;
 Vue.prototype.user_id = user_id;
 
+const showLog = false; // 是否输出调试信息
+
 
 Vue.use(MintUI);
 import { Indicator } from 'mint-ui';
@@ -63,9 +65,11 @@ let isJson = (str) => {
 
 // request interceptor
 axios.interceptors.request.use(config => {
-    console.log(config.url);
-    console.log(config);
-    console.log('前',config.data);
+    if(showLog){
+        console.log(config.url);
+        console.log(config);
+        console.log('前',config.data);
+    }
     if(config.method == 'get' && config.params){ // 如果是用 get 请求并且参数是放到 url 中的话 直接添加
         config.params.app_user_id = sessionStorage.getItem('user_ID');
         config.params.access_token = sessionStorage.getItem('token');
@@ -89,9 +93,10 @@ axios.interceptors.request.use(config => {
         config.data.app_user_id = sessionStorage.getItem('user_ID')
     }
 
-    
-    console.log('后',config.data);
-    console.log('---');
+    if(showLog){
+        console.log('后',config.data);
+        console.log('---');
+    }
     return config
 }, error => {
   // Do something with request error
