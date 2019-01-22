@@ -2,32 +2,42 @@
 	<div class="box">
 		<img class="title" v-lazy="'static/recom_b_title.png'">
 		<ul class="list">
-			<li>
-				<img class="cover" v-lazy="'static/goods.png'">
-				<h1 class="title text1-hidden">智能手环测心率</h1>
-				<span class="price">&yen;7388</span>
-			</li>
-			<li>
-				<img class="cover" v-lazy="'static/goods.png'">
-				<h1 class="title text1-hidden">智能手环测心率</h1>
-				<span class="price">&yen;7388</span>
-			</li>
-			<li>
-				<img class="cover" v-lazy="'static/goods.png'">
-				<h1 class="title text1-hidden">智能手环测心率</h1>
-				<span class="price">&yen;7388</span>
-			</li>
-			<li>
-				<img class="cover" v-lazy="'static/goods.png'">
-				<h1 class="title text1-hidden">智能手环测心率</h1>
-				<span class="price">&yen;7388</span>
+			<li v-for="(item,index) in list" :key="item.id" @click="toLink(index)">
+				<img class="cover" v-lazy="URL+item.pic_url">
+				<h1 class="title text1-hidden">{{item.title}}</h1>
+				<span class="price">&yen;{{item.price_market}}</span>
 			</li>
 		</ul>
 	</div>
 </template>
 <script>
 	export default {
-
+		data(){
+			return {
+				list:[] // 存放数据的数组列表
+			};
+		},
+		created(){
+			this.axios.post(API_URL + 'Home/index/recommendGoods').then((res) => {
+				console.log(res)
+				if(res.status == 200){
+					this.list = res.data.data;
+				}
+            }).catch((err) => {
+                console.log(err)
+            });
+		},
+		methods:{
+			toLink(index){
+				this.$router.push({
+					name:'product',
+					params:{
+						id:this.list[index].id,
+                        status:1
+					}
+				});
+			}
+		}
 	};
 </script>
 <style lang="less" scoped>

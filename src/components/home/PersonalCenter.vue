@@ -126,33 +126,21 @@
                 }else{
                     switch(link){
                         case 0:
-                            this.$router.push('/coupon');
+                            this.$router.push('/coupon'); // 优惠券
                             break;
                         case 1:
-                            this.$router.push('/Integral')
+                            this.$router.push('/Integral') // 积分商城
                             break;
                         case 2:
-                            this.$router.push('/Collection');
+                            this.$router.push('/Collection'); // 我的收藏
                             break;
                         case 3:
-                            this.$router.push('/footprint')
-                            break;
-                        case 4:
-                            this.$router.push('/myComment')
-                            break;
-                        case 5:
-                            this.$router.push({
+                            this.$router.push({ // 收货地址
                                 name:'address',
                                 params:{
                                     status:2
                                 }
                             });
-                            break;
-                        case 6:
-                            this.$router.push('/customer');
-                            break;
-                        case 7:
-                            this.$router.push('/Feedback');
                             break;
                     }
                 }

@@ -16,15 +16,15 @@
 					<p class="text text1-hidden">澳洲A2</p>
 					<span class="hot">特卖</span>
 				</div>
-				<img src="static/goods.png">
+				<img src="static/goods2.png">
 			</div>
 			<div class="bottom con small">
 				<div class="con-left">
-					<h1 class="title text1-hidden">进口奶粉</h1>
-					<p class="text text1-hidden">澳洲A2</p>
-					<span class="hot">特卖</span>
+					<h1 class="title text1-hidden">保健药品</h1>
+					<p class="text text1-hidden">健康生活</p>
+					<span class="hot">精品</span>
 				</div>
-				<img src="static/goods.png">
+				<img src="static/goods3.png">
 			</div>
 		</div>
 	</div>

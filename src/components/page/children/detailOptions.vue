@@ -11,7 +11,7 @@
                         <p class="price" v-if="$store.state.commodity_data.goods"><span>{{$store.state.commodity_data.goods.integral}}</span> 积分</p>
                         <span class="delete-btn" @click="remove">×</span>
                     </div>
-                    <dl class="gui clearfix" v-if="$store.state.commodity_data.allattrcha">
+                    <dl class="gui clearfix" v-if="allattrcha">
                         <dt class="fl">{{$store.state.commodity_data.allattrcha[0].name}}</dt>
                         <dd class="fl" v-for="(item,index) in $store.state.commodity_data.allattrcha[0].value" :key="item.id" @click="addClass(index)" :class="{active:status == index}">{{item.attr}}</dd>
                     </dl>
@@ -56,6 +56,11 @@
         data(){
             return {
                 status:''
+            }
+        },
+        computed:{
+            allattrcha(){
+                return this.$store.state.commodity_data.allattrcha && this.$store.state.commodity_data.allattrcha.length>0;
             }
         },
         methods:{
