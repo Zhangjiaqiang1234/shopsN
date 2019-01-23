@@ -37,7 +37,7 @@
                         break;
                     case 2:
                         if(!sessionStorage.getItem('user_ID')){
-                                this.$router.push({
+                            this.$router.push({
                                 path:'/LogoIn'
                             });
                             return

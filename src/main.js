@@ -115,8 +115,6 @@ axios.interceptors.response.use(
             type: 'error',
             duration: 5 * 1000
           })
-          console.log('返回接口 status == 0 url ==');
-          console.log(response.config.url);
           // localStorage.clear();
           // sessionStorage.clear();
           // this.$router.push({ path: '/LogoIn' });

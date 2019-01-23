@@ -25,7 +25,7 @@
                     <img :src="URL + item.img" class="fl">
                     <div class="explain-wrap fr">
                         <p class="details">{{item.goods_title}}</p>
-                        <p class="clearfix product">
+                        <p v-if="item.attribute[0]" class="clearfix product">
                             <span class="fl name" >{{item.attribute[0].name +' : '+ item.attribute[0].item}}</span>
                             <span class="fr number">x{{item.goods_num}}</span>
                         </p>
@@ -191,11 +191,14 @@
                 app_user_id:sessionStorage.getItem('user_ID'),
                 order_id:Id
             })).then((res) => {
-                if(res.data.data.child.length <= 0)return;
-                this.$store.state.order_details = res.data.data;
                 this.load_wrap = false;
+                if(res.data.status==0 || res.data.data.child.length <= 0){
+                    return;
+                }
+                this.$store.state.order_details = res.data.data;
             }).catch((err) => {
                 console.log(err);
+                this.load_wrap = false;
             });
         },
         destroyed(){

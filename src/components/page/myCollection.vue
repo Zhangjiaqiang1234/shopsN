@@ -14,7 +14,7 @@
                 <div class="item-list-wrap">
                     <div v-for="(item,index) in data.goods" :key="item.id" class="clearfix">
                         <transition name="move">
-                            <div class="item-list" @touchmove="move($event,index)" @touchstart="moveEv($event)" :class="{active:status == index}">
+                            <div class="item-list" @click="toLink(item.id)" @touchmove="move($event,index)" @touchstart="moveEv($event)" :class="{active:status == index}">
                                 <img v-lazy="URL + item.img" class="fl">
                                 <div class="item fl">
                                     <div class="text text2-hidden">{{item.title}}</div>
@@ -63,6 +63,15 @@
             moveEv(ev){
                 this.startX = ev.touches[0].pageX;
                 this.startY = ev.touches[0].pageY;  
+            },
+            toLink(id){ // 点击收藏跳转商品详情页
+                this.$router.push({
+                    name:'product',
+                    params:{
+                        id:id,
+                        status:1
+                    }
+                });
             },
             move(ev,index){
                  //返回角度

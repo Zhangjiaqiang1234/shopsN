@@ -29,7 +29,7 @@
         <div class="prompt" @click="toTab">点击查看更多商品信息</div>
         <detail-option></detail-option>
         <Shopsn></Shopsn>
-        <foot-btn :state="sonState" :data="$store.state.commodity_data" @reduce="reduce" @plus="plus"></foot-btn>
+        <foot-btn :type="$store.state.commodity_data.is_collect" :state="sonState" :data="$store.state.commodity_data" @reduce="reduce" @plus="plus"></foot-btn>
         <div class="load-wrap" v-show="load_wrap" @touchmove.prevent><mt-spinner type="triple-bounce" color="rgb(38, 162, 255)"></mt-spinner></div>
     </div>
 </template>

@@ -29,9 +29,9 @@
             },
             download (type) { // 跳转对应下载地址
                 if(type === 1){
-                    location.href = 'itms-services://?action=download-manifest&url=https://plist.gunchung.com/com.aboCompany.ABOIOS_1542703236.plist';
+                    location.href = 'https://itunes.apple.com/cn/app/id1443708821';
                 }else{
-                    location.href = 'http://www.abochain.io/ABO_v1.4.1.apk';
+                    location.href = 'http://www.abochain.io/ABO_v1.4.2.apk';
                 }
             }
         }

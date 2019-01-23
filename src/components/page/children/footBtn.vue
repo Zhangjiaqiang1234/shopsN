@@ -2,7 +2,7 @@
     <div class="footer2017">
         <div class="seat"></div>
         <div class="btn-main clearfix" v-if="$route.params.status == 1">
-            <div class="col fl" @click="col"><em>{{icon}}</em>收藏</div>
+            <div class="col fl" @click="col"><em>{{iconArr[type]}}</em>收藏</div>
             <div class="join fl" @click="hide">加入购物车</div>
             <div class="imm fl" @click="hide">立即购买</div>
         </div>
@@ -19,22 +19,30 @@
         name : 'footBtn',
         data(){ 
             return {
-                icon : '☆',
-                type:''
+                iconArr:['☆','★','☆']
             }
         },
         props:{
             data:'',
             msg:'',
-            nb:''
+            nb:'',
+            type:{
+                type: String,
+                default: 0 // 0->未收藏，1->已收藏，2->需要删除
+            }
         },
         methods:{
             col(){//收藏
-                if(this.icon == '☆'){
-                    this.icon = '★';
+                console.log(sessionStorage.getItem('user_ID'))
+                console.log(sessionStorage.getItem('token'))
+                if(!sessionStorage.getItem('user_ID') || !sessionStorage.getItem('token')){
+                    this.$router.push({
+                        path:'/LogoIn'
+                    });
+                }
+                if(this.type != 1){
                     this.type = 1;
                 }else{
-                    this.icon = '☆';
                     this.type = 2;
                 }
                 this.axios.post(API_URL + 'Home/Cart/add_collection',qs.stringify({
@@ -42,13 +50,19 @@
                     goods_id:this.$route.params.id,
                     type:this.type
                 })).then((res) => {
-                    if(res.data.msg === '已取消'){
-                        this.msg = '取消收藏成功！';
+                    let msg_2 = '';
+                    if(res.data.status == 1){
+                        if(res.data.msg === '已取消'){
+                            msg_2 = '取消收藏成功！';
+                        }else{
+                            msg_2 = '恭喜，宝贝收藏成功！';
+                        }
                     }else{
-                        this.msg = '恭喜，宝贝收藏成功！';
+                        msg_2 = res.data.msg;
                     }
+                    
                     Toast({
-                        message: this.msg,
+                        message: msg_2,
                         position: 'bottom',
                         duration: 800
                     });

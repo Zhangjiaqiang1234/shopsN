@@ -29,10 +29,12 @@
    .shopsn{
      width: 100%;
      height: 1.5rem;
+     font-size:6px;
      .z_shopsn{
        text-align: center;
        color: #666;
        line-height: 1.5rem;
+       font-size:1px;
      }
    }
 </style>
