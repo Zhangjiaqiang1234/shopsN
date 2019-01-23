@@ -94,7 +94,7 @@
             bottom:0;
             left:0;
             background:#fff;
-            border-top:3px solid #fa6a2d;
+            border-top:1px solid #EBEAEA;
             z-index:2;
             background:#fff;
             box-shadow: border-box;
@@ -104,7 +104,7 @@
                 text-align:center;
                 .font{
                     font-size:.2rem;
-                    color:#333;
+                    color:#A6A6A6;
                 }
                 .icon{
                     height:.65rem;
@@ -125,7 +125,7 @@
             }
             li.isSelected{
                 .font{
-                    color:#f9781e;
+                    color:#A6A6A6;
                 }
                 .icon.active{
                     display:block;

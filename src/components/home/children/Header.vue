@@ -1,12 +1,12 @@
 <!-- 顶部组件 -->
 <template>
   <div class="header clearfix">
-    <!-- <div class="logo fl"><img :src="logoImg"></div> -->
+    <div class="logo fl"><img :src="shopCart"></div>
     <router-link class="input-main fl" to='/search'><input type="text" value="搜索商品..." disabled></router-link>
-    <div class="scode fl">
+    <!-- <div class="scode fl">
         <span class="active" @click="tolink('/myNews')"></span>
     </div>
-    <div class="logoIn fl" @click="toLogoIn" v-if="!user_name">登录</div>
+    <div class="logoIn fl" @click="toLogoIn" v-if="!user_name">登录</div> -->
     <!-- <div class="my fl" v-if="user_name"></div> -->
   </div>
 </template>
@@ -17,7 +17,7 @@
         data() {
             return {
                 userImg:require('@/assets/scode.png'),
-                logoImg:require('@/assets/logo.png'),
+                shopCart:require('@/assets/shop_cart.png'),
                 user_name:sessionStorage.getItem('user_ID')
             }
         },
@@ -40,30 +40,34 @@
         height: .9rem;
         background:#fff;
         overflow: hidden;
+        position:fixed;
+        left:0;
+        top:0;
+        z-index:999;
         .logo {
-            width: 1.66rem;
+            width: .9rem;
             height: 100%;
             position: relative;
-            background:#4591f2;
             img {
-                width: 1.38rem;
-                height: .31rem;
+                width: .4rem;
+                height: ..42rem;
                 margin: auto;
                 position: absolute;
-                left: 0;
+                left: .25rem;
                 top: 0;
                 bottom: 0;
                 right: 0;
             }
         }
         .input-main {
+            box-sizing:border-box;
             width: 6.2rem;
-            height: .62rem;
+            height: .6rem;
             border-radius: 100px;
-            background:#f7f7f7 url(../../../assets/search1.png) no-repeat .24rem center;
-            background-size: .26rem .27rem;
+            background:#F0F0F0 url(../../../assets/search1.png) no-repeat .24rem center;
+            background-size: 13px;
             line-height:100%;
-            margin:.14rem 0 0 .25rem;
+            margin:.16rem 0 0 .25rem;
             input {
                 height: 100%;
                 width: 100%;
@@ -71,7 +75,7 @@
                 background: none;
                 text-indent: .7rem;
                 font-size: .26rem;
-                color: #d6d6d6;
+                color: #979797;
             }
         }
         .scode {

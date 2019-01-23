@@ -113,6 +113,7 @@
 </script>
 <style lang="less">
     .home{
+        padding-top:.9rem;
         .mint-swipe-indicators{
             width: 100%;
             text-align: center;
