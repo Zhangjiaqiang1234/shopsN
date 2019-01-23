@@ -194,7 +194,7 @@ export default {
     },
     mounted() {      
         document.body.scrollTop = 0;
-        if (this.$route.params.id == 3) {
+        if (this.$route.params.id == 3) { // id == 3 此时是需要使用积分去支付的
             this.axios.post(API_URL + 'Home/Integral/integral', qs.stringify({
                 app_user_id: sessionStorage.getItem('user_ID')
             })).then((res) => {
@@ -206,18 +206,18 @@ export default {
         }
         let ua = window.navigator.userAgent.toLowerCase();
         if (ua.match(/MicroMessenger/i) == 'micromessenger') {
-            this.wx_notes=true
-            this.zfb_notes=false
+            this.wx_notes=true;
+            this.zfb_notes=false;
         } else {
             this.wx_notes=false;
-            this.zfb_notes=true
+            this.zfb_notes=true;
         }
-        this.axios.post(API_URL + 'Home/Pcenter/my_wallet',qs.stringify({
+        this.axios.post(API_URL + 'Home/Pcenter/my_wallet',qs.stringify({ // 获取我的钱包内容
                 app_user_id:sessionStorage.getItem('user_ID'),
             })).then((res) => {
                 this.my_wallet = res.data.data;
             }).catch((err) => {
-                console.log(err)
+                console.log(err);
             });
     },
     destroyed() {

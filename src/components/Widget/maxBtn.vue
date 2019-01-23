@@ -18,31 +18,32 @@
                     Toast("当前积分不足,无法兑换");
                 }else{
                     if(this.bt == false){
-                    Toast({
-                        message: "请使用余额支付",
-                    });
-                }else{
-                    this.axios.post(API_URL + 'Home/AlipayMobile/balancePay',qs.stringify({
-                    app_user_id:sessionStorage.getItem('user_ID'),
-                    order_id:this.$store.state.order_number
-                })).then((res) => {
-                    if(res.data.msg == "支付成功"){
-                        Toast("支付成功");
-                        this.$router.push({
-                            name: 'orderWrap',
-                            params: {
-                                status: 0
-                            }
+                        Toast({
+                            message: "请使用余额支付",
                         });
                     }else{
-                        Toast({
-                            message: res.data.msg
+                        this.axios.post(API_URL + 'Home/AlipayMobile/balancePay',qs.stringify({
+                            app_user_id:sessionStorage.getItem('user_ID'),
+                            order_id:this.$store.state.order_number
+                        }))
+                        .then((res) => {
+                            if(res.data.msg == "支付成功"){
+                                Toast("支付成功");
+                                this.$router.push({
+                                    name: 'orderWrap',
+                                    params: {
+                                        status: 0
+                                    }
+                                });
+                            }else{
+                                Toast({
+                                    message: res.data.msg
+                                });
+                            }
+                        }).catch((err) => {
+                            console.log(err);
                         });
                     }
-                }).catch((err) => {
-                    console.log(err);
-                });
-                }
                 } 
             }
         },

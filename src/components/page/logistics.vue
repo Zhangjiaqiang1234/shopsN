@@ -11,7 +11,6 @@
                 </div>
                 <div class="hd clearfix">
                     <span class="fl time">{{item.time}}</span>
-                    <!--<span class="fr name">曾潇</span>-->
                     <span class="icon"><i></i></span>
                 </div>
                 <p class="con">{{item.context}}</p>
