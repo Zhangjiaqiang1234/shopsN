@@ -257,43 +257,23 @@
                 }
             }
             if (this.$route.params.id == 1) { //积分商品
-                    if (sessionStorage.getItem('user_ID')) {
-                        this.axios.post(API_URL + 'Home/Order/goBuy', qs.stringify({
-                            app_user_id: sessionStorage.getItem('user_ID'),
-                            goods: this.$store.state.goods,
-                            is_integral: 1
-                        })).then((res) => {
-                            // if (res.data.status == 0) {
-                            //     Toast(res.data.msg);
-                            //     this.$router.go(-1);
-                            // }
-                            if(res.data.msg == '请完善收货地址'){
-                                this.realname = '';
-                                // this.$router.push('/address');
-                                }
-                            this.load_wrap = false;
-                            this.data = res.data.data;
-                            this.realname = res.data.data.address;
-                            // this.coupon = res.data.data.coupon[0].name;
-                        }).catch((err) => {
-                            console.log(err);
-                        });
-                    } else {
-                        this.$router.push('/LogoIn');
-                    };
-                    return;
-                }
-                if (sessionStorage.getItem('user_ID')) { //普通商品
+                if (sessionStorage.getItem('user_ID')) {
                     this.axios.post(API_URL + 'Home/Order/goBuy', qs.stringify({
                         app_user_id: sessionStorage.getItem('user_ID'),
-                        goods: this.$store.state.goods
+                        goods: this.$store.state.goods,
+                        is_integral: 1
                     })).then((res) => {
+                        // if (res.data.status == 0) {
+                        //     Toast(res.data.msg);
+                        //     this.$router.go(-1);
+                        // }
                         if(res.data.msg == '请完善收货地址'){
-                                this.realname = '';
-                                // this.$router.push('/address');
-                        }
+                            this.realname = '';
+                            // this.$router.push('/address');
+                            }
                         this.load_wrap = false;
                         this.data = res.data.data;
+                        this.realname = res.data.data.address;
                         // this.coupon = res.data.data.coupon[0].name;
                     }).catch((err) => {
                         console.log(err);
@@ -301,16 +281,36 @@
                 } else {
                     this.$router.push('/LogoIn');
                 };
-                if (this.$store.state.invoice == false) {
-                    this.invoice_status = 0;
-                } else {
-                    this.invoice_status = 1;
-                }
-                if (this.$store.state.invoice == true) {
-                    this.invoice_type = this.$store.state.invoice_switch[0].invoice_title;
-                } else {
-                    this.invoice_type = '无需发票';
-                }
+                return;
+            }
+            if (sessionStorage.getItem('user_ID')) { //普通商品
+                this.axios.post(API_URL + 'Home/Order/goBuy', qs.stringify({
+                    app_user_id: sessionStorage.getItem('user_ID'),
+                    goods: this.$store.state.goods
+                })).then((res) => {
+                    if(res.data.msg == '请完善收货地址'){
+                            this.realname = '';
+                            // this.$router.push('/address');
+                    }
+                    this.load_wrap = false;
+                    this.data = res.data.data;
+                    // this.coupon = res.data.data.coupon[0].name;
+                }).catch((err) => {
+                    console.log(err);
+                });
+            } else {
+                this.$router.push('/LogoIn');
+            };
+            if (this.$store.state.invoice == false) {
+                this.invoice_status = 0;
+            } else {
+                this.invoice_status = 1;
+            }
+            if (this.$store.state.invoice == true) {
+                this.invoice_type = this.$store.state.invoice_switch[0].invoice_title;
+            } else {
+                this.invoice_type = '无需发票';
+            }
              
         },
         created() {

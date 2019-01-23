@@ -19,7 +19,6 @@
 		},
 		created(){
 			this.axios.post(API_URL + 'Home/index/recommendGoods').then((res) => {
-				console.log(res)
 				if(res.status == 200){
 					this.list = res.data.data;
 				}

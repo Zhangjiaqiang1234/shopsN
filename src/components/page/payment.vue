@@ -59,7 +59,6 @@ export default {
       },
   callpay:function() {
       
-      alert(1);
         if (typeof WeixinJSBridge == "undefined") {
             if (document.addEventListener) {
                 document.addEventListener('WeixinJSBridgeReady', this.jsApiCall, false);
