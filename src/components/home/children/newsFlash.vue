@@ -2,21 +2,11 @@
 <template>
     <div class="flash-wrap">
         <ul class="flash-dd clearfix">
-            <li class="fl" v-for="(n,index) in nav" :key="n.id" @click="link(index)">
+            <li class="fl" v-for="(n,index) in data" :key="n.id" @click="link(index)">
                     <img v-lazy="newdata.imgSrc[index]">
-                <p>{{n.nav_titile}}</p>
+                <p>{{n.class_name}}</p>
             </li>
         </ul>
-        <div v-if="false" class="flash-dt clearfix">
-            <div class="flash-news fl text-center">公告</div>
-            <div class="flash-content fl">
-            <em></em>
-            <ul class="scroll_box" ref="scroll_box">
-                    <li  class="text-single-hidden" v-for="(item,index) in data" :key="item.id">{{item.title}}</li>
-            </ul>
-            </div>
-            <router-link to="/Notice" class="flash-more fr">更多</router-link>
-        </div>
     </div>
 </template>
 <script>
@@ -52,55 +42,12 @@
                 },2000);
             }, 
             link(index){
-                switch(index){
-                    case 0:
-                        this.$router.push({
-                            path:'/latestProm'
-                        });
-                        break;
-                    case 1:
-                        this.$router.push({
-                            path:'/poopClearance'
-                        });
-                        break;
-                    case 2:
-                        this.$router.push({
-                            path:'/brandList'
-                        });
-                        break;
-                    case 3:
-                        // this.$router.push({
-                        //     path:'/IntegralMall'
-                        // });
-                        break;
-                    case 4:
-                        this.$router.push({
-                            name:'comList',
-                            params:{
-                                status:'office'
-                            }
-                        });
-                        break;
-                    case 5:
-                        this.$router.push({
-                            path:'/Integral',
-                            // params:{
-                            //     status:'mobile'
-                            // }
-                        });
-                        break;
-                    case 6:
-                        // this.$router.push({
-                        //     name:'comList',
-                        //     params:{
-                        //         status:'office'
-                        //     }
-                        // });
-                        break;
-                    case 7:
-                        this.$router.push('/home');
-                        break;
-                }
+                this.$router.push({
+                    name:'comList',
+                    params:{
+                        status:index
+                    }
+                });
             }
         }
     };

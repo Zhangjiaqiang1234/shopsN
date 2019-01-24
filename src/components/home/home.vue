@@ -7,10 +7,10 @@
                 <img v-lazy="URL + item.pic_url">
             </mt-swipe-item>
         </mt-swipe>
-        <news-flash :nav="$store.state.home_data.nav"    :data="$store.state.home_data.announcement" v-if="$store.state.home_data.announcement"></news-flash>
+        <news-flash :data="$store.state.home_data.getTopGoodsClass" v-if="$store.state.home_data.getTopGoodsClass"></news-flash>
 
         <!-- 首页第一个分类 -->
-        <recommend-a></recommend-a>
+        <recommend-a :data="this.$store.state.home_data.getRecommendGoodsClass"></recommend-a>
 
 
         <!-- 广告位 -->
@@ -85,6 +85,7 @@
                     return;
                 }
                 this.$store.state.home_data = res.data.data;
+                console.log(this.$store.state.home_data)
             }).catch((err) => {
                 console.log(err)
             });

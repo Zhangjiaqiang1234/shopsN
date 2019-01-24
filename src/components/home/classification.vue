@@ -77,9 +77,9 @@
                             name:'comList',
                             params:{
                                 status:item.id
-                                }
-                            });
-                        }
+                            }
+                        });
+                    }
                     this.condata = suc.data.data;
                     this.load = false;
                 }).catch((err) => {

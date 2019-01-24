@@ -1,7 +1,7 @@
 <!-- 顶部组件 -->
 <template>
   <div class="header clearfix">
-    <div class="logo fl"><img :src="shopCart"></div>
+    <div class="logo fl" @click="toCart"><img :src="shopCart"></div>
     <router-link class="input-main fl" to='/search'><input type="text" value="搜索商品..." disabled></router-link>
     <!-- <div class="scode fl">
         <span class="active" @click="tolink('/myNews')"></span>
@@ -22,13 +22,18 @@
             }
         },
         methods: {
-            toLogoIn() {
+            // toLogoIn() {
+            //     this.$router.push({
+            //         path:'/LogoIn'
+            //     })
+            // },
+            // tolink(link){
+            //     this.$router.push(link)
+            // },
+            toCart(){ // 点击跳转至购物车
                 this.$router.push({
-                    path:'/LogoIn'
-                })
-            },
-            tolink(link){
-                this.$router.push(link)
+                    path:'/Cart'
+                });
             }
         }
     }

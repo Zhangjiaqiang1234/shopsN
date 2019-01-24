@@ -1,37 +1,55 @@
 <!-- 这是移动端首页第一个推荐位组件 -->
 <template>
-	<div class="box">
-		<div class="left con big">
+	<div v-if="data.length>0" class="box">
+		<!-- 左侧分类 -->
+		<div v-if="data[0]" class="left con big" @click="toLink(data[0].id)">
 			<div class="line">
-				<h1 class="title text1-hidden">品牌吸氧机</h1>
-				<span class="hot">新品</span>
+				<h1 class="title text1-hidden">{{data[0].class_name}}</h1>
+				<span class="hot">热卖</span>
 			</div>
-			<p class="text text1-hidden">医用级</p>
-			<img src="static/goods.png">
+			<p class="text text1-hidden">{{data[0].description}}</p>
+			<img v-lazy="URL + data[0].pic_url">
 		</div>
 		<div class="right">
-			<div class="top con small">
+			<!-- 右上角分类 -->
+			<div class="top con small" v-if="data[1]" @click="toLink(data[1].id)">
 				<div class="con-left">
-					<h1 class="title text1-hidden">进口奶粉</h1>
-					<p class="text text1-hidden">澳洲A2</p>
-					<span class="hot">特卖</span>
+					<h1 class="title text1-hidden">{{data[1].class_name}}</h1>
+					<p class="text text1-hidden">{{data[1].description}}</p>
+					<span class="hot">热卖</span>
 				</div>
-				<img src="static/goods2.png">
+				<img v-lazy="URL + data[1].pic_url">
 			</div>
-			<div class="bottom con small">
+			<!-- 右下角分类 -->
+			<div class="bottom con small" v-if="data[1]" @click="toLink(data[2].id)">
 				<div class="con-left">
-					<h1 class="title text1-hidden">保健药品</h1>
-					<p class="text text1-hidden">健康生活</p>
-					<span class="hot">精品</span>
+					<h1 class="title text1-hidden">{{data[2].class_name}}</h1>
+					<p class="text text1-hidden">{{data[2].description}}</p>
+					<span class="hot">热卖</span>
 				</div>
-				<img src="static/goods3.png">
+				<img v-lazy="URL + data[2].pic_url">
 			</div>
 		</div>
 	</div>
 </template>
 <script>
 	export default {
-		
+		props: {
+			data: {
+				type: Array,
+				default: []
+			}
+		},
+		methods:{
+			toLink(id){
+				this.$router.push({
+                    name:'comList',
+                    params:{
+                        status:id
+                    }
+                });
+			}
+		}
 	};
 </script>
 <style lang="less" scoped>

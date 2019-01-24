@@ -134,7 +134,7 @@ axios.interceptors.response.use(
 
 
 
-const verificationList = ['seetin','order','person']; // 设置登录验证路由，当跳转至这些页面没有登录信息的话，会跳转至登录页要求登录
+const verificationList = ['seetin','order','person','Cart']; // 设置登录验证路由，当跳转至这些页面没有登录信息的话，会跳转至登录页要求登录
 
 router.beforeEach((to, from, next) => {
     Indicator.open('初始化...');
