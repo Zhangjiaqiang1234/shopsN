@@ -33,7 +33,7 @@
                     </li>
                     <li class="clearfix">
                         <span class="title fl">单位</span>
-                        <p class="con fl" v-if="data.attra">{{data.attra[0].item}}</p>
+                         <p class="con fl" v-if="data.attra">{{data.attra[0].item}}</p>
                     </li>
                 </ul>
             </mt-tab-container-item>

@@ -3,7 +3,7 @@
     <div class="flash-wrap">
         <ul class="flash-dd clearfix">
             <li class="fl" v-for="(n,index) in data" :key="n.id" @click="link(index)">
-                    <img v-lazy="newdata.imgSrc[index]">
+                    <img v-lazy="URL + n.pic_url">
                 <p>{{n.class_name}}</p>
             </li>
         </ul>

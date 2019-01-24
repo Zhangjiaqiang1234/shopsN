@@ -27,7 +27,7 @@
             msg:'',
             nb:'',
             type:{
-                type: String,
+                type: Number,
                 default: 0 // 0->未收藏，1->已收藏，2->需要删除
             }
         },
