@@ -85,7 +85,6 @@
                     return;
                 }
                 this.$store.state.home_data = res.data.data;
-                console.log(this.$store.state.home_data)
             }).catch((err) => {
                 console.log(err)
             });

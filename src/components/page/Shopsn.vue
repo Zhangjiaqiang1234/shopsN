@@ -10,19 +10,9 @@
         name : 'shopsn',
         data(){
            return {
-                datas:''
+                datas:'power by shopsn'
            }
-        },
-        mounted() {
-           this.axios({
-                url: API_URL + 'Home/Index/checkUjiaoQianlmei',
-                method: 'get'
-            }).then((res) => {
-                this.datas=res.data;
-            }).catch((err) => {
-                console.log(err);
-            });
-        }      
+        }
     }
 </script>
 <style lang="less" scoped>
@@ -34,7 +24,7 @@
        text-align: center;
        color: #666;
        line-height: 1.5rem;
-       font-size:1px;
+       font-size:0.01em;
      }
    }
 </style>
