@@ -20,7 +20,7 @@ let isJson = (str) => {
                 return false;
             }
         } catch(e) {
-            console.log('isJson error：'+str+'!!!'+e);
+            // console.log('isJson error：'+str+'!!!'+e);
             return false;
         }
     }

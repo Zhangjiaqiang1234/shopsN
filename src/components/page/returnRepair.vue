@@ -80,9 +80,7 @@
             }
         },
         mounted(){
-            this.axios.post(API_URL + 'Home/Pcenter/afetrsale_list',qs.stringify({
-                app_user_id:sessionStorage.getItem('user_ID')
-            })).then((res) => {
+            this.axios.post(API_URL + 'Home/Pcenter/afetrsale_list').then((res) => {
                 this.$store.state.repair = res.data.data;
                 this.load_wrap = false;
             }).catch((res) => {

@@ -98,7 +98,7 @@
                     this.getOrderList();
                     break;
                 case 1:
-                    this.$store.state.order_title = '待发货订单';
+                    this.$store.state.order_title = '待处理订单';
                     this.$store.state.order_status = 1;
                     this.getOrderList();
                     break;
@@ -189,6 +189,8 @@
                     });
             },
             toDetails(item,text,index){
+                console.log('到达 toDetails 方法 ')
+                console.log(item.order_status,item.id)
                 this.$router.push({
                     name:'orderDetails',
                     params:{

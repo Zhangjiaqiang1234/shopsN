@@ -26,7 +26,7 @@
                         <span v-if="item.price_market">{{item.price_market}}</span>
                     <!-- <span v-if="item.price_member">{{item.price_member}}</span> -->
                     </p>       
-                    <p class="status"><span>已有{{item.count}}条评论</span><span>{{item.trade_num}}笔交易成功</span></p>
+                    <p class="status"><span>已有{{item.count}}条评论</span><span>{{item.sales_sum}}笔交易成功</span></p>
                 </div>
             </li>
         </ul>
@@ -54,8 +54,8 @@
                 logoImg:require('@/assets/btn-return.png'),
                 status:[true,false,false],
                 search:true,
-                sort_id:null,
-                sort_status:null,
+                sort_id:null, // 1->销量升序 2->销量降序 3->价格升序 4->价格降序
+                sort_status:null, // 1->销量 2->价格 3->人气
                 load:false,
                 scrollWatch:true,
                 load_wrap:true,
@@ -76,7 +76,7 @@
             },
             sort(index){
                 switch(index){
-                    case 'xl':
+                    case 'xl': // 销量
                         if(this.sort_id != 1){
                             this.sort_id = 1;
                             this.sort_status = 1;
@@ -86,7 +86,7 @@
                         }
                         this.load = true;
                         break;
-                    case 'jg':
+                    case 'jg': // 价格
                         if(this.sort_id != 3){
                             this.sort_id = 3;
                             this.sort_status = 2;
@@ -96,7 +96,7 @@
                         }
                         this.load = true;
                         break;
-                    case 'rq':
+                    case 'rq': // 人气
                         if(this.sort_id == 5)return;
                         this.sort_id = 5;
                         this.sort_status = 3;

@@ -156,25 +156,23 @@
                 });
             },
             toOrder(){
-                console.log('goods = ');
-                console.log(this.$store.state.goods);
-                    this.axios.post(API_URL + 'Home/Order/orderBegin', qs.stringify({
-                        app_user_id: sessionStorage.getItem('user_ID'), //用户ID
-                        goods: this.$store.state.goods,  //将要购买的商品 二维数组
-                        buyType: this.$route.params.id,  //2:为立即购买型 1：为购物车购买
-                        price_sum: Number(this.data.total_price) + Number(this.data.freight), //运费及优惠券计算后的总金额
-                        invoice: JSON.stringify(this.$store.state.invoice_switch), //发票信息二维数组
-                        translate: this.invoice_status, //是否需要发票 1为需要 0为不需要
-                        address_id: this.realname.id,//收货地址ID
-                        remarks: this.message, //留言
-                        shipping_monery: this.data.freight, //运费
-                    })).then((res) => {
-                        console.log(res)
-                        this.$store.state.order_number = res.data.data;
-                    }).catch((err) => {
-                        console.log(err);
-                    });
-                    this.$store.state.price = Number(this.data.total_price) + Number(this.data.freight);
+                this.axios.post(API_URL + 'Home/Order/orderBegin', qs.stringify({
+                    app_user_id: sessionStorage.getItem('user_ID'), //用户ID
+                    goods: this.$store.state.goods,  //将要购买的商品 二维数组
+                    buyType: this.$route.params.id,  //2:为立即购买型 1：为购物车购买
+                    price_sum: Number(this.data.total_price) + Number(this.data.freight), //运费及优惠券计算后的总金额
+                    invoice: JSON.stringify(this.$store.state.invoice_switch), //发票信息二维数组
+                    translate: this.invoice_status, //是否需要发票 1为需要 0为不需要
+                    address_id: this.realname.id,//收货地址ID
+                    remarks: this.message, //留言
+                    shipping_monery: this.data.freight, //运费
+                })).then((res) => {
+                    console.log(res)
+                    this.$store.state.order_number = res.data.data;
+                }).catch((err) => {
+                    console.log(err);
+                });
+                this.$store.state.price = Number(this.data.total_price) + Number(this.data.freight);
             },
             tolink(to) {
                 if(to == 'address'){

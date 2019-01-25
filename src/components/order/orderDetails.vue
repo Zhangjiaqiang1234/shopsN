@@ -145,7 +145,6 @@
                     app_user_id:sessionStorage.getItem('user_ID'),
                     goods:JSON.stringify(goods)
                 })).then((res) => {
-                    console.log(res)
                     Toast({
                         message: res.data.msg,
                         position: 'bottom'
@@ -203,9 +202,6 @@
         },
         destroyed(){
             this.scrollWatch = false;
-        },
-        created(){
-            
         }
     }
 </script>
