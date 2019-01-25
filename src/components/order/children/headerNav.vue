@@ -3,7 +3,7 @@
         <order-header :text="$store.state.order_title" :search="search"></order-header>
         <div class="nav-wrap">
             <ul class="nav">
-                <li class="fl" v-for="(name,index) in datas.name" :key="name.id" :class="{active:$store.state.status == index}" @click="addClass(index)"><span>{{name}}</span></li>
+                <li class="fl" v-for="(item,index) in datas.name" :key="item.id" :class="{active:$store.state.status == item.status}" @click="addClass(index)"><span>{{item.text}}</span></li>
             </ul>
         </div>
     </div>
@@ -15,7 +15,15 @@
         data(){
             return {
                 datas:{
-                    name:['全部','待付款','待处理','待收货','已完成','已取消','待评论']
+                    name:[
+                        {text:'全部',status:-2},
+                        {text:'待付款',status:0},
+                        {text:'待处理',status:1},
+                        {text:'待收货',status:3},
+                        {text:'已完成',status:4},
+                        {text:'已取消',status:-1},
+                        {text:'待评论',status:-3}
+                    ]
                 },
                 search:true
             }
@@ -38,12 +46,13 @@
                 if(res.data.data.length<10){this.$store.state.no_data = true;}
             },
             addClass(index){
+                let obj = this.datas.name[index];
                 this.$store.commit('clear_page',this.$store.state.page); //初始化page
                 this.$store.state.order_load = true;
-                this.title = this.datas.name[index]+'订单';
-                this.$store.state.status = index;
-                switch(index){
-                    case 0:
+                this.title = obj.text+'订单';
+                this.$store.state.status = obj.status;
+                switch(obj.status){
+                    case -2:
                         this.$store.state.order_title = '全部订单';
                         this.$store.state.order_status = '';
                         this.axios({
@@ -63,7 +72,7 @@
                             console.log(err);
                         });
                         break;
-                    case 1:
+                    case 0:
                         this.$store.state.order_title = '待付款订单';
                         this.$store.state.order_status = 0;
                         this.axios({
@@ -83,7 +92,7 @@
                             console.log(err);
                         });
                         break;
-                    case 2:
+                    case 1:
                         this.$store.state.order_title = '待处理订单';
                         this.$store.state.order_status = 1;
                         this.axios({
@@ -143,7 +152,7 @@
                             console.log(err);
                         });
                         break;
-                    case 5:
+                    case -1:
                         this.$store.state.order_title = '以取消订单';
                         this.$store.state.order_status = -1;
                         this.axios({
@@ -163,7 +172,7 @@
                             console.log(err);
                         });
                         break;
-                    case 6:
+                    case -3:
                         this.$store.state.order_title = '待评论订单';
                         this.$store.state.order_status = 6;
                         this.axios({
@@ -183,6 +192,9 @@
                         break;
                 };
             }
+        },
+        mounted(){
+            this.$store.state.status = Number(this.$route.params.status);
         }
     }
 </script>

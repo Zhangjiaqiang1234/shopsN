@@ -4,7 +4,7 @@
     <wal-header :text="title"></wal-header>
     <div class="balance-wrap">
       <div class="hd clearfix">
-        <img :src="URL+$store.state.user_Imag" class="hd-port fl"> 
+        <!-- <img :src="URL+$store.state.user_Imag" class="hd-port fl">  -->
         <div class="amount fl">
           <div class="title">账户余额</div>
           <div class="number text-single-hidden">{{Number($store.state.my_wallet.balance)}}</div>

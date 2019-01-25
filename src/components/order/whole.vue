@@ -87,17 +87,17 @@
             this.$store.state.no_data = false;
             this.$store.state.slidingSwitch = true;
             switch(Number(this.$route.params.status)){
-                case 0:
+                case -2:
                     this.$store.state.order_title = '全部订单';
                     this.$store.state.order_status = '';
                     this.getOrderList();
                     break;
-                case 1:
+                case 0:
                     this.$store.state.order_title = '待付款订单';
                     this.$store.state.order_status = 0;
                     this.getOrderList();
                     break;
-                case 2:
+                case 1:
                     this.$store.state.order_title = '待发货订单';
                     this.$store.state.order_status = 1;
                     this.getOrderList();
@@ -112,7 +112,7 @@
                     this.$store.state.order_status = 4;
                     this.getOrderList();
                     break;
-                case 5:
+                case -1:
                     this.$store.state.order_title = '以取消订单';
                     this.$store.state.order_status = -1;
                     this.getOrderList();

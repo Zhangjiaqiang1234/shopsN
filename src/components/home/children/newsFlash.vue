@@ -2,7 +2,7 @@
 <template>
     <div class="flash-wrap">
         <ul class="flash-dd clearfix">
-            <li class="fl" v-for="(n,index) in data" :key="n.id" @click="link(index)">
+            <li class="fl" v-for="(n,index) in data" :key="n.id" @click="link(n.id)">
                     <img v-lazy="URL + n.pic_url">
                 <p>{{n.class_name}}</p>
             </li>
@@ -42,12 +42,18 @@
                 },2000);
             }, 
             link(index){
-                this.$router.push({
-                    name:'comList',
-                    params:{
-                        status:index
-                    }
-                });
+                if(index == 798){ // 如果是钻石专区，那么直接跳积分商城
+                    this.$router.push({
+                        name:'myIntegral'
+                    });
+                }else{ // 否则直接跳商品列表页
+                    this.$router.push({
+                        name:'comList',
+                        params:{
+                            status:index
+                        }
+                    });
+                }
             }
         }
     };

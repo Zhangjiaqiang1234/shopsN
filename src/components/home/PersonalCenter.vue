@@ -17,10 +17,10 @@
         </div>
         <div class="myOrder clearfix">
             <div class="title fl"><span class="icon"></span>我的订单</div>
-            <div class="see fr" @click="toOrder(0)"><span class="icon-right"></span>查看订单</div>
+            <div class="see fr" @click="toOrder(-2)"><span class="icon-right"></span>查看订单</div>
         </div>
         <ul class="nav-link clearfix">
-            <li class="fl" v-for="(item,index) in navCon" :key="item.id" @click="toOrder(index+1)">
+            <li class="fl" v-for="(item,index) in navCon" :key="item.id" @click="toOrder(item.status)">
                 <div class="icon-wrap">
                     <img :src="item.imgData" alt="">
                 </div>
@@ -66,11 +66,11 @@
                 },
                 Imag:'',
                 navCon:[
-                    {text:'待付款',imgData:require('@/assets/Orders_01.png')},
-                    {text:'待处理',imgData:require('@/assets/Orders_02.png')},
-                    {text:'待收货',imgData:require('@/assets/Orders_03.png')},
-                    {text:'已完成',imgData:require('@/assets/Orders_04.png')},
-                    {text:'返修/退货',imgData:require('@/assets/Orders_05.png')}
+                    {text:'待付款',imgData:require('@/assets/Orders_01.png'),status:0},
+                    {text:'待处理',imgData:require('@/assets/Orders_02.png'),status:1},
+                    {text:'待收货',imgData:require('@/assets/Orders_03.png'),status:3},
+                    {text:'已完成',imgData:require('@/assets/Orders_04.png'),status:4},
+                    {text:'返修/退货',imgData:require('@/assets/Orders_05.png'),status:5}
                 ],
                 data:'',
                 user_header:true
@@ -97,7 +97,7 @@
                 });
             },
             toOrder(sta){
-                if(sta == 5){
+                if(sta == 5){ // 如果是返修/退货
                     this.$router.push('/repair')
                     return;
                 }
