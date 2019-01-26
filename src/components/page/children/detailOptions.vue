@@ -128,7 +128,6 @@
                 };
                 console.log(this.$store.state.commodity_val+'---'+this.$store.state.commodity_data.price_member);
                 this.axios.post(API_URL + 'Home/Cart/add_cart',qs.stringify({
-                    app_user_id:sessionStorage.getItem('user_ID'),
                     goods_id:this.$route.params.id,
                     goods_num:this.$store.state.commodity_val,
                     price_new:this.$store.state.commodity_data.price_member

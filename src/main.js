@@ -50,7 +50,7 @@ Vue.directive('title', {
 
 
 
-const verificationList = ['seetin','order','person','Cart','myIntegral']; // 设置登录验证路由，填写的是name。当跳转至这些页面没有登录信息的话，会跳转至登录页要求登录
+const verificationList = ['seetin','order','person','Cart','myIntegral','repair']; // 设置登录验证路由，填写的是name。当跳转至这些页面没有登录信息的话，会跳转至登录页要求登录
 
 router.beforeEach((to, from, next) => {
     Indicator.open('初始化...');
@@ -71,6 +71,7 @@ router.beforeEach((to, from, next) => {
             sessionStorage.setItem('router_index', 4);
             break;
     };
+    
     if(verificationList.indexOf(to.name)!==-1 && (!sessionStorage.getItem('user_ID') || !sessionStorage.getItem('token'))){
         // 先保存当前路由，待登录成功后返回当前路由
         next('/logoIn') // 需要用户信息的页面如果缺失 user_ID 或 token 则重定向到登录页登录
