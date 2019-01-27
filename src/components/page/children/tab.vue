@@ -33,7 +33,7 @@
                     </li>
                     <li class="clearfix">
                         <span class="title fl">单位</span>
-                         <p class="con fl" v-if="data.attra">{{data.attra[0].item}}</p>
+                         <p class="con fl" v-if="isNotNullArray(data.attra)">{{data.attra[0].item}}</p>
                     </li>
                 </ul>
             </mt-tab-container-item>
@@ -116,7 +116,11 @@
                     goods_id:this.$route.params.id
                 }
             }).then((res) => {
-                this.datas=res.data.data;  
+                if(res.data.status == 0){
+                    this.datas='<p class="not-data">暂无图文详情</p>'
+                }else{
+                    this.datas=res.data.data;  
+                }
             }).catch((err) => {
                 console.log(err);
             });
@@ -245,10 +249,17 @@
             }
         }
         .list-img-wrap{
-            background:#ff;
+            background:#fff;
             margin-top:.2rem;
             img{
                 width:100%;
+            }
+            .not-data{
+                background:#F1F1F1;
+                text-align: center;
+                padding-top: .2rem;
+                font-size: .28rem;
+                color: #666;
             }
         }
     }

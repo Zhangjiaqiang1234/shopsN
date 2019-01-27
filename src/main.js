@@ -35,6 +35,12 @@ Vue.prototype.axios = axios;
 Vue.prototype.URL = URl;
 Vue.prototype.load_wrap = load_wrap;
 Vue.prototype.user_id = user_id;
+Vue.prototype.isNotNullArray = (arr) => { // 定义全局方法，判断数组是否为空数组
+    if(JSON.stringify(arr) === '[]' || typeof arr == 'undefined'){
+        return false;
+    }
+    return true;
+};
 
 Vue.use(MintUI);
 import { Indicator } from 'mint-ui';

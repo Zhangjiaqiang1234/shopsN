@@ -51,6 +51,7 @@ const newAddress = r => require(['@/components/page/newAddress'], r); //新建�
 const customer = r => require(['@/components/page/customerService'], r); //客户服务
 const progress = r => require(['@/components/page/progressQuery'], r); //进度查询
 const reset = r => require(['@/components/logoIn/resetPassword'], r); //重置密码
+const goodsDetails = r => require(['@/components/page/goods'], r); //显示图文详情的h5页面
 
 
 const theTeacher = r => require(['@/components/page/theTeacher'], r); //名师专栏
@@ -201,6 +202,11 @@ const router = new Router({
                 path: '/tab/:id',
                 name: 'tab',
                 component: prTab
+            },
+            { //显示图文详情的h5页面
+                path: '/goods/:id',
+                name: 'goods',
+                component: goodsDetails
             },
             { //我的消息
                 path: '/myNews',
