@@ -15,7 +15,9 @@
 
         <!-- 广告位 -->
         <div class="limit-banner" v-for="item in $store.state.home_data.poopClear_img" :key="item.id">
-            <img v-lazy="URL + item.pic_url">
+            <a :href="item.ad_link">
+                <img v-lazy="URL + item.pic_url">
+            </a>
         </div>
     
       

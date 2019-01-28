@@ -91,45 +91,46 @@
                 },
                 scrollWatch:true,
                 data:'',
-                status:[],
+                status:[], // ['true','false','true']
                 computer:'',
                 goos_id:[],
                 goods:[]
             }
         },
         methods:{
-            addCom(index,item){//单选
-                if(this.status[index] == true){
+            addCom(index,item){// 单选勾选商品进行结算
+                if(this.status[index] == true){ // 取消结算选择
                     this.$set(this.status,index,false);
                     this.total.seleNumber--;
                     this.total.price -= item.price_new * item.goods_num;
                     this.goos_id.splice(index,1);
                     this.goods.splice(index,1);
-                }else{
+                }else{ // 添加到结算中
                     this.$set(this.status,index,true);
                     this.total.seleNumber++;
                     this.total.price += item.price_new * item.goods_num;
                     this.$set(this.goos_id,index,item.goods_id);
                     this.$set(this.goods,index,{num:item.goods_num,id:item.goods_id,goods_price:item.price_new});
                 }
-                if(this.total.seleNumber >= this.$store.state.cart_data.length){
+                if(this.total.seleNumber >= this.$store.state.cart_data.length){ // 如果单选的数量大于总数量，那么相当于全选
                     this.total.seat = true;
                 }else{
                     this.total.seat = false;
                 }
             },
             seat(){//全选
-                if(this.total.seat == true){
+                if(this.total.seat == true){ // 取消全选
                     this.total.seat = false;
                     for(let i = 0; i < this.$store.state.cart_data.length; i++){
                         this.$set(this.status,i,false);
                     }
                     this.goos_id = [];
                     this.goods = [];
-                    this.total.seleNumber =  0;
+                    this.total.seleNumber =  0; // 选中结算的商品的列表数量
                     this.total.price = 0;
-                }else{
+                }else{ // 全选
                     this.total.seat = true;
+                    this.total.price = 0;
                     for(let i = 0; i < this.$store.state.cart_data.length; i++){
                         this.$set(this.status,i,true);
                         this.total.price += this.$store.state.cart_data[i].price_new * this.$store.state.cart_data[i].goods_num;
@@ -140,22 +141,37 @@
                 }
             },
             deit(){//编辑购物车
-                if(this.total.deit == true){
+                if(this.total.deit == true){ // 此时进入编辑状态
+                    console.log('进入编辑')
                     this.total.fn = '完成';
                     this.total.deit = false;
-                }else{
+                }else{ // 此时是进入完成状态
+                    console.log('进入完成')
                     this.total.fn = '编辑';
                     this.total.deit = true;
+                    // 判断一下此时是不是全选状态
+                    console.log(this.total.seleNumber)
+                    console.log(this.$store.state.cart_data.length)
+                    if(this.total.seleNumber >= this.$store.state.cart_data.length){
+                        this.total.seat = true;
+                    }
                 }
             },
             reduce(index,item){//商品减少
-                if(this.$store.state.cart_data[index].goods_num <= 1)return;
+                if(this.$store.state.cart_data[index].goods_num <= 1)return; // 商品数量最少只能减到1
                 this.$store.state.cart_data[index].goods_num--;
                 this.subtract(2,item.id)
+                // 也要重新计算商品价格
+                if(this.status[index] == true){ // 对总价进行减少，只有是选中的才会对现有价格进行减少
+                    this.total.price -= 1 * item.price_new;
+                }
             },
             add(index,item){//商品增加
                 this.$store.state.cart_data[index].goods_num++;
-                this.subtract(1,item.id)
+                this.subtract(1,item.id);
+                if(this.status[index] == true){ // 对总价进行增加，只有是选中的才会对现有价格进行增加
+                    this.total.price += 1 * item.price_new;
+                }
             },
             subtract(n,_id){
                 this.load = true;
@@ -170,16 +186,29 @@
                 })
             },
             remove(index,item){//从购物车中删除商品
+                let that = this;
                 MessageBox.confirm('确定删除此商品?').then(action => {
                     this.axios.post(API_URL+'Home/Cart/delete',qs.stringify({
-                        app_user_id:sessionStorage.getItem('user_ID'),
                         id:item.id
                     })).then((res) => {
-                        this.$store.state.cart_data.splice(index,1);
-                        if(this.$store.state.cart_data.length <= 0){
-                            this.$store.state.cart_data = '';
+                        if(res.data.status == 1){
+                            if(that.status[index] == true){ // 对总价进行减少，只有是选中的才会对现有价格进行减少
+                                that.total.price -= item.price_new * item.goods_num;
+                                that.total.seleNumber--; // 列表数量-1
+                            }
+                            that.goos_id.splice(index,1);
+                            that.goods.splice(index,1);
+                            that.status.splice(index,1);
+                            
+
+                            this.$store.state.cart_data.splice(index,1);
+                            if(this.$store.state.cart_data.length <= 0){
+                                this.$store.state.cart_data = '';
+                            }
+                            Toast('删除成功！');
+                        }else{
+                            Toast('删除失败！');
                         }
-                        Toast('删除成功！');
                     }).catch((err) => {
                         console.log(err);
                     })
@@ -222,7 +251,6 @@
                     return;
                 }
                 this.axios.post(API_URL+'Home/Cart/muchCollection',qs.stringify({
-                    app_user_id:sessionStorage.getItem('user_ID'),
                     goods_id:JSON.stringify(this.goos_id)
                 })).then((res) => {
                     Toast(res.data.msg);
@@ -234,6 +262,11 @@
         components:{
             hotGoods,
             Shopsn
+        },
+        watch:{
+            status(){
+                console.log(this.status)
+            }
         },
         mounted() {
             document.body.scrollTop = 0;

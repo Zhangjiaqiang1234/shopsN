@@ -41,6 +41,15 @@ Vue.prototype.isNotNullArray = (arr) => { // 定义全局方法，判断数组�
     }
     return true;
 };
+Vue.prototype.removeItemByAttr = (arr, attrName, attr) => { // 删除数组中某个属性等于某个值的键
+    if(Array.isArray(arr)) {
+        arr.map((item,index) => {
+            if(item[attrName] == attr) {
+                delete(arr.splice(index,1))
+            }
+        })
+    }
+};
 
 Vue.use(MintUI);
 import { Indicator } from 'mint-ui';
@@ -56,7 +65,7 @@ Vue.directive('title', {
 
 
 
-const verificationList = ['seetin','order','person','Cart','myIntegral','repair']; // 设置登录验证路由，填写的是name。当跳转至这些页面没有登录信息的话，会跳转至登录页要求登录
+const verificationList = ['seetin','order','person','Cart','myIntegral','repair','newAddress','address']; // 设置登录验证路由，填写的是name。当跳转至这些页面没有登录信息的话，会跳转至登录页要求登录
 
 router.beforeEach((to, from, next) => {
     Indicator.open('初始化...');

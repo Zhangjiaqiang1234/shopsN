@@ -116,6 +116,7 @@
         },
         methods: {
             toCashier() {//创建订单
+                let that = this;
                 if (this.$route.params.id == 3) {//积分订单生成
                     this.axios.post(API_URL + 'Home/Integral/integral_order', qs.stringify({
                         app_user_id: sessionStorage.getItem('user_ID'), //用户ID
@@ -127,7 +128,12 @@
                         translate: 0, //是否需要发票 1为需要 0为不需要
                         shipping_monery: 0,//运费
                     })).then((res) => {
-                        this.$store.state.order_number = res.data.data;
+                        if(res.data.status == 1){
+                            this.$store.state.order_number = res.data.data;
+                            that.jumpToCashier();
+                        }else{
+                            Toast(res.data.msg);
+                        }
                         // console.log(res.data.data)
                     }).catch((err) => {
                         console.log(err);
@@ -148,6 +154,8 @@
                         });
                     
                 };
+            },
+            jumpToCashier() {
                 this.$router.push({
                     name: 'cashier',
                     params: {
@@ -156,6 +164,7 @@
                 });
             },
             toOrder(){
+                let that = this;
                 this.axios.post(API_URL + 'Home/Order/orderBegin', qs.stringify({
                     app_user_id: sessionStorage.getItem('user_ID'), //用户ID
                     goods: this.$store.state.goods,  //将要购买的商品 二维数组
@@ -167,8 +176,12 @@
                     remarks: this.message, //留言
                     shipping_monery: this.data.freight, //运费
                 })).then((res) => {
-                    console.log(res)
-                    this.$store.state.order_number = res.data.data;
+                    if(res.data.status == 1){
+                        that.jumpToCashier();
+                        this.$store.state.order_number = res.data.data;
+                    }else{
+                        Toast(res.data.msg);
+                    }
                 }).catch((err) => {
                     console.log(err);
                 });

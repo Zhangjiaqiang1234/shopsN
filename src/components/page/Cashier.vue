@@ -84,6 +84,7 @@ export default {
         },
         zfb() {
 
+
             this.load = true;
             this.axios({//支付宝支付
                 url: API_URL + 'Home/AlipayMobile/PayInfo',
