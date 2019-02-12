@@ -142,16 +142,12 @@
             },
             deit(){//编辑购物车
                 if(this.total.deit == true){ // 此时进入编辑状态
-                    console.log('进入编辑')
                     this.total.fn = '完成';
                     this.total.deit = false;
                 }else{ // 此时是进入完成状态
-                    console.log('进入完成')
                     this.total.fn = '编辑';
                     this.total.deit = true;
                     // 判断一下此时是不是全选状态
-                    console.log(this.total.seleNumber)
-                    console.log(this.$store.state.cart_data.length)
                     if(this.total.seleNumber >= this.$store.state.cart_data.length){
                         this.total.seat = true;
                     }

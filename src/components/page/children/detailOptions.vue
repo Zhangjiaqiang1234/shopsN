@@ -6,7 +6,7 @@
                     <div class="contet-item clearfix" v-if="$store.state.commodity_data">
                         <img :src="URL + $store.state.commodity_data.goods_img[0]" v-if="$store.state.commodity_data.goods_img">
                         <img :src="URL + $store.state.commodity_data.pic_url[0]" v-if="$store.state.commodity_data.pic_url">
-                        <p class="item">{{$store.state.commodity_data.title || $store.state.commodity_data.goods.title}}</p>
+                        <p class="item">{{$store.state.commodity_data.title!=undefined || $store.state.commodity_data.goods.title}}</p>
                         <p class="price" v-if="$route.params.status == 1">￥<span>{{$store.state.commodity_data.price_member}}</span></p>
                         <p class="price" v-if="$store.state.commodity_data.goods"><span>{{$store.state.commodity_data.goods.integral}}</span> 积分</p>
                         <span class="delete-btn" @click="remove">×</span>

@@ -111,7 +111,6 @@ export default {
         },
         wx2(){//微信APP支付
             var that = this;
-            console.log(111)
             let  user_id=sessionStorage.getItem('user_ID');
             plus.payment.getChannels(function(channels){
                 for(var i = 0;i<channels.length;i++){

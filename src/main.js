@@ -23,9 +23,8 @@ Vue.use(VueLazyLoad,{
 import '../config/globle.js'  //常量
 import './utils/request.js'
 const user_id = sessionStorage.getItem('user_ID') || '',
-    URl = 'http://aboshops.com', // 图片的 baseUrl
-    // URl = 'http://demo.shopsn.net',
-    // URl = 'http://www.shopsn.cn',
+    URl = 'http://39.108.217.205:7788', // 图片的 baseUrl
+    // URl = 'http://aboshops.com',   正式服的备份
     client_type = 1,  //1浏览器，2 app
 
     load_wrap = true;
