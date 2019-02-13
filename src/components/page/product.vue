@@ -8,11 +8,11 @@
             </mt-swipe-item>
         </mt-swipe>
         <div class="describe" v-if="$store.state.commodity_data">
-            <p class="fn">{{$store.state.commodity_data.title!=undefined || $store.state.commodity_data.goods.title}}</p>
+            <p class="fn">{{$store.state.commodity_data.title || $store.state.commodity_data.goods.title}}</p>
             <!--<p class="timer">促销剩余时间:365天12小时50分钟23秒</p>-->
             <p class="price" v-if="$route.params.status == 1">
                 <span class="orc">￥<em>{{$store.state.commodity_data.price_market}}</em></span>
-               <!--  <span class="new">原价 ：￥<s>{{$store.state.commodity_data.price_member}}</s></span> -->
+               <!--  <span class="new">原价 ：￥<s>{{$store.state.commodity_data.price_market}}</s></span> -->
             </p>
             <div class="price active" v-if="$store.state.commodity_data.goods">
                 <p class="orc clearfix"><em class="icon fl"></em><em class="fl">{{$store.state.commodity_data.goods.integral}}</em></p>

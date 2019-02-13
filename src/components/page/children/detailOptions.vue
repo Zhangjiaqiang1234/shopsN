@@ -6,18 +6,18 @@
                     <div class="contet-item clearfix" v-if="$store.state.commodity_data">
                         <img :src="URL + $store.state.commodity_data.goods_img[0]" v-if="$store.state.commodity_data.goods_img">
                         <img :src="URL + $store.state.commodity_data.pic_url[0]" v-if="$store.state.commodity_data.pic_url">
-                        <p class="item">{{$store.state.commodity_data.title!=undefined || $store.state.commodity_data.goods.title}}</p>
+                        <p class="item">{{$store.state.commodity_data.title || $store.state.commodity_data.goods.title}}</p>
                         <p class="price" v-if="$route.params.status == 1">￥<span>{{$store.state.commodity_data.price_market}}</span></p>
                         <p class="price" v-if="$store.state.commodity_data.goods"><span>{{$store.state.commodity_data.goods.integral}}</span> 积分</p>
                         <span class="delete-btn" @click="remove">×</span>
                     </div>
                     <dl class="gui clearfix" v-if="allattrcha">
                         <dt class="fl">{{$store.state.commodity_data.allattrcha[0].name}}</dt>
-                        <dd class="fl" v-for="(item,index) in $store.state.commodity_data.allattrcha[0].value" :key="item.id" @click="addClass(index)" :class="{active:status == index}">{{item.attr}}</dd>
+                        <dd class="fl" v-for="(item,index) in $store.state.commodity_data.allattrcha[0].value" :key="item.id" @click="addClass(index,item.goods_id)" :class="{active:$route.params.id == item.goods_id}">{{item.attr}}</dd>
                     </dl>
                     <dl class="gui clearfix" v-for="items in $store.state.commodity_data.spec" :key="items.id">
                         <dt class="fl">{{items.name}}</dt>
-                        <dd class="fl" v-for="(item,index) in items" :key="item.id" @click="addClass(index)" :class="{active:status == index}">{{item}}</dd>
+                        <dd class="fl" v-for="(item,index) in items" :key="item.id" @click="addClass(index)" :class="{active:$route.params.id == item.goods_id}">{{item}}</dd>
                     </dl>
                     <div class="addSub clearfix">
                         <span class="pull-left fl">数量</span>
@@ -82,8 +82,18 @@
             remove(){
                 this.$store.state.const_join = false;
             },
-            addClass(index){
-                this.status = index;
+            addClass(index,goods_id){
+                // this.status = index;
+                if(undefined != goods_id && this.$route.params.id != goods_id){
+                    this.$router.push({
+                        name:'product',
+                        params:{
+                            id:goods_id,
+                            status:1
+                        }
+                    });
+                    this.$router.go(0);
+                }
             },
             toOrder(){
                 if(this.$store.state.commodity_val==''||this.$store.state.commodity_val==0){

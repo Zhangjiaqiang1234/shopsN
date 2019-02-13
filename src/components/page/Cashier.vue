@@ -75,7 +75,7 @@ export default {
             my_wallet:'',
             data:'',
             zfb_notes:true,
-            wx_notes:false
+            wx_notes:true
         }
     },
     methods: {
@@ -103,9 +103,9 @@ export default {
             });
         },
         wxPay(){
-             if(this.client_type == 2){
+             if(this.client_type == 2){ // 如果是 APP
                 this.wx2();
-             }else{
+             }else{ // 如果是 1 浏览器
                 this.wx();
              }
         },
@@ -150,10 +150,10 @@ export default {
                 }
             })
         },
-        wx() {
+        wx() {// 微信支付
             let  user_id=sessionStorage.getItem('user_ID');
             let ua = window.navigator.userAgent.toLowerCase();
-            if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+            if (false && ua.match(/MicroMessenger/i) == 'micromessenger') { // 暂时不需要微信公众号支付
                 //微信公众号支付 
                 this.load = true;
                 this.axios.post(API_URL + 'home/WxJsPay/getJsApiData',qs.stringify({
@@ -205,13 +205,13 @@ export default {
             return;
         }
         let ua = window.navigator.userAgent.toLowerCase();
-        if (ua.match(/MicroMessenger/i) == 'micromessenger') {
-            this.wx_notes=true;
-            this.zfb_notes=false;
-        } else {
-            this.wx_notes=false;
-            this.zfb_notes=true;
-        }
+        // if (ua.match(/MicroMessenger/i) == 'micromessenger') { // 只有当是微信浏览器才打开微信支付接口
+        //     this.wx_notes=true;
+        //     this.zfb_notes=false;
+        // } else {
+        //     this.wx_notes=false;
+        //     this.zfb_notes=true;
+        // }
         this.axios.post(API_URL + 'Home/Pcenter/my_wallet',qs.stringify({ // 获取我的钱包内容
                 app_user_id:sessionStorage.getItem('user_ID'),
             })).then((res) => {
