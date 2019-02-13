@@ -8,7 +8,7 @@
             <div class="item-list fl" v-for="(item,index) in data" :key="item.id" @click="tolink(item.id)">
                 <img v-lazy="URL + item.pic_url">
                 <p class="item-text">{{item.title}}</p>
-                <p class="price">￥<span>{{item.price_member || item.price_market}}</span></p>
+                <p class="price">￥<span>{{item.price_market}}</span></p>
             </div>
         </div>
 

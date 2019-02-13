@@ -8,7 +8,7 @@
                     <img class="fl" :src="URL + item.img">
                     <div class="fl item">
                         <p class="text text2-hidden">{{item.title}}</p>
-                        <p class="Price">￥<span>{{item.price_member}}</span></p>
+                        <p class="Price">￥<span>{{item.price_market}}</span></p>
                     </div>
                 </div>
             </dd>

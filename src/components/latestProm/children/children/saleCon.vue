@@ -7,7 +7,7 @@
                 <div class="price-wrap clearfix">
                     <span class="icon"></span>
                     <span class="newPrice fl">￥<em>{{item.price_market}}</em></span>
-                    <s class="price fr">￥{{item.price_member}}</s>
+                    <s class="price fr">￥{{item.price_market}}</s>
                 </div>
                 <button type="button" class="jion" @click="jion(item)">加入购物车&nbsp;></button>
             </div>

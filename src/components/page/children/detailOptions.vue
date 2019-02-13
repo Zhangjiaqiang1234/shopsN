@@ -7,7 +7,7 @@
                         <img :src="URL + $store.state.commodity_data.goods_img[0]" v-if="$store.state.commodity_data.goods_img">
                         <img :src="URL + $store.state.commodity_data.pic_url[0]" v-if="$store.state.commodity_data.pic_url">
                         <p class="item">{{$store.state.commodity_data.title!=undefined || $store.state.commodity_data.goods.title}}</p>
-                        <p class="price" v-if="$route.params.status == 1">￥<span>{{$store.state.commodity_data.price_member}}</span></p>
+                        <p class="price" v-if="$route.params.status == 1">￥<span>{{$store.state.commodity_data.price_market}}</span></p>
                         <p class="price" v-if="$store.state.commodity_data.goods"><span>{{$store.state.commodity_data.goods.integral}}</span> 积分</p>
                         <span class="delete-btn" @click="remove">×</span>
                     </div>
@@ -32,7 +32,7 @@
                     </div>
                     <div class="com">
                         共<span>{{Number($store.state.commodity_val)}} </span>件&nbsp;&nbsp;
-                        共计<span v-if="$store.state.commodity_data.price_member"><i>￥</i>{{$store.state.commodity_val * $store.state.commodity_data.price_member}}</span>
+                        共计<span v-if="$store.state.commodity_data.price_market"><i>￥</i>{{$store.state.commodity_val * $store.state.commodity_data.price_market}}</span>
                         <span v-if="$store.state.commodity_data.goods"> {{$store.state.commodity_val * $store.state.commodity_data.goods.integral}} <i>积分</i></span>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                     this.$router.push('/LogoIn');
                     return;
                 };
-                this.$store.state.goods = JSON.stringify([{num:this.$store.state.commodity_val,id:this.$route.params.id,goods_price:this.$store.state.commodity_data.price_member}]);
+                this.$store.state.goods = JSON.stringify([{num:this.$store.state.commodity_val,id:this.$route.params.id,goods_price:this.$store.state.commodity_data.price_market}]);
                 this.$store.state.const_join = false;
                 this.$router.push({
                     name:'order',
@@ -108,7 +108,7 @@
                     this.$router.push('/LogoIn');
                     return;
                 };
-                this.$store.state.goods = JSON.stringify([{num:this.$store.state.commodity_val,id:this.$route.params.id,goods_price:this.$store.state.commodity_data.price_member}]);
+                this.$store.state.goods = JSON.stringify([{num:this.$store.state.commodity_val,id:this.$route.params.id,goods_price:this.$store.state.commodity_data.price_market}]);
                 this.$store.state.const_join = false;
                 this.$router.push({
                     name:'order',
@@ -126,11 +126,11 @@
                     this.$router.push('/LogoIn');
                     return;
                 };
-                console.log(this.$store.state.commodity_val+'---'+this.$store.state.commodity_data.price_member);
+                console.log(this.$store.state.commodity_val+'---'+this.$store.state.commodity_data.price_market);
                 this.axios.post(API_URL + 'Home/Cart/add_cart',qs.stringify({
                     goods_id:this.$route.params.id,
                     goods_num:this.$store.state.commodity_val,
-                    price_new:this.$store.state.commodity_data.price_member
+                    price_new:this.$store.state.commodity_data.price_market
                 })).then((res) => {
                     Toast(res.data.msg);
                     if(res.data.status == 0){

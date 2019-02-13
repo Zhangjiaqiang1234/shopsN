@@ -9,7 +9,7 @@
                 </div>
                 <img v-lazy="URL + item.pic_url">
                 <p class="desi">{{item.title}}</p>
-                <p class="price">￥<i class="newPrice">{{item.price_market}}</i><span class="bPrice">/￥<s>{{item.price_member}}</s></span></p>
+                <p class="price">￥<i class="newPrice">{{item.price_market}}</i><span class="bPrice">/￥<s>{{item.price_market}}</s></span></p>
             </li>
         </ul>
     </div>

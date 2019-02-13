@@ -20,8 +20,8 @@
                 <div class="pull-right fl">
                     <p class="text">{{item.title}}</p>
                     <p class="price-wrap clearfix">
-                        <span class="fl price" v-if="$route.params.id != 3">￥<span>{{item.price_member}}</span></span>
-                        <span class="fl price" v-if="$route.params.id == 3">市场参考价：￥{{item.price_member}}</span>
+                        <span class="fl price" v-if="$route.params.id != 3">￥<span>{{item.price_market}}</span></span>
+                        <span class="fl price" v-if="$route.params.id == 3">市场参考价：￥{{item.price_market}}</span>
                         <span class="number fr">x{{item.num}}</span>
                     </p>
                 </div>

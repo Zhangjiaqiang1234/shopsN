@@ -18,7 +18,7 @@
                                 <img v-lazy="URL + item.img" class="fl">
                                 <div class="item fl">
                                     <div class="text text2-hidden">{{item.title}}</div>
-                                    <div class="price">￥{{item.price_member}}</div>
+                                    <div class="price">￥{{item.price_market}}</div>
                                     <!--<div class="status">
                                         <span>已有1000条评论</span>
                                         <span>3000笔交易成功</span>

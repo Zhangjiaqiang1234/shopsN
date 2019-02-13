@@ -24,7 +24,7 @@
                     <p class="text">{{item.title}}</p>
                     <p class="new-price">￥
                         <span v-if="item.price_market">{{item.price_market}}</span>
-                    <!-- <span v-if="item.price_member">{{item.price_member}}</span> -->
+                    <!-- <span v-if="item.price_market">{{item.price_market}}</span> -->
                     </p>       
                     <p class="status"><span>已有{{item.count}}条评论</span><span>{{item.sales_sum}}笔交易成功</span></p>
                 </div>

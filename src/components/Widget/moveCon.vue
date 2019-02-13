@@ -10,7 +10,7 @@
                             <p class="desi text2-hidden">{{item.title}}</p>
                         </div>
                         <p class="price">￥<i class="newPrice">{{item.price_market}}</i></p>
-                        <p class="price"><span class="bPrice">￥<s>{{item.price_member}}</s></span><i class="icon"></i></p>
+                        <p class="price"><span class="bPrice">￥<s>{{item.price_market}}</s></span><i class="icon"></i></p>
                     </li>
                 </ul>
             </div>
