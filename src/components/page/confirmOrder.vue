@@ -22,7 +22,7 @@
                     <p class="price-wrap clearfix">
                         <span class="fl price" v-if="$route.params.id != 3">￥<span>{{item.price_market}}</span></span>
                         <span class="fl price" v-if="$route.params.id == 3">市场参考价：￥{{item.price_market}}</span>
-                        <span class="number fr">x{{item.num}}</span> 
+                        <span class="number fr">x{{item.num}}</span>
                     </p>
                 </div>
             </li>
