@@ -117,7 +117,7 @@
             Shopsn
         },
         methods:{
-            toService(str,index){
+            toService(str,index){ // str-> refund 退款 rGoods 申请售后
                 this.$store.commit('setvuce',this.$store.state.order_details);
                 this.$router.push({
                     name:'serviceBack',

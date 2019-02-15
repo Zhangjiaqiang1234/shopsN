@@ -4,7 +4,7 @@
         <div class="com-content" v-for="item in data" :key="item.id">
             <div class="hd clearfix">
                 <div class="hd-text fl">
-                    <p class="number">订单编号：{{item.order_id}}</p>
+                    <p class="number">订单编号：{{item.order_sn_id}}</p>
                     <p class="money">退款金额：<span>{{item.price}}</span>元</p>
                 </div>
                 <div class="status fr" v-if="item.status == 0">审核中</div>

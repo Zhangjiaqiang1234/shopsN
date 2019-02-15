@@ -163,14 +163,14 @@
             },
             request(){
                 this.axios.post(API_URL + 'Home/Pcenter/afterSaleApply',qs.stringify({
-                    order_id:this.$store.state.order_details.order_sn_id,
+                    order_id:this.$store.state.order_details.id,
+                    order_sn_id:this.$store.state.order_details.order_sn_id,
                     goods_id:this.$store.state.order_details.child[this.$route.params.index].goods_id,
                     type:this.ser_type,
                     apply:this.imgs,
                     number:this.isNumber,
                     explain:this.explain_type,
-                    apply:this.$store.state.order_details.child[this.$route.params.index].goods_price,
-                    app_user_id:sessionStorage.getItem('user_ID'),
+                    price:this.$store.state.order_details.child[this.$route.params.index].goods_price
 
                 })).then((res) => {
                     Toast({
@@ -193,7 +193,7 @@
             };
             if(this.$store.state.order_details.child){
                 this.adAmount = this.$store.state.order_details.child[this.$route.params.index].goods_price;
-                switch(this.$route.params.status){
+                switch(this.$route.params.status){ // 如果是退款
                     case 'refund':
                         this.ser_type = 2;
                         break;

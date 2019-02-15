@@ -17,7 +17,7 @@
                         <span class="name fl">服务单号：{{item.order_sn_id}}</span>
                         <!--<span class="status fr">待收货</span>-->
                     </div>
-                    <div class="time">申请时间：{{new Date(item.create_time * 1000).getFullYear()+'-'+(new Date(item.create_time * 1000).getMonth() + 1)+'-'+new Date(item.create_time * 1000).getDay()}}&nbsp;&nbsp;{{new Date(item.create_time * 1000).getHours()+':'+new Date(item.create_time * 1000).getMinutes()+':'+new Date(item.create_time * 1000).getSeconds()}}</div>
+                    <div class="time">申请时间：{{timeFormat(item.create_time * 1000)}}</div>
                 </div>
                 <div class="dd clearfix" v-for="(items,index) in item.order_goods" :key="items.id">
                     <img :src="URL + items.pic_url" class="fl">
@@ -39,7 +39,7 @@
                         <span class="name fl">服务单号：{{item.order_sn_id}}</span>
                         <!--<span class="status fr">待收货</span>-->
                     </div>
-                    <div class="time">申请时间：{{new Date(item.create_time * 1000).getFullYear()+'-'+(new Date(item.create_time * 1000).getMonth() + 1)+'-'+new Date(item.create_time * 1000).getDay()}}&nbsp;&nbsp;{{new Date(item.create_time * 1000).getHours()+':'+new Date(item.create_time * 1000).getMinutes()+':'+new Date(item.create_time * 1000).getSeconds()}}</div>
+                    <div class="time">申请时间：{{timeFormat(item.create_time * 1000)}}</div>
                 </div>
                 <div class="dd clearfix" @click="tolink(item)">
                     <img :src="URL + item.pic_url" class="fl">
@@ -88,6 +88,10 @@
             });
         },
         methods:{
+            timeFormat(time){ // 时间格式化
+                let date = new Date(time);
+                return date.getFullYear()+'-'+(date.getMonth() + 1)+'-'+date.getDate()+'  '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds();
+            },
             toAjax(index){
                 var api_url = '';
                 this.status = index;

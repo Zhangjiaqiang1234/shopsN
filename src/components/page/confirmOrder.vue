@@ -348,7 +348,8 @@
     .order-wrap{
         background:#f1f1f1;
         .inf-header{
-            width:7.1rem;
+            width:100%;
+            box-sizing:border-box;
             height:1.64rem;
             padding:0 .2rem;
             background:#fff;
