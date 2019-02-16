@@ -68,6 +68,7 @@ const wxapppay = r => require(['@/components/getInfo/wxapppay'], r); //接受请
 Vue.use(Router)
 
 const router = new Router({
+    mode: 'history', // 设置路由模式，页面路径就不会出现 # 了
     routes: [{
         path: '/',
         component: App, //顶层路由，对应index.html
