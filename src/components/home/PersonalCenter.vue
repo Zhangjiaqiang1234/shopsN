@@ -148,9 +148,7 @@
         },
         mounted(){
             document.body.scrollTop = 0;
-            this.axios.post(API_URL + 'Home/Pcenter/userinfo',qs.stringify({
-                app_user_id:sessionStorage.getItem('user_ID')
-            })).then((res) => {
+            this.axios.post(API_URL + 'Home/Pcenter/userinfo').then((res) => {
                 this.data = res.data.data;
                 let ua = window.navigator.userAgent.toLowerCase();
                 if (ua.match(/MicroMessenger/i) == 'micromessenger') {

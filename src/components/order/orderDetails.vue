@@ -187,7 +187,6 @@
             const Id = this.$route.params.order;
             document.body.scrollTop = 0;
             this.axios.post(API_URL + 'Home/Order/orderDetail',qs.stringify({
-                app_user_id:sessionStorage.getItem('user_ID'),
                 order_id:Id
             })).then((res) => {
                 this.load_wrap = false;

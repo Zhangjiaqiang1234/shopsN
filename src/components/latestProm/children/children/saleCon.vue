@@ -35,7 +35,6 @@
             },
             jion(item){
                 this.axios.post(API_URL + 'Home/Cart/add_cart',qs.stringify({
-                    app_user_id:sessionStorage.getItem('user_ID'),
                     goods_id:item.id,
                     goods_num:1,
                     price_new:item.price_market
