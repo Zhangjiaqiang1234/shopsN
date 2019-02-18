@@ -6,7 +6,7 @@
 			<img class="bg" :src="list[state].bgImg">
 			<!-- 顶部按钮 -->
 			<div class="top">
-				<span class="back"><img :src="require('@/assets/arr-left.png')"></span>
+				<span @click="tolink" class="back"><img :src="require('@/assets/arr-left.png')"></span>
 				<span class="title">在线支付</span>
 				<span class="back"><img></span>
 			</div>
