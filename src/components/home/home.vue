@@ -4,7 +4,9 @@
         <home-header :userName="getData"></home-header>
         <mt-swipe :auto="4000">
             <mt-swipe-item v-for="(item,index) in $store.state.home_data.banner" :key="item.id">
-                <img v-lazy="URL + item.pic_url">
+                <a :href="item.ad_link">
+                    <img v-lazy="URL + item.pic_url">
+                </a>
             </mt-swipe-item>
         </mt-swipe>
         <news-flash :data="$store.state.home_data.getTopGoodsClass" v-if="$store.state.home_data.getTopGoodsClass"></news-flash>

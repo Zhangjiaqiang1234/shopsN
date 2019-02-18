@@ -1,5 +1,5 @@
 <template>
-	<div class="wrap">
+	<div v-show="isShow" class="wrap">
 		<div v-title :data-title="title">{{title}}</div>
 		<div class="header">
 			<!-- 背景图 -->
@@ -20,11 +20,11 @@
 		<div class="succ-content" v-if="state==1">
 			<div class="line">
 				<span class="fl">收货地址</span>
-				<span class="fr address">广东省珠海市香洲区唐家湾镇唐家乐园11栋302房</span>
+				<span class="fr address">{{data.prov + data.city + data.dist + data.address}}</span>
 			</div>
 			<div class="line">
 				<span class="fl">实付款</span>
-				<span class="fr">441111元</span>
+				<span class="fr">&yen;{{data.price_sum}}元</span>
 			</div>	
 		</div>
 		<div class="btn-wrap">
@@ -35,19 +35,21 @@
 	</div>
 </template>
 <script>
-import { Indicator } from 'mint-ui';
+import { Indicator, Toast } from 'mint-ui';
 import qs from 'qs';
 export default{
 	data () {
 		return {
 			title: '在线支付',
 			load: true,
+			isShow: false,
 			state: 0, // 0->等待支付结果 1->支付成功 2->支付失败
 			// list: [require('@/assets/succ_bg.png'),require('@/assets/succ_bg.png'),require('@/assets/fail_bg.png')],
+			data : '',
 			list: [
 				{
 					bgImg: require('@/assets/succ_bg.png'),
-					bgColor: 'green',
+					bgColor: '#4891F2',
 					text: {title: '请等待', tips: '等待支付结果', btnText: '返回'},
 					link: ''
 				},{
@@ -68,21 +70,43 @@ export default{
 	created(){
 		document.body.style.background = '#fff';
 		// 发送请求，查询支付状态结果
-		this.axios.post(API_URL + 'Home/order/checkorder',qs.stringify({
-            order_sn_id: this.$route.params.order_sn_id
-        })).then((res) => {
-            console.log('获取到参数了')
-            console.log(res)
-        }).catch((err) => {
-            Toast({
-                message: '查询支付结果失败，请稍后再试',
-                position: 'bottom'
-            });
-        });
+		setTimeout(()=>{
+			this.axios.post(API_URL + 'Home/order/checkorder',qs.stringify({
+	            order_sn_id: this.$route.params.order_sn_id
+	        })).then((res) => {
+	            if(res.data.status == 1){
+	            	this.state = 1;
+	            	this.data = res.data.data;
+	            }else{
+	            	if (res.data.status==0 && res.data.msg == '失败'){
+	            		this.state = 2;
+	            	}else{
+	            		Toast({
+			                message: res.data.msg,
+			                position: 'middle'
+			            });
+	            	}
+	            }
+	            this.isShow = true;
+	        }).catch((err) => {
+	        	this.isShow = true;
+	            Toast({
+	                message: '查询支付结果失败，请稍后再试',
+	                position: 'middle'
+	            });
+	        });
+		},1000)
 	},
 	methods:{
 		tolink(){
+			let status = this.state==1?1:0;
 			// 根据状态来确定跳转到哪个页面
+			this.$router.push({
+				name:'orderWrap',
+				params:{
+					status: status
+				}
+			});
 		}
 	}
 };

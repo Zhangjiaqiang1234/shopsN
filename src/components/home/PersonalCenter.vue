@@ -91,6 +91,7 @@
                     localStorage.removeItem('user_ID');
                     localStorage.removeItem('set_address');
                     localStorage.removeItem('token');
+                    this.isLogin = false;
                     this.$router.push('/LogoIn');
                 });
             },

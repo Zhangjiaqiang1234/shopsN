@@ -1,9 +1,10 @@
 import axios from 'axios'
 import { Toast } from 'mint-ui';
+import Vue from 'vue'
 
 const showLog = false; // 是否输出调试信息
 
-const ERR_MSG = '用户访问权限认证失败';
+Vue.prototype.ERR_MSG = '用户访问权限认证失败';
 
 // create an axios instance
 const service = axios.create({
@@ -71,7 +72,7 @@ axios.interceptors.request.use(config => {
 // 响应拦截器
 axios.interceptors.response.use(
     response => {
-        if (response.data.msg == ERR_MSG) {
+        if (response.data.msg == Vue.prototype.ERR_MSG) {
           Toast({
             message: '请重新登录',
             type: 'error',

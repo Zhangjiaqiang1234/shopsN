@@ -120,6 +120,7 @@
                             Toast(res.data.msg);
                             if(res.data.status === 1){ // 获取授权成功，保存 user_id
                                 localStorage.setItem('user_ID', res.data.data.app_user_id);
+                                this.isLogin = true;
                                 this.$router.push({ // 跳转至首页
                                     path : '/home'
                                 });
