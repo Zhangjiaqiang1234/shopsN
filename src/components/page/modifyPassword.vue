@@ -35,14 +35,13 @@
         },
         methods:{
             modify(){
-                if(!sessionStorage.getItem('user_ID')){
+                if(!localStorage.getItem('user_ID')){
                         this.$router.push({
                         path:'/LogoIn'
                     });
                     return
                 }
                 this.axios.post(API_URL + 'Home/Pcenter/modifyPassword',qs.stringify({
-                    app_user_id:sessionStorage.getItem('user_ID'),
                     password:this.password,
                     newPassword1:this.newPassword1,
                     newPassword2:this.newPassword2

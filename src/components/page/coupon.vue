@@ -49,7 +49,6 @@
                 this.load = true;
                 this.status = index;
                 this.axios.post(API_URL + 'Home/Pcenter/myCoupon',qs.stringify({
-                    app_user_id:sessionStorage.getItem('user_ID'),
                     status:this.status
                 })).then((res) => {
                     this.data = res.data.data;

@@ -102,9 +102,7 @@
                 }else{
                     api_url = API_URL + 'Home/Pcenter/speed_check';
                 }
-                this.axios.post(api_url,qs.stringify({
-                    app_user_id:sessionStorage.getItem('user_ID')
-                })).then((res) => {
+                this.axios.post(api_url).then((res) => {
                     this.$store.state.repair = res.data.data;
                     this.load = false;
                     this.sta = true;

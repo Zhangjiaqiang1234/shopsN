@@ -100,7 +100,6 @@
                     method:'get',
                     params:{
                         goods_id:this.link_id,
-                        app_user_id:sessionStorage.getItem('user_ID')
                     }
                 }).then((res) => {
                     this.$store.state.commodity_data = res.data.data;
@@ -131,7 +130,7 @@
             this.$store.state.commodity_data = '';
             this.$store.commit('value',this.$store.state.commodity_val);
             this.$store.commit('shops_switch',this.$store.state.const_join);
-            if(sessionStorage.getItem('user_ID')){this.lv_switch = true}
+            if(localStorage.getItem('user_ID')){this.lv_switch = true}
             if(this.$route.params.status == 2){
                 this.axios.post(API_URL + 'Home/Integral/integral_goodsdetail',qs.stringify({
                     goods_id:this.link_id

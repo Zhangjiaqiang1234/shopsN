@@ -142,7 +142,6 @@
                     goods.push({goods_id:this.$store.state.order_details.child[i].goods_id,goods_num:this.$store.state.order_details.child[i].goods_num})
                 }
                 this.axios.post(API_URL + 'Home/Order/buyAgain',qs.stringify({
-                    app_user_id:sessionStorage.getItem('user_ID'),
                     goods:JSON.stringify(goods)
                 })).then((res) => {
                     Toast({

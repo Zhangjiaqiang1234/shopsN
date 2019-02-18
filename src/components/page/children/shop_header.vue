@@ -83,7 +83,6 @@
             btndl(){
                 MessageBox.confirm('确定执行此操作?').then(action => {
                     this.axios.post(API_URL + 'Home/Pcenter/addressde',qs.stringify({
-                        app_user_id:sessionStorage.getItem('user_ID'),
                         id:this.id
                     })).then((res) => {
                         Toast(res.data.msg);

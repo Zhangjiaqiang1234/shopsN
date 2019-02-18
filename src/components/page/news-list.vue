@@ -24,10 +24,8 @@
             list
         },
         mounted(){
-            if(sessionStorage.getItem('user_ID')){
-                this.axios.post(API_URL + 'Home/News/my_news',qs.stringify({
-                    app_user_id:sessionStorage.getItem('user_ID')
-                })).then((res) => {
+            if(localStorage.getItem('user_ID')){
+                this.axios.post(API_URL + 'Home/News/my_news').then((res) => {
                     this.$store.state.news_data = res.data.data;
                     this.load_wrap = false;
                 }).catch((err) => {

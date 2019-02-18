@@ -85,7 +85,6 @@
                             return;
                         }
                         this.axios.post(API_URL + 'Home/Pcenter/addressadd',qs.stringify({
-                            app_user_id:sessionStorage.getItem('user_ID'),
                             realname:this.data.realname,
                             mobile:this.data.mobile,
                             prov:this.prov,

@@ -111,7 +111,7 @@ export default {
         },
         wx2(){//微信APP支付
             var that = this;
-            let  user_id=sessionStorage.getItem('user_ID');
+            let  user_id=localStorage.getItem('user_ID');
             plus.payment.getChannels(function(channels){
                 for(var i = 0;i<channels.length;i++){
                     var channel = channels[i];
@@ -151,13 +151,12 @@ export default {
             })
         },
         wx() {// 微信支付
-            let  user_id=sessionStorage.getItem('user_ID');
+            let  user_id=localStorage.getItem('user_ID');
             let ua = window.navigator.userAgent.toLowerCase();
             if (false && ua.match(/MicroMessenger/i) == 'micromessenger') { // 暂时不需要微信公众号支付
                 //微信公众号支付 
                 this.load = true;
                 this.axios.post(API_URL + 'home/WxJsPay/getJsApiData',qs.stringify({
-                    user_id:sessionStorage.getItem('user_ID'),
                     order_id: this.$store.state.order_number
                 })).then((res) => {
                     if(res.data.status == 1){
@@ -195,9 +194,7 @@ export default {
     mounted() {      
         document.body.scrollTop = 0;
         if (this.$route.params.id == 3) { // id == 3 此时是需要使用积分去支付的
-            this.axios.post(API_URL + 'Home/Integral/integral', qs.stringify({
-                app_user_id: sessionStorage.getItem('user_ID')
-            })).then((res) => {
+            this.axios.post(API_URL + 'Home/Integral/integral').then((res) => {
                 this.data = res.data.data;
             }).catch((err) => {
                 console.log(err);
@@ -212,9 +209,7 @@ export default {
         //     this.wx_notes=false;
         //     this.zfb_notes=true;
         // }
-        this.axios.post(API_URL + 'Home/Pcenter/my_wallet',qs.stringify({ // 获取我的钱包内容
-                app_user_id:sessionStorage.getItem('user_ID'),
-            })).then((res) => {
+        this.axios.post(API_URL + 'Home/Pcenter/my_wallet').then((res) => {
                 this.my_wallet = res.data.data;
             }).catch((err) => {
                 console.log(err);

@@ -65,19 +65,13 @@
             myComment(){
                 return this.axios({
                             url:API_URL + 'Home/Pcenter/myComment',
-                            method:'get',
-                            params:{
-                                app_user_id:sessionStorage.getItem('user_ID')
-                            }
+                            method:'get'
                         });
             },
             chartReview(){
                 return this.axios({
                     url:API_URL + 'Home/Pcenter/imgComment',
-                    method:'get',
-                    params:{
-                        app_user_id:sessionStorage.getItem('user_ID')
-                    }
+                    method:'get'
                 });
             },
             addClass(index){

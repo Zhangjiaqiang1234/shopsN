@@ -66,7 +66,6 @@
                     return;
                 }
                 this.axios.post(API_URL + 'Home/Pcenter/feedback',qs.stringify({
-                    app_user_id:sessionStorage.getItem('user_ID'),
                     type:this.status,
                     tel:this.mobile,
                     content:this.con

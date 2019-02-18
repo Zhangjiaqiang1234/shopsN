@@ -59,7 +59,6 @@
                             url:API_URL + 'Home/Order/myOrder',
                             method:'get',
                             params:{
-                                app_user_id:sessionStorage.getItem('user_ID'),
                                 order_status:this.$store.state.order_status,
                                 p:this.$store.state.page
                             }
@@ -79,7 +78,6 @@
                             url:API_URL + 'Home/Order/myOrder',
                             method:'get',
                             params:{
-                                app_user_id:sessionStorage.getItem('user_ID'),
                                 order_status:this.$store.state.order_status,
                                 p:this.$store.state.page
                             }
@@ -99,7 +97,6 @@
                             url:API_URL + 'Home/Order/myOrder',
                             method:'get',
                             params:{
-                                app_user_id:sessionStorage.getItem('user_ID'),
                                 order_status:this.$store.state.order_status,
                                 p:this.$store.state.page
                             }
@@ -119,7 +116,6 @@
                             url:API_URL + 'Home/Order/myOrder',
                             method:'get',
                             params:{
-                                app_user_id:sessionStorage.getItem('user_ID'),
                                 order_status:this.$store.state.order_status,
                                 p:this.$store.state.page
                             }
@@ -139,7 +135,6 @@
                             url:API_URL + 'Home/Order/myOrder',
                             method:'get',
                             params:{
-                                app_user_id:sessionStorage.getItem('user_ID'),
                                 order_status:this.$store.state.order_status,
                                 p:this.$store.state.page
                             }
@@ -159,7 +154,6 @@
                             url:API_URL + 'Home/Order/myOrder',
                             method:'get',
                             params:{
-                                app_user_id:sessionStorage.getItem('user_ID'),
                                 order_status:this.$store.state.order_status,
                                 p:this.$store.state.page
                             }
@@ -177,10 +171,7 @@
                         this.$store.state.order_status = 6;
                         this.axios({
                             url:API_URL + 'Home/Order/notEvaluate',
-                            method:'get',
-                            params:{
-                                app_user_id:sessionStorage.getItem('user_ID')
-                            }
+                            method:'get'
                         }).then((res) => {
                             this.stateSwitch(res);
                             this.$store.state.order = res.data.data;

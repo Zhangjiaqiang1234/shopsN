@@ -118,8 +118,7 @@
                 }else{
                     this.axios.get(API_URL + 'Home/Order/classGoods',{
                         params:{
-                            class_id:this.data.classname[index].id,
-                            app_user_id:sessionStorage.getItem('user_ID')
+                            class_id:this.data.classname[index].id
                         }
                     }).then((res) => {
                         this.data.goods = res.data.data;
@@ -130,9 +129,7 @@
                 }
             },
             post(){
-                this.axios.post(API_URL + 'Home/Order/myCollection',qs.stringify({
-                    app_user_id:sessionStorage.getItem('user_ID')
-                })).then((res) => {
+                this.axios.post(API_URL + 'Home/Order/myCollection').then((res) => {
                     this.data = res.data.data;
                     this.load = false;
                     this.load_wrap = false;
@@ -143,7 +140,6 @@
             del(item,index){
                 MessageBox.confirm('确定执行此操作?').then(action => {
                     this.axios.post(API_URL + 'Home/Cart/add_collection',qs.stringify({
-                        app_user_id:sessionStorage.getItem('user_ID'),
                         goods_id:item.id,
                         type:2
                     })).then((res) => {

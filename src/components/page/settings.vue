@@ -45,7 +45,7 @@
         },
         methods:{
             toData(){
-                if(!sessionStorage.getItem('user_ID')){
+                if(!localStorage.getItem('user_ID')){
                         this.$router.push({
                         path:'/LogoIn'
                     });
@@ -56,7 +56,7 @@
                 });
             },
             toPass(){
-                if(!sessionStorage.getItem('user_ID')){
+                if(!localStorage.getItem('user_ID')){
                         this.$router.push({
                         path:'/LogoIn'
                     });
@@ -79,10 +79,8 @@
                 }).then(action => {
                     if(action == 'cancel') return;
                     // 清空token的信息
-                    sessionStorage.removeItem('user_ID');
-                    sessionStorage.removeItem('set_address');
                     localStorage.removeItem('user_ID');
-                    sessionStorage.removeItem('token');
+                    localStorage.removeItem('set_address');
                     localStorage.removeItem('token');
                     this.$router.push('/home');
                 });

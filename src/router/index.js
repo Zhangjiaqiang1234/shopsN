@@ -211,7 +211,7 @@ const router = new Router({
                 component: goodsDetails
             },
             { //显示图文详情的h5页面
-                path: '/payResult/:order_id',
+                path: '/payResult/:order_sn_id',
                 name: 'payResult',
                 component: payResult
             },

@@ -34,9 +34,7 @@
             }
         },
         mounted(){
-            this.axios.post(API_URL + 'Home/Pcenter/myFootprint',qs.stringify({
-                app_user_id:sessionStorage.getItem('user_ID')
-            })).then((res) => {
+            this.axios.post(API_URL + 'Home/Pcenter/myFootprint').then((res) => {
                 this.$store.state.footprint = res.data.data;
                 this.load=false;
             }).catch((err) => {

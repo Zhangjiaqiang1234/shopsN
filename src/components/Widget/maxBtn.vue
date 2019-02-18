@@ -23,7 +23,6 @@
                         });
                     }else{
                         this.axios.post(API_URL + 'Home/AlipayMobile/balancePay',qs.stringify({
-                            app_user_id:sessionStorage.getItem('user_ID'),
                             order_id:this.$store.state.order_number
                         }))
                         .then((res) => {

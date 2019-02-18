@@ -140,9 +140,7 @@
             }
         },
         mounted(){
-            this.axios.post(API_URL + 'Home/Pcenter/addresslist',qs.stringify({
-                app_user_id:sessionStorage.getItem('user_ID')
-            })).then((res) => {
+            this.axios.post(API_URL + 'Home/Pcenter/addresslist').then((res) => {
                 let that = this;
                 this.data = res.data.data;
                 if(res.data.status == 1) {

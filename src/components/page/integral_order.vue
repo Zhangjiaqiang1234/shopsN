@@ -63,7 +63,6 @@
                 url:API_URL + 'Home/Order/myOrder',
                 method:'get',
                 params:{
-                    app_user_id:sessionStorage.getItem('user_ID'),
                     order_type:'integral'
                 }
             }).then((res) => {
@@ -138,7 +137,6 @@
             del(item,index){
                 MessageBox.confirm('确定执行此操作?').then(action => {
                     this.axios.post(API_URL + 'Home/Order/deleteOrder',qs.stringify({
-                        app_user_id:sessionStorage.getItem('user_ID'),
                         order_id:item.id
                     })).then((res) => {
                         this.$store.state.order.splice(index,1);

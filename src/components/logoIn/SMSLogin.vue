@@ -121,7 +121,7 @@
                 })).then((res) => {
                     Toast(res.data.msg);
                     if(res.data.status == 1){
-                        sessionStorage.setItem('user_ID', res.data.data.app_user_id);
+                        localStorage.setItem('user_ID', res.data.data.app_user_id);
                         this.$router.push('/home');
                         this.show = false;
                     }

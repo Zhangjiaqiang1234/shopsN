@@ -210,9 +210,7 @@
             
         },
         mounted(){
-            this.axios.post(API_URL + 'Home/Pcenter/addressPlace',qs.stringify({
-                app_user_id:sessionStorage.getItem('user_ID')
-            })).then((res) => {
+            this.axios.post(API_URL + 'Home/Pcenter/addressPlace').then((res) => {
                 this.addressPlace = res.data.data;
             }).catch((err) => {
                 console.log(err);

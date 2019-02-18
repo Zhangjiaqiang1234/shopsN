@@ -119,7 +119,6 @@
                 let that = this;
                 if (this.$route.params.id == 3) {//积分订单生成
                     this.axios.post(API_URL + 'Home/Integral/integral_order', qs.stringify({
-                        app_user_id: sessionStorage.getItem('user_ID'), //用户ID
                         goods: this.$store.state.goods,  //将要兑换的商品 二维数组
                         integral: this.data.pay_integral,//商品所需积分
                         price_sum: 0,//所需金额
@@ -141,7 +140,6 @@
                     this.$store.state.price = this.data.pay_integral;
                 } else {//商品订单生成
                     this.axios.post(API_URL + 'Home/Pcenter/check', qs.stringify({
-                            app_user_id: sessionStorage.getItem('user_ID'),
                             gcheck:this.gcheck
                         })).then((res) => {
                             if(res.data.status == 1){
@@ -166,7 +164,6 @@
             toOrder(){
                 let that = this;
                 this.axios.post(API_URL + 'Home/Order/orderBegin', qs.stringify({
-                    app_user_id: sessionStorage.getItem('user_ID'), //用户ID
                     goods: this.$store.state.goods,  //将要购买的商品 二维数组
                     buyType: this.$route.params.id,  //2:为立即购买型 1：为购物车购买
                     price_sum: Number(this.data.total_price) + Number(this.data.freight), //运费及优惠券计算后的总金额
@@ -212,9 +209,8 @@
                 this.realname = JSON.parse(Local_data)
             }else{
                 if (this.$route.params.id == 1) { //积分商品
-                    if (sessionStorage.getItem('user_ID')) {
+                    if (localStorage.getItem('user_ID')) {
                         this.axios.post(API_URL + 'Home/Order/goBuy', qs.stringify({
-                            app_user_id: sessionStorage.getItem('user_ID'),
                             goods: this.$store.state.goods,
                             is_integral: 1
                         })).then((res) => {
@@ -238,9 +234,8 @@
                     };
                     return;
                 }
-                if (sessionStorage.getItem('user_ID')) { //普通商品
+                if (localStorage.getItem('user_ID')) { //普通商品
                     this.axios.post(API_URL + 'Home/Order/goBuy', qs.stringify({
-                        app_user_id: sessionStorage.getItem('user_ID'),
                         goods: this.$store.state.goods
                     })).then((res) => {
                         if(res.data.msg == '请完善收货地址'){
@@ -268,9 +263,8 @@
                 }
             }
             if (this.$route.params.id == 1) { //积分商品
-                if (sessionStorage.getItem('user_ID')) {
+                if (localStorage.getItem('user_ID')) {
                     this.axios.post(API_URL + 'Home/Order/goBuy', qs.stringify({
-                        app_user_id: sessionStorage.getItem('user_ID'),
                         goods: this.$store.state.goods,
                         is_integral: 1
                     })).then((res) => {
@@ -294,9 +288,8 @@
                 };
                 return;
             }
-            if (sessionStorage.getItem('user_ID')) { //普通商品
+            if (localStorage.getItem('user_ID')) { //普通商品
                 this.axios.post(API_URL + 'Home/Order/goBuy', qs.stringify({
-                    app_user_id: sessionStorage.getItem('user_ID'),
                     goods: this.$store.state.goods
                 })).then((res) => {
                     if(res.data.msg == '请完善收货地址'){
@@ -325,9 +318,7 @@
              
         },
         created() {
-                this.axios.post(API_URL + 'Home/Pcenter/getcheck', qs.stringify({
-                    app_user_id: sessionStorage.getItem('user_ID'),
-                })).then((res) => {
+                this.axios.post(API_URL + 'Home/Pcenter/getcheck').then((res) => {
                     if(res.data.status == 1){
                         this.gcheck = res.data.data;
                     }

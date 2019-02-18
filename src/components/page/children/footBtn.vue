@@ -33,9 +33,7 @@
         },
         methods:{
             col(){//收藏
-                console.log(sessionStorage.getItem('user_ID'))
-                console.log(sessionStorage.getItem('token'))
-                if(!sessionStorage.getItem('user_ID') || !sessionStorage.getItem('token')){
+                if(!localStorage.getItem('user_ID') || !localStorage.getItem('token')){
                     this.$router.push({
                         path:'/LogoIn'
                     });
@@ -46,7 +44,6 @@
                     this.type = 2;
                 }
                 this.axios.post(API_URL + 'Home/Cart/add_collection',qs.stringify({
-                    app_user_id:sessionStorage.getItem('user_ID'),
                     goods_id:this.$route.params.id,
                     type:this.type
                 })).then((res) => {

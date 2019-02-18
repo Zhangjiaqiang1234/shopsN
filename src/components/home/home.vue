@@ -66,14 +66,14 @@
              //是否登陆过
             let userid  =  localStorage.getItem('user_ID');
             if(userid){
-                sessionStorage.setItem('user_ID', userid);
+                localStorage.setItem('user_ID', userid);
             }
 
             var userName = this.$route.params.userName;
             var HOME_URL_SASD = '';
             this.getData = userName;
-            if(sessionStorage.getItem('user_ID')){
-                HOME_URL_SASD = API_URL+'Home/Index/home?SDKFJSD='+sessionStorage.getItem('user_ID');
+            if(localStorage.getItem('user_ID')){
+                HOME_URL_SASD = API_URL+'Home/Index/home?SDKFJSD='+localStorage.getItem('user_ID');
             }else{
                 HOME_URL_SASD = API_URL+'Home/Index/home';
             }

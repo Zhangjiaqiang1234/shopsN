@@ -79,7 +79,6 @@
             comment(){
                 this.load = true;
                 this.axios.post(API_URL + 'Home/Order/commentAdd',qs.stringify({
-                    app_user_id:sessionStorage.getItem('user_ID'),
                     order_id:this.$route.params.id,
                     mobileImage:JSON.stringify(this.imgs),
                     content:this.msg,

@@ -60,9 +60,7 @@
             },1000);
         },
         mounted(){
-            this.axios.post(API_URL + 'Home/Integral/integral',qs.stringify({
-                app_user_id: sessionStorage.getItem('user_ID')
-            })).then((res) => {
+            this.axios.post(API_URL + 'Home/Integral/integral').then((res) => {
                 this.data = res.data.data;
                 this.accDetails.content = res.data.data.list;
             }).catch((err) => {

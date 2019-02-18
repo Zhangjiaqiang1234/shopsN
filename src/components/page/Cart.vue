@@ -172,7 +172,6 @@
             subtract(n,_id){
                 this.load = true;
                 this.axios.post(API_URL+'Home/Cart/addReduce',qs.stringify({
-                    app_user_id:sessionStorage.getItem('user_ID'),
                     type:n,
                     id:_id
                 })).then((res) => {
@@ -266,17 +265,13 @@
         },
         mounted() {
             document.body.scrollTop = 0;
-            this.axios.post(API_URL+'Home/Cart/cart_recommend',qs.stringify({
-                app_user_id:sessionStorage.getItem('user_ID')
-            })).then((res) => {
+            this.axios.post(API_URL+'Home/Cart/cart_recommend').then((res) => {
                 this.$store.state.computer = res.data.data;
             }).catch((err) => {
                 console.log(err);
             });
-            if(sessionStorage.getItem('user_ID')){
-                this.axios.post(API_URL+'Home/Cart/myCart',qs.stringify({
-                    app_user_id:sessionStorage.getItem('user_ID')
-                })).then((res) => {
+            if(localStorage.getItem('user_ID')){
+                this.axios.post(API_URL+'Home/Cart/myCart').then((res) => {
                     this.$store.state.cart_data = res.data.data;
                     this.$store.state.cart_load = false;
                 }).catch((err) => {

@@ -100,7 +100,7 @@
                     Toast("购买商品数量错误");return 
                 }else if(this.$store.state.commodity_data.minStock == 0){
                      Toast("库存不足");return 
-                }else if(!sessionStorage.getItem('user_ID')){
+                }else if(!localStorage.getItem('user_ID')){
                     this.$router.push('/LogoIn');
                     return;
                 };
@@ -114,7 +114,7 @@
                 });
             },
             toExchange(){
-                if(!sessionStorage.getItem('user_ID')){
+                if(!localStorage.getItem('user_ID')){
                     this.$router.push('/LogoIn');
                     return;
                 };
@@ -132,7 +132,7 @@
                     Toast("购买商品数量错误");return false
                 }else if(this.$store.state.commodity_data.minStock == 0){
                      Toast("库存不足");return false
-                }else if(!sessionStorage.getItem('user_ID')){
+                }else if(!localStorage.getItem('user_ID')){
                     this.$router.push('/LogoIn');
                     return;
                 };

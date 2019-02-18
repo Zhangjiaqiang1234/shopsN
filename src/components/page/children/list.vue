@@ -48,11 +48,7 @@
                 this.load = true;
                 this.axios({//猜你喜欢
                     url:API_URL + 'Home/Goods/my_love',
-                    method:'get',
-                    params:{
-                        access_token: sessionStorage.getItem('token'),
-                        app_user_id:sessionStorage.getItem('user_ID')
-                    }
+                    method:'get'
                 }).then((res) => {
                     this.load = false;
                     this.$store.state.dataLeave = res.data.data;

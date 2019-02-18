@@ -141,7 +141,7 @@
 
             },
             preservation(){
-                if(!sessionStorage.getItem('user_ID')){
+                if(!localStorage.getItem('user_ID')){
                         this.$router.push({
                         path:'/LogoIn'
                     });
@@ -149,7 +149,6 @@
                 }
                 this.load = true;
                 this.axios.post(API_URL + 'Home/Pcenter/mobilePersoninfo',qs.stringify({
-                    app_user_id:sessionStorage.getItem('user_ID'),
                     nick_name:this.data.user_name,
                     email:this.data.email,
                     sex:this.data.sex,
@@ -166,9 +165,7 @@
             }
         },
         mounted(){
-            this.axios.post(API_URL + 'Home/Pcenter/userinfo',qs.stringify({
-                app_user_id:sessionStorage.getItem('user_ID')
-            })).then((res) => {
+            this.axios.post(API_URL + 'Home/Pcenter/userinfo').then((res) => {
                 this.data = res.data.data;
             }).catch((err) => {
                 console.log(err)

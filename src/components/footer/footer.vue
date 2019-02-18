@@ -36,7 +36,7 @@
                         });
                         break;
                     case 2:
-                        if(!sessionStorage.getItem('user_ID')){
+                        if(!localStorage.getItem('user_ID')){
                             this.$router.push({
                                 path:'/LogoIn'
                             });
@@ -48,7 +48,7 @@
                         break;
                         };
                     case 3:
-                       if(!sessionStorage.getItem('user_ID')){
+                       if(!localStorage.getItem('user_ID')){
                                 this.$router.push({
                                 path:'/LogoIn'
                             });
@@ -65,7 +65,7 @@
         watch:{
             '$route'(to,from){
                 // if(to.path == '/person'){
-                //     if(sessionStorage.getItem('user_ID')){
+                //     if(localStorage.getItem('user_ID')){
                 //         this.$router.push({
                 //             path:'/person'
                 //         });

@@ -22,7 +22,7 @@ Vue.use(VueLazyLoad,{
 // import { Spinner } from 'mint-ui'
 import '../config/globle.js'  //常量
 import './utils/request.js'
-const user_id = sessionStorage.getItem('user_ID') || '',
+const user_id = localStorage.getItem('user_ID') || '',
     // URl = 'http://39.108.217.205:7788', // 测试服的图片的 baseUrl
     URl = 'http://aboshops.com',   // 正式服的图片 baseUrl
     client_type = 1,  //1浏览器，2 app
@@ -86,7 +86,7 @@ router.beforeEach((to, from, next) => {
             break;
     };
     
-    if(verificationList.indexOf(to.name)!==-1 && (!sessionStorage.getItem('user_ID') || !sessionStorage.getItem('token'))){
+    if(verificationList.indexOf(to.name)!==-1 && (!localStorage.getItem('user_ID') || !localStorage.getItem('token'))){
         // 先保存当前路由，待登录成功后返回当前路由
         next('/logoIn') // 需要用户信息的页面如果缺失 user_ID 或 token 则重定向到登录页登录
     }

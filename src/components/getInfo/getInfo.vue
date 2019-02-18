@@ -9,11 +9,10 @@ export default {
             console.log(urlParam1)
         	console.log(urlParam)
 
-            sessionStorage.setItem('user_ID', urlParam);
-            localStorage.setItem('user_ID',urlParam);
-                this.$router.push({
-                    path : '/home'
-                });
+            localStorage.setItem('user_ID', urlParam);
+            this.$router.push({
+                path : '/home'
+            });
 
         },
 

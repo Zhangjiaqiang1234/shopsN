@@ -18,7 +18,7 @@
             return {
                 userImg:require('@/assets/scode.png'),
                 shopCart:require('@/assets/shop_cart.png'),
-                user_name:sessionStorage.getItem('user_ID')
+                user_name:localStorage.getItem('user_ID')
             }
         },
         methods: {

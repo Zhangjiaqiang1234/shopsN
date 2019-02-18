@@ -36,6 +36,7 @@
 </template>
 <script>
 import { Indicator } from 'mint-ui';
+import qs from 'qs';
 export default{
 	data () {
 		return {
@@ -67,6 +68,17 @@ export default{
 	created(){
 		document.body.style.background = '#fff';
 		// 发送请求，查询支付状态结果
+		this.axios.post(API_URL + 'Home/order/checkorder',qs.stringify({
+            order_sn_id: this.$route.params.order_sn_id
+        })).then((res) => {
+            console.log('获取到参数了')
+            console.log(res)
+        }).catch((err) => {
+            Toast({
+                message: '查询支付结果失败，请稍后再试',
+                position: 'bottom'
+            });
+        });
 	},
 	methods:{
 		tolink(){

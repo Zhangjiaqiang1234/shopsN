@@ -141,7 +141,6 @@
                                     url:API_URL + 'Home/Order/myOrder',
                                     method:'get',
                                     params:{
-                                        app_user_id:sessionStorage.getItem('user_ID'),
                                         order_status:this.$store.state.order_status,
                                         p:this_.$store.state.page
                                     }
@@ -176,7 +175,6 @@
                         url:API_URL + 'Home/Order/myOrder',
                         method:'get',
                         params:{
-                            app_user_id:sessionStorage.getItem('user_ID'),
                             order_status:this.$store.state.order_status,
                             p:this.$store.state.page
                         }
@@ -256,7 +254,6 @@
             // del(item,index){
             //     MessageBox.confirm('确定执行此操作?').then(action => {
             //         this.axios.post(API_URL + 'Home/Order/deleteOrder',qs.stringify({
-            //             app_user_id:sessionStorage.getItem('user_ID'),
             //             order_id:item.id
             //         })).then((res) => {
             //             this.$store.state.order.splice(index,1);
@@ -274,7 +271,6 @@
             toCancel(item,order_status){
                 MessageBox.confirm('确定执行该操作?').then(action => {
                     this.axios.post(API_URL + 'Home/Order/setOrderStatus',qs.stringify({
-                        app_user_id:sessionStorage.getItem('user_ID'),
                         order_id:item.id,
                         status:order_status
                     })).then((res) => {
@@ -288,7 +284,6 @@
                                 url:API_URL + 'Home/Order/myOrder',
                                 method:'get',
                                 params:{
-                                    app_user_id:sessionStorage.getItem('user_ID'),
                                     order_status:this.$store.state.order_status,
                                     p:this.$store.state.page
                                 }
