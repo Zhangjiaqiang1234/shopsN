@@ -61,8 +61,8 @@
         data(){
             return {
                 more:{
-                    icon:[require('@/assets/yhq.png'),require('@/assets/jfsc.png'),require('@/assets/my_ico_01.png'),require('@/assets/my_ico_02@3x.png')],
-                    name:['优惠券','积分商城','我的收藏','收货地址']
+                    icon:[require('@/assets/yhq.png'),require('@/assets/jfsc.png'),require('@/assets/my_ico_02@3x.png')],
+                    name:['优惠券','积分商城','收货地址']
                 },
                 Imag:'',
                 navCon:[
@@ -130,10 +130,10 @@
                         case 1:
                             this.$router.push('/Integral') // 积分商城
                             break;
-                        case 2:
+                        case -1:
                             this.$router.push('/Collection'); // 我的收藏
                             break;
-                        case 3:
+                        case 2:
                             this.$router.push({ // 收货地址
                                 name:'address',
                                 params:{

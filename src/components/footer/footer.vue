@@ -15,10 +15,15 @@
         data() {
             return {
                 isClass:sessionStorage.getItem('router_index'),
+                // tabbar:{
+                //     isIcon:[require('@/assets/tab_icon_home-active.png'),require('@/assets/tab_icon_class_active.png'),require('@/assets/tab_icon_cart_active.png'),require('@/assets/tab_icon_per_active.png')],
+                //     Icon:[require('@/assets/tab_icon_home.png'),require('@/assets/tab_icon_class.png'),require('@/assets/tab_icon_cart.png'),require('@/assets/tab_icon_per.png')],
+                //     font:['首页','分类','购物车','我的']
+                // },
                 tabbar:{
-                    isIcon:[require('@/assets/tab_icon_home-active.png'),require('@/assets/tab_icon_class_active.png'),require('@/assets/tab_icon_cart_active.png'),require('@/assets/tab_icon_per_active.png')],
-                    Icon:[require('@/assets/tab_icon_home.png'),require('@/assets/tab_icon_class.png'),require('@/assets/tab_icon_cart.png'),require('@/assets/tab_icon_per.png')],
-                    font:['首页','分类','购物车','我的']
+                    isIcon:[require('@/assets/tab_icon_home-active.png'),require('@/assets/tab_icon_cart_active.png'),require('@/assets/tab_icon_per_active.png')],
+                    Icon:[require('@/assets/tab_icon_home.png'),require('@/assets/tab_icon_cart.png'),require('@/assets/tab_icon_per.png')],
+                    font:['首页','购物车','我的']
                 }
             }
         },
@@ -30,12 +35,12 @@
                             path:'/home'
                         });
                         break;
-                    case 1:
+                    case -1:
                         this.$router.push({
                             path:'/class'
                         });
                         break;
-                    case 2:
+                    case 1:
                         if(!localStorage.getItem('user_ID')){
                             this.$router.push({
                                 path:'/LogoIn'
@@ -47,7 +52,7 @@
                             });
                         break;
                         };
-                    case 3:
+                    case 2:
                        if(!localStorage.getItem('user_ID')){
                                 this.$router.push({
                                 path:'/LogoIn'
@@ -81,7 +86,7 @@
         created(){
             
         }
-    }
+    };
 </script>
 <style lang="less" scoped>
     .foot2017{
@@ -89,10 +94,13 @@
         height:1rem;
         .footer{
             width:100%;
+            max-width:750px;
             height:1rem;
             position:fixed;
             bottom:0;
             left:0;
+            right:0;
+            margin:auto;
             background:#fff;
             border-top:1px solid #EBEAEA;
             z-index:2;
@@ -100,7 +108,7 @@
             box-shadow: border-box;
             z-index:99999999;
             li{
-                width:25%;
+                width:33.3%;
                 text-align:center;
                 .font{
                     font-size:.2rem;
@@ -141,19 +149,19 @@
                     height:.37rem;
                 }
             }
-            li:nth-child(2){
+            li:nth-child(0){
                 img{
                     width:.43rem;
                     height:.32rem;
                 }
             }
-            li:nth-child(3){
+            li:nth-child(2){
                 img{
                     width:.54rem;
                     height:.41rem;
                 }
             }
-            li:nth-child(4){
+            li:nth-child(3){
                 img{
                     width:.35rem;
                     height:.4rem;

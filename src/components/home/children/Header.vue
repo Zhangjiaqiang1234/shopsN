@@ -42,12 +42,15 @@
 <style lang="less" scoped>
     .header {
         width: 100%;
+        max-width: 750px;
         height: .9rem;
         background:#fff;
         overflow: hidden;
         position:fixed;
         left:0;
+        right:0;
         top:0;
+        margin: auto;
         z-index:999;
         .logo {
             width: .9rem;

@@ -5,6 +5,10 @@
 body {
     background: #F8F8F8;
 }
+html,body{
+    max-width: 750px;
+    margin: 0 auto;
+}
 
 img {
     vertical-align: top;

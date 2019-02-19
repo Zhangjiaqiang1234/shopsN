@@ -7,7 +7,7 @@
 				<h1 class="title text1-hidden">{{data[0].class_name}}</h1>
 				<span class="hot">热卖</span>
 			</div>
-			<p class="text text1-hidden">{{data[0].description}}</p>
+			<p v-show="data[0].description" class="text text1-hidden">{{data[0].description}}</p>
 			<img v-lazy="URL + data[0].pic_url">
 		</div>
 		<div class="right">
@@ -15,7 +15,7 @@
 			<div class="top con small" v-if="data[1]" @click="toLink(data[1].id)">
 				<div class="con-left">
 					<h1 class="title text1-hidden">{{data[1].class_name}}</h1>
-					<p class="text text1-hidden">{{data[1].description}}</p>
+					<p v-show="data[1].description" class="text text1-hidden">{{data[1].description}}</p>
 					<span class="hot">热卖</span>
 				</div>
 				<img v-lazy="URL + data[1].pic_url">
@@ -24,7 +24,7 @@
 			<div class="bottom con small" v-if="data[1]" @click="toLink(data[2].id)">
 				<div class="con-left">
 					<h1 class="title text1-hidden">{{data[2].class_name}}</h1>
-					<p class="text text1-hidden">{{data[2].description}}</p>
+					<p v-show="data[2].description" class="text text1-hidden">{{data[2].description}}</p>
 					<span class="hot">热卖</span>
 				</div>
 				<img v-lazy="URL + data[2].pic_url">
@@ -119,12 +119,16 @@
 			}
 			img{
 				display:block;
-				margin: .15rem auto 0;
+				padding-top: .15rem;
+				box-sizing: border-box;
+				max-height: 3.1rem;
 			}
 		}
 		.small{
+			.title{
+				margin-bottom:.2rem;
+			}
 			.text{
-				margin-top:.2rem;
 				margin-bottom:.2rem;
 			}
 			.con-left{

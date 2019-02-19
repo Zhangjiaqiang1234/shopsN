@@ -2,7 +2,7 @@
     <div class="footer2017">
         <div class="seat"></div>
         <div class="btn-main clearfix" v-if="$route.params.status == 1">
-            <div class="col fl" @click="col"><em>{{iconArr[type]}}</em>收藏</div>
+            <!-- <div class="col fl" @click="col"><em>{{iconArr[type]}}</em>收藏</div> -->
             <div class="join fl" @click="hide">加入购物车</div>
             <div class="imm fl" @click="hide">立即购买</div>
         </div>
@@ -43,29 +43,30 @@
                 }else{
                     this.type = 2;
                 }
-                this.axios.post(API_URL + 'Home/Cart/add_collection',qs.stringify({
-                    goods_id:this.$route.params.id,
-                    type:this.type
-                })).then((res) => {
-                    let msg_2 = '';
-                    if(res.data.status == 1){
-                        if(res.data.msg === '已取消'){
-                            msg_2 = '取消收藏成功！';
-                        }else{
-                            msg_2 = '恭喜，宝贝收藏成功！';
-                        }
-                    }else{
-                        msg_2 = res.data.msg;
-                    }
+                // 已经取消了收藏功能，不发送查询请求
+                // this.axios.post(API_URL + 'Home/Cart/add_collection',qs.stringify({
+                //     goods_id:this.$route.params.id,
+                //     type:this.type
+                // })).then((res) => {
+                //     let msg_2 = '';
+                //     if(res.data.status == 1){
+                //         if(res.data.msg === '已取消'){
+                //             msg_2 = '取消收藏成功！';
+                //         }else{
+                //             msg_2 = '恭喜，宝贝收藏成功！';
+                //         }
+                //     }else{
+                //         msg_2 = res.data.msg;
+                //     }
                     
-                    Toast({
-                        message: msg_2,
-                        position: 'bottom',
-                        duration: 800
-                    });
-                }).catch((err) => {
-                    console.log(err);
-                })
+                //     Toast({
+                //         message: msg_2,
+                //         position: 'bottom',
+                //         duration: 800
+                //     });
+                // }).catch((err) => {
+                //     console.log(err);
+                // })
             },
             hide(){
                 this.$store.state.const_join = true;
@@ -123,7 +124,7 @@
                 }
             }
             .join{
-                width:2.5rem;
+                width:50%;
                 height:100%;
                 background:#ff7200;
                 color:#fff;
@@ -131,7 +132,7 @@
                 line-height:1rem;
             }
             .imm{
-                width:2.5rem;
+                width:50%;
                 height:100%;
                 background:#4591f2;
                 color:#fff;

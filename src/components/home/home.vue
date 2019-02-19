@@ -113,7 +113,7 @@
             // limitedDd,
             // limitedHd,
         }
-    }
+    };
 </script>
 <style lang="less">
     .home{
