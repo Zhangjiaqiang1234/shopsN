@@ -1,5 +1,5 @@
 <template>
-	<div v-show="isShow" class="wrap">
+	<div class="wrap">
 		<div v-title :data-title="title">{{title}}</div>
 		<div class="header">
 			<!-- 背景图 -->
@@ -42,15 +42,13 @@ export default{
 		return {
 			title: '在线支付',
 			load: true,
-			isShow: false,
 			state: 0, // 0->等待支付结果 1->支付成功 2->支付失败
-			// list: [require('@/assets/succ_bg.png'),require('@/assets/succ_bg.png'),require('@/assets/fail_bg.png')],
 			data : '',
 			list: [
 				{
-					bgImg: require('@/assets/succ_bg.png'),
-					bgColor: '#4891F2',
-					text: {title: '请等待', tips: '等待支付结果', btnText: '返回'},
+					bgImg: require('@/assets/wait_bg.png'),
+					bgColor: '#69DC65',
+					text: {title: '支付中...', tips: '请稍等，正在支付', btnText: '返回'},
 					link: ''
 				},{
 					bgImg: require('@/assets/succ_bg.png'),
@@ -78,24 +76,20 @@ export default{
 	            	this.state = 1;
 	            	this.data = res.data.data;
 	            }else{
-	            	if (res.data.status==0 && res.data.msg == '失败'){
-	            		this.state = 2;
-	            	}else{
-	            		Toast({
-			                message: res.data.msg,
-			                position: 'middle'
-			            });
-	            	}
+	            	this.state = 2;
+            		Toast({
+		                message: res.data.msg,
+		                position: 'middle'
+		            });
 	            }
-	            this.isShow = true;
 	        }).catch((err) => {
-	        	this.isShow = true;
+	        	this.state = 2;
 	            Toast({
 	                message: '查询支付结果失败，请稍后再试',
 	                position: 'middle'
 	            });
 	        });
-		},1000)
+		},2000);
 	},
 	methods:{
 		tolink(){

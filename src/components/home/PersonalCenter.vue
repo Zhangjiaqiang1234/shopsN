@@ -6,7 +6,7 @@
             <div class="header-dd-center">
                 <!--<div class="setUp"></div>-->
                 <div class="icon-wrap">
-                    <img src="static/man.png">
+                    <img :src="require('@/assets/my_user_pic.png')">
                 </div>
                 <div class="admin" @click="signOut"><span></span>退出登录</div>
             </div>

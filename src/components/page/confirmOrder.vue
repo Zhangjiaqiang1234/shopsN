@@ -36,10 +36,10 @@
                 <div class="title fl">选择优惠券</div>
                 <div class="busi fr">{{coupon}}</div>
             </div>
-            <div class="hd clearfix" @click="tolink('/invoice')" v-if="$route.params.id != 3">
+            <!-- <div class="hd clearfix" @click="tolink('/invoice')" v-if="$route.params.id != 3">
                 <div class="title fl">开具发票</div>
                 <div class="busi fr">{{invoice_type}}</div>
-            </div>
+            </div> -->
             <div class="dd">
                 <div class="title">给商家留言：</div>
                 <textarea placeholder="选填：备注限字在45个字以内" @blur="limit" v-model="message"></textarea>

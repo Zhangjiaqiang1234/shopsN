@@ -19,6 +19,13 @@ Vue.use(VueLazyLoad,{
     loading:'./static/ggt@2x.png',
     try: 10
 })
+
+import * as filters from './filters' // 加载全局过滤器
+// register global utility filters.
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+})
+
 // import { Spinner } from 'mint-ui'
 import '../config/globle.js'  //常量
 import './utils/request.js'

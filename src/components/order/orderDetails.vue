@@ -45,16 +45,16 @@
         <div class="sundry-wrap">
             <p class="mode clearfix" v-if="$route.params.order_type == 2">
                 <span class="title fl">支付方式：</span>
-                <span class="answer fr">{{$store.state.order_details.pay_type}}</span>
+                <span class="answer fr">{{payArr[$store.state.order_details.pay_type]}}</span>
             </p>
             <p class="mode clearfix" v-if="$route.params.order_type == 2">
                 <span class="title fl">配送方式：</span>
                 <span class="answer fr">{{$store.state.order_details.shipping}}</span>
             </p>
-            <p class="mode clearfix" v-if="$route.params.order_type == 2">
+           <!--  <p class="mode clearfix" v-if="$route.params.order_type == 2">
                 <span class="title fl">开具发票：</span>
                 <span class="answer fr">{{$store.state.order_details.invoice}}</span>
-            </p>
+            </p> -->
             <div class="clearfix msg-wrap" v-if="$route.params.order_type == 2">
                 <span class="title">买家留言：</span><br>
                 <textarea class="answer" placeholder="买家没有留下备注哦！" readonly="readonly" v-model="$store.state.order_details.remarks"></textarea>
@@ -81,9 +81,9 @@
                     <span class="fr price">￥{{Number($store.state.order_details.price_sum ) - Number($store.state.order_details.shipping_monery) - Number($store.state.order_details.coupon_money)}}</span>
                 </p>
             </div>
-            <p class="timer-main">创建时间：{{new Date($store.state.order_details.create_time * 1000).getFullYear()+'/'+(new Date($store.state.order_details.create_time * 1000).getMonth()+1)+'/'+new Date($store.state.order_details.create_time * 1000).getDate()+' '+new Date($store.state.order_details.create_time * 1000).getHours()+':'+new Date($store.state.order_details.create_time * 1000).getMinutes()+':'+new Date($store.state.order_details.create_time * 1000).getSeconds()}}</p>
-            <p class="timer-main">付款时间：{{new Date($store.state.order_details.pay_time * 1000).getFullYear()+'/'+(new Date($store.state.order_details.pay_time * 1000).getMonth()+1)+'/'+new Date($store.state.order_details.pay_time * 1000).getDate()+' '+new Date($store.state.order_details.pay_time * 1000).getHours()+':'+new Date($store.state.order_details.pay_time * 1000).getMinutes()+':'+new Date($store.state.order_details.pay_time * 1000).getSeconds()}}</p>
-            <p class="timer-main">发货时间：{{new Date($store.state.order_details.delivery_time * 1000).getFullYear()+'/'+(new Date($store.state.order_details.delivery_time * 1000).getMonth()+1)+'/'+new Date($store.state.order_details.delivery_time * 1000).getDate()+' '+new Date($store.state.order_details.delivery_time * 1000).getHours()+':'+new Date($store.state.order_details.delivery_time * 1000).getMinutes()+':'+new Date($store.state.order_details.delivery_time * 1000).getSeconds()}}</p>
+            <p class="timer-main">创建时间：{{$store.state.order_details.create_time*1000 | timeFormat}}</p>
+            <p class="timer-main">付款时间：{{$store.state.order_details.pay_time*1000 | timeFormat}}</p>
+            <p class="timer-main">发货时间：{{$store.state.order_details.delivery_time*1000 | timeFormat}}</p>
         </div>
         <footer>
             <div class="btn-wrap">
@@ -109,7 +109,13 @@
                 title : '订单详情',
                 scrollWatch:true,
                 status:'',
-                load_wrap:true
+                load_wrap:true,
+                payArr:{
+                    1: '微信支付',
+                    2: '支付宝支付',
+                    3: '银联支付',
+                    4: '余额支付'
+                }
             }
         },
         components:{

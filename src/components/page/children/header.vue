@@ -1,3 +1,4 @@
+<!-- 顶部蓝色条导航 -->
 <template>
     <div class="teacher-main">
         <header class="header">
@@ -20,9 +21,9 @@
                         <div class="btn" @click="toLink('/home')">
                             <span class="icon"><i></i></span>首页
                         </div>
-                        <div class="btn">
+                        <!-- <div class="btn">
                             <span class="icon" @click="toLink('/myNews')"><i></i></span>消息
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </transition>
@@ -250,7 +251,6 @@
                     background:#535353;
                 }
                 .btn:nth-child(2){
-                    border-bottom:1px solid #666;
                     .icon{
                         i{
                             width: .24rem;
