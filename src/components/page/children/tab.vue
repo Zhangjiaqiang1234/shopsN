@@ -50,7 +50,7 @@
                         </div>
                         <div class="list-com">{{item.content}}</div>
                         <div class="list-img-main clearfix">
-                            <img :src="URL + item" class="fl" v-for="item in dataItem.img" :key="item.id">
+                            <img class="fl" v-for="img in item.imgs" :key="img.id" :src="URL + img"/>
                         </div>
                         <div class="list-purTimer">购买日期： {{new Date(item.create_time * 1000).getFullYear()+'.'+(new Date(item.create_time * 1000).getMonth() + 1)+'.'+new Date(item.create_time * 1000).getDate()}}</div>
                     </div>
@@ -187,9 +187,6 @@
                 line-height:.65rem;
                 font-size:.24rem;
                 color:#333;
-                overflow:hidden; 
-                text-overflow:ellipsis; 
-                white-space:nowrap
             }
         }
         .comment-wrap{

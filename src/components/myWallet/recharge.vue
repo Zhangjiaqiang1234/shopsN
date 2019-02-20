@@ -5,14 +5,14 @@
           <span class="title fl">充值金额</span>
           <input type="number" class="fl" placeholder="建议充值100元以上金额">
       </div>
-      <div class="choice" @click="theChecked">
+      <!-- <div class="choice" @click="theChecked">
         <input type="radio" class="radio-input" value="使用账户余额" :checked="disabled">
         <span class="radio-core"></span>
         <span class="radio-label">网银服务</span>
-      </div>
+      </div> -->
       <div v-title :data-title="title">{{title}}</div>
-      <btn :text="text"></btn>
-      <other :otherdata="otherdata"></other>
+      <!-- <btn :text="text"></btn> -->
+      <other></other>
   </div>
 </template>
 <script>
@@ -26,11 +26,6 @@
                 title:' ABO商城充值',
                 text:'立即充值',
                 disabled:false,
-                otherdata:{
-                    img:[require('@/assets/alipay.jpg'),require('@/assets/wx.jpg')],
-                    title:['支付宝支付','微信支付'],
-                    content:['支付宝安全支付','微信安全支付']
-                }
             }
         },
         methods:{

@@ -168,7 +168,7 @@
                         break;
                     case -3:
                         this.$store.state.order_title = '待评论订单';
-                        this.$store.state.order_status = 6;
+                        this.$store.state.order_status = 4;
                         this.axios({
                             url:API_URL + 'Home/Order/notEvaluate',
                             method:'get',
