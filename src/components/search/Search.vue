@@ -119,6 +119,7 @@
                 url:API_URL + 'Home/Index/hot_search',
                 method:'post'
             }).then((res) => {
+                // res.data = {"status":0,"msg":"暂无数据","data":""};
                 this.hot_data = res.data.data;
             }).catch((err) => {
                 console.log(err);

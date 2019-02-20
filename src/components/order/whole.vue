@@ -368,6 +368,7 @@
                     }
                 }
                 .describe{
+                    position: relative;
                     margin:0 .2rem;
                     height:1.46rem;
                     padding:.13rem 0;

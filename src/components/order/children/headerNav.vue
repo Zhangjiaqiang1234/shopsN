@@ -171,7 +171,8 @@
                         this.$store.state.order_status = 6;
                         this.axios({
                             url:API_URL + 'Home/Order/notEvaluate',
-                            method:'get'
+                            method:'get',
+                            params: {}
                         }).then((res) => {
                             this.stateSwitch(res);
                             this.$store.state.order = res.data.data;

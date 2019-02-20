@@ -28,10 +28,10 @@
             </li>
         </ul>
         <div v-if="data" class="dist-wrap">
-            <div class="hd active clearfix">
+            <!-- <div class="hd active clearfix">
                 <div class="title fl">配送方式</div>
                 <div class="busi fr">顺丰包邮</div>
-            </div>
+            </div> -->
             <div class="hd clearfix" v-if="$route.params.id != 3">
                 <div class="title fl">选择优惠券</div>
                 <div class="busi fr">{{coupon}}</div>
