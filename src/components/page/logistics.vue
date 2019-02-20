@@ -5,7 +5,7 @@
       <div class="status-wrap">
           <div class="list-hide-top"></div>
           <div class="list-hide-bottom"></div>
-          <div class="list-item" :class="{active:index == 0}" v-for="(item,index) in $store.state.logis_data" :key="item">
+          <div class="list-item" :class="{active:index == 0}" v-for="(item,index) in $store.state.logis_data" :key="index">
                 <div class="status-icon-wrap">
                     <span class="icon"></span>
                 </div>
@@ -35,7 +35,7 @@
             this.axios.post(API_URL + 'Home/Afterbuy/express',qs.stringify({
                 order_id:this.$route.params.id
             })).then((res) => {
-                this.$store.commit('logis',res.data.data.data);
+                this.$store.commit('logis',res.data.data.online.data);
             }).catch((err) => {
                 console.log(err);
             });
