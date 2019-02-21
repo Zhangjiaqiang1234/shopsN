@@ -33,6 +33,7 @@ const user_id = localStorage.getItem('user_ID') || '',
     token = localStorage.getItem('token') || '',
     // URl = 'http://39.108.217.205:7788', // 测试服的图片的 baseUrl
     URl = 'http://aboshops.com',   // 正式服的图片 baseUrl
+    OURl = 'http://api.aboshops.com',// 图片接口用的 URL
     client_type = 1,  //1浏览器，2 app
 
     load_wrap = true,
@@ -41,6 +42,7 @@ const user_id = localStorage.getItem('user_ID') || '',
 Vue.config.productionTip = false;
 Vue.prototype.axios = axios;
 Vue.prototype.URL = URl;
+Vue.prototype.OURL = OURl;
 Vue.prototype.load_wrap = load_wrap;
 Vue.prototype.user_id = user_id;// 保存用户id
 Vue.prototype.token = token;// 保存token

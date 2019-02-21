@@ -50,7 +50,7 @@
                         </div>
                         <div class="list-com">{{item.content}}</div>
                         <div class="list-img-main clearfix">
-                            <img class="fl" v-for="img in item.imgs" :key="img.id" :src="URL + img"/>
+                            <img class="fl" v-for="img in item.imgs" :key="img.id" :src="OURL + img"/>
                         </div>
                         <div class="list-purTimer">购买日期： {{item.create_time* 1000 | timeFormat}}</div>
                     </div>
