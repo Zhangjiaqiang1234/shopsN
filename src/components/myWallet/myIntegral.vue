@@ -61,8 +61,11 @@
         },
         mounted(){
             this.axios.post(API_URL + 'Home/Integral/integral').then((res) => {
-                this.data = res.data.data;
-                this.accDetails.content = res.data.data.list;
+                if(res.data.status == 1){
+                    this.data = res.data.data;
+                    this.accDetails.content = res.data.data.list;
+                    this.$store.state.integral = res.data.data.sum;
+                }
             }).catch((err) => {
                 console.log(err);
             });

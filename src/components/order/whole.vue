@@ -29,7 +29,7 @@
                     <!-- <span class="icon" @click="del(item,index)" v-if="item.order_status == 4 || item.order_status == -1"></span> -->
                 </div>
                 <div class="operation clearfix">
-                    <span class="timer fl">下单时间：{{new Date(item.create_time * 1000).getFullYear()+'-'+(new Date(item.create_time * 1000).getMonth()+1)+'-'+new Date(item.create_time * 1000).getDate()+' '+new Date(item.create_time * 1000).getHours()+':'+new Date(item.create_time * 1000).getMinutes()+':'+new Date(item.create_time * 1000).getSeconds()}}</span>
+                    <span class="timer fl">下单时间：{{item.create_time * 1000 | timeFormat}}</span>
                     <button class="btn fr" style="margin-left:.1rem;" @click="toRouter('/pay',item,false)" v-if="item.order_status == 0">马上付款</button>
                     <button class="btn fr" style="margin-left:.1rem;" @click="toRouter('/Cart',item,1)" v-if="item.order_status == 4 || item.order_status == -1" v-show="item.order_state != '1'">再次购买</button>
                     <button class="btn fr" @click="toCancel(item,'-2')" v-if="item.order_status == -1">删除订单</button>

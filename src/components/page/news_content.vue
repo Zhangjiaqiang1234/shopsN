@@ -6,8 +6,8 @@
             <div class="hd">
                 <h2>{{$store.state.news_con.theme}}</h2>
                 <div class="clearfix">
-                    <span class="name-wrap fl">发件人：<em>空气孔雀</em></span>
-                    <span class="fr time">{{new Date($store.state.news_con.create_time * 1000).getFullYear()+'/'+(new Date($store.state.news_con.create_time * 1000).getMonth() + 1)+'/'+new Date($store.state.news_con.create_time * 1000).getDay()}}</span>
+                    <span class="name-wrap fl">发件人：<em>ABO商城</em></span>
+                    <span class="fr time">{{$store.state.news_con.create_time*1000 | timeFormat}}</span>
                 </div>
             </div>
         </div>

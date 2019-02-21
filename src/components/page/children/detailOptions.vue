@@ -1,3 +1,4 @@
+<!-- 商品单位、数量等信息组件 -->
 <template>
     <transition>
         <div class="detail-wrap" @touchmove.prevent v-show="$store.state.const_join">
@@ -15,9 +16,9 @@
                         <dt class="fl">{{$store.state.commodity_data.allattrcha[0].name}}</dt>
                         <dd class="fl" v-for="(item,index) in $store.state.commodity_data.allattrcha[0].value" :key="item.id" @click="addClass(index,item.goods_id)" :class="{active:$route.params.id == item.goods_id}">{{item.attr}}</dd>
                     </dl>
-                    <dl class="gui clearfix" v-for="items in $store.state.commodity_data.spec" :key="items.id">
-                        <dt class="fl">{{items.name}}</dt>
-                        <dd class="fl" v-for="(item,index) in items" :key="item.id" @click="addClass(index)" :class="{active:$route.params.id == item.goods_id}">{{item}}</dd>
+                    <dl class="gui clearfix" v-if="$store.state.commodity_data.spec">
+                        <dt class="fl">{{$store.state.commodity_data.spec[0].name}}</dt>
+                        <dd class="fl active" v-for="(item,index) in $store.state.commodity_data.spec" :key="item.id" @click="addClass(index)">{{item.item}}</dd>
                     </dl>
                     <div class="addSub clearfix">
                         <span class="pull-left fl">数量</span>

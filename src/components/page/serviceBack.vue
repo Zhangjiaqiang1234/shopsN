@@ -5,7 +5,7 @@
         <div class="product-wrap">
             <div class="hd">
                 <p class="number">订单编号&nbsp;:&nbsp;{{$store.state.order_details.order_sn_id}}</p>
-                <p class="time">下单时间&nbsp;:&nbsp;{{new Date($store.state.order_details.create_time * 1000).getFullYear()+'-'+(new Date($store.state.order_details.create_time * 1000).getMonth()+1)+'-'+new Date($store.state.order_details.create_time * 1000).getDay()+'&nbsp;&nbsp;'+new Date($store.state.order_details.create_time * 1000).getHours()+':'+new Date($store.state.order_details.create_time * 1000).getMinutes()+':'+new Date($store.state.order_details.create_time * 1000).getSeconds()}}</p>
+                <p class="time">下单时间&nbsp;:&nbsp;{{$store.state.order_details.create_time*1000 | timeFormat}}</p>
             </div>
             <div class="dd clearfix" v-if="$store.state.order_details.child">
                 <img :src="URL + $store.state.order_details.child[$route.params.index].img" class="fl">

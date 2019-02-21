@@ -52,7 +52,7 @@
                         <div class="list-img-main clearfix">
                             <img class="fl" v-for="img in item.imgs" :key="img.id" :src="URL + img"/>
                         </div>
-                        <div class="list-purTimer">购买日期： {{new Date(item.create_time * 1000).getFullYear()+'.'+(new Date(item.create_time * 1000).getMonth() + 1)+'.'+new Date(item.create_time * 1000).getDate()}}</div>
+                        <div class="list-purTimer">购买日期： {{item.create_time* 1000 | timeFormat}}</div>
                     </div>
                 </div>
             </mt-tab-container-item>

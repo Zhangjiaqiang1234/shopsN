@@ -15,7 +15,30 @@
         methods:{
             bypay(){
                 if(this.$route.params.id == 3){
-                    Toast("当前积分不足,无法兑换");
+                    this.axios.post(API_URL + 'Home/Integral/payIntegral',qs.stringify({
+                        order_id: this.$store.state.order_number,
+                        integral: this.$store.state.price
+                    }))
+                    .then(res => {
+                        console.log(res)
+                        if(res.data.status==1 && res.data.msg=='支付成功'){
+                            this.$router.push({
+                                name:'payResult',
+                                params:{
+                                    order_sn_id: res.data.data
+                                }
+                            });
+                        }else{
+                            Toast({
+                                message: res.data.msg
+                            });
+                        }
+                    })
+                    .catch(err => {
+                        Toast({
+                            message: res.data.msg
+                        });
+                    });
                 }else{
                     if(this.bt == false){
                         Toast({

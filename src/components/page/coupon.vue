@@ -14,7 +14,7 @@
                     <h2>{{item.name}}</h2>
                     <p class="status">(不包含运费)</p>
                     <p class="term">使用期限</p>
-                    <p class="timer">{{new Date(item.use_start_time * 1000).getFullYear()+'.'+(new Date(Number(item.use_start_time * 1000)).getMonth()+1)+'.'+new Date(Number(item.use_start_time * 1000)).getDate()}}  --  {{new Date(item.use_end_time * 1000).getFullYear()+'.'+(new Date(Number(item.use_end_time * 1000)).getMonth()+1)+'.'+new Date(Number(item.use_end_time * 1000)).getDate()}}</p>
+                    <p class="timer">{{use_start_time*1000 | timeFormat}}  --  {{use_end_time*1000 | timeFormat}}</p>
                 </div>
                 <div class="fl item-pull-right text-right">
                     <div class="price">￥<span>{{item.money}}</span></div>

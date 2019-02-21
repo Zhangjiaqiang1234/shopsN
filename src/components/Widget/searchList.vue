@@ -18,6 +18,7 @@
     </div>
 </template>
 <script>
+    import { Toast } from 'mint-ui';
     export default {
         name:'searchList',
         data(){
@@ -37,6 +38,14 @@
         },
         methods:{
             tolink(item){
+                // 判断积分是否足够
+                if(1*item.integral > 1*this.$store.state.integral){
+                    Toast({
+                        message: '积分不足',
+                        position: 'middle'
+                    });
+                    return false;
+                }
                 if(item.goods_id){
                     this.$router.push({
                         name:'product',
@@ -57,7 +66,7 @@
                 
             }
         }
-    }
+    };
 </script>
 <style lang="less" scoped>
     .status{

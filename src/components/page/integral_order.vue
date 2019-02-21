@@ -30,7 +30,7 @@
                     <span class="icon" @click="del(item,index)" v-if="item.order_status == 4 || item.order_status == -1"></span>
                 </div>
                 <div class="operation clearfix">
-                    <span class="timer fl">下单时间：{{new Date(item.create_time * 1000).getFullYear()+'-'+new Date(item.create_time * 1000).getMonth()+'-'+new Date(item.create_time * 1000).getDay()+' '+new Date(item.create_time * 1000).getHours()+':'+new Date(item.create_time * 1000).getMinutes()+':'+new Date(item.create_time * 1000).getSeconds()}}</span>
+                    <span class="timer fl">下单时间：{{item.create_time*1000 | timeFormat}}</span>
                     <button class="btn fr" @click="toRouter('/pay',item,false)" v-if="item.order_status == 0">马上付款</button>
                     <button class="btn fr" @click="toRouter('/order',item,false)" v-if="item.order_status == 1">查看订单</button>
                     <button class="btn fr" @click="toRouter('/logis',item,false)" v-if="item.order_status == 3">查看物流</button>

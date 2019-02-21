@@ -1,3 +1,4 @@
+<!-- 支付详情页 -->
 <template>
     <div class="cashier">
         <div v-title :data-title="title">{{title}}</div>
@@ -159,11 +160,11 @@ export default {
                 })).then((res) => {
                     if(res.data.status == 1){
                         this.$router.push({
-                        name:'payment',
-                        params:{
-                            data:res.data
-                        }
-                    });
+                            name:'payment',
+                            params:{
+                                data:res.data
+                            }
+                        });
                     }else{
                         alert("网络错误");
                     }

@@ -9,7 +9,7 @@
                     <h5>{{item.theme}}</h5>
                     <p class="text1-hidden">{{item.news_info}}</p>
                 </div>
-                <div class="time fl">{{new Date(item.create_time * 1000).getFullYear()+'-'+(new Date(item.create_time * 1000).getMonth() + 1)+'-'+new Date(item.create_time * 1000).getDay()}}</div>
+                <div class="time fl">{{item.create_time * 1000 | timeFormat}}</div>
             </li>
         </ul>
         <div class="default text-center" v-if="!$store.state.news_data">

@@ -66,6 +66,11 @@ const state = { //创建数据仓库
     repair: '', //退货返修
 
     /*
+        积分
+    */
+    integral: 0,
+
+    /*
         退款
     */
     setvuce_data: '', //申请退货数据

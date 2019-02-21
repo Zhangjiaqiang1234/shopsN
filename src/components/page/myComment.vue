@@ -23,7 +23,7 @@
                     <img class="fl" v-for="items in item.imgs" :src="URL + items">
                 </div>
                 <div class="inf-wrap clearfix">
-                    <div class="inf fl">{{new Date(item.create_time * 1000).getFullYear()+'/'+(new Date(item.create_time * 1000).getMilliseconds() + 1)+'/'+new Date(item.create_time * 1000).getDay()}}&nbsp;&nbsp;&nbsp;<span v-for="items in item.attra">{{items.name+':'+items.item}}</span></div>
+                    <div class="inf fl">{{create_time*1000 | timeFormat}}&nbsp;&nbsp;&nbsp;<span v-for="items in item.attra">{{items.name+':'+items.item}}</span></div>
                     <div class="status fr" v-if="item.status == 3">差评</div>
                     <div class="status fr" v-if="item.status == 2">中评</div>
                     <div class="status fr" v-if="item.status == 1">好评</div>
@@ -41,7 +41,7 @@
                     <img class="fl" v-for="items in item.imgs" :src="URL + items">
                 </div>
                 <div class="inf-wrap clearfix">
-                    <div class="inf fl">{{new Date(item.create_time * 1000).getFullYear()+'/'+(new Date(item.create_time * 1000).getMilliseconds() + 1)+'/'+new Date(item.create_time * 1000).getDay()}}&nbsp;&nbsp;&nbsp;<span v-for="items in item.attra">{{items.name+':'+items.item}}</span></div>
+                    <div class="inf fl">{{create_time*1000 | timeFormat}}&nbsp;&nbsp;&nbsp;<span v-for="items in item.attra">{{items.name+':'+items.item}}</span></div>
                     <div class="status fr" v-if="item.status == 3">差评</div>
                     <div class="status fr" v-if="item.status == 2">中评</div>
                     <div class="status fr" v-if="item.status == 1">好评</div>
