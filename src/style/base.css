@@ -304,3 +304,11 @@ td {
     left: 0;
     top: 50%;
 }
+
+.minHeight100{
+    min-height: 100%;
+    /*padding-bottom: 2.5rem!important;*/
+}
+.minHeight100>*:last-child{
+    /*padding-bottom: 2.5rem!important;*/
+}

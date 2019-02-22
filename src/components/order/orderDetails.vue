@@ -1,99 +1,101 @@
 <template>
     <div>
-        <div v-title :data-title="title">{{title}}</div>
-        <order-header :text="title"></order-header>
-        <div class="order-number">
-            <span class="fl title">订单编号：<em>{{$store.state.order_details.order_sn_id}}</em></span>
-            <span class="fr status">{{$store.state.order_title}}</span>
-        </div> 
-        <div class="address-wrap">
-            <div class="bg-top"></div>
-            <div class="con-center" v-if="$store.state.order_details.address_id">
-                <div class="personalInf clearfix">
-                    <span class="name fl"><em></em>{{$store.state.order_details.address_id.realname}}</span>
-                    <span class="number fl">{{$store.state.order_details.address_id.mobile}}</span>
-                </div>
-                <div class="address">{{$store.state.order_details.address_id.prov + $store.state.order_details.address_id.city + $store.state.order_details.address_id.dist + $store.state.order_details.address_id.address}}</div>
-                <div class="icon"></div>
-            </div>
-            <div class="bg-bottom"></div>
-        </div>
-        <div class="market-wrap">
-            <h2 class="title">ABO商场</h2>
-            <ul class="content-main">
-                <li v-for="(item,index) in $store.state.order_details.child" :key="item.id" class="clearfix">
-                    <img :src="URL + item.img" class="fl">
-                    <div class="explain-wrap fr">
-                        <p class="details">{{item.goods_title}}</p>
-                        <p v-if="item.attribute[0]" class="clearfix product">
-                            <span class="fl name" >{{item.attribute[0].name +' : '+ item.attribute[0].item}}</span>
-                            <span class="fr number">x{{item.goods_num}}</span>
-                        </p>
-                        <p class="clearfix price-main" v-if="$route.params.order_type == 2">
-                            <span class="fl price">￥{{item.goods_price}}</span>
-                            <button class="fr btn" v-if="$route.params.status == 1" @click="toService('refund',index)">退款</button>
-                            <button class="fr btn" v-if="$route.params.status == 4" @click="toService('rGoods',index)">申请售后</button>
-                        </p>
-                        <p class="clearfix price-main" v-if="$route.params.order_type == 1">
-                            <span class="fl price">{{item.integral}}&nbsp;积分</span>
-                        </p>
+        <div class="minHeight100">
+            <div v-title :data-title="title">{{title}}</div>
+            <order-header :text="title"></order-header>
+            <div class="order-number">
+                <span class="fl title">订单编号：<em>{{$store.state.order_details.order_sn_id}}</em></span>
+                <span class="fr status">{{$store.state.order_title}}</span>
+            </div> 
+            <div class="address-wrap">
+                <div class="bg-top"></div>
+                <div class="con-center" v-if="$store.state.order_details.address_id">
+                    <div class="personalInf clearfix">
+                        <span class="name fl"><em></em>{{$store.state.order_details.address_id.realname}}</span>
+                        <span class="number fl">{{$store.state.order_details.address_id.mobile}}</span>
                     </div>
-                </li>
-            </ul>
-            <!--<div class="status"><span>还有1件</span><em></em></div>-->
+                    <div class="address">{{$store.state.order_details.address_id.prov + $store.state.order_details.address_id.city + $store.state.order_details.address_id.dist + $store.state.order_details.address_id.address}}</div>
+                    <div class="icon"></div>
+                </div>
+                <div class="bg-bottom"></div>
+            </div>
+            <div class="market-wrap">
+                <h2 class="title">ABO商场</h2>
+                <ul class="content-main">
+                    <li v-for="(item,index) in $store.state.order_details.child" :key="item.id" class="clearfix">
+                        <img :src="URL + item.img" class="fl">
+                        <div class="explain-wrap fr">
+                            <p class="details">{{item.goods_title}}</p>
+                            <p v-if="item.attribute[0]" class="clearfix product">
+                                <span class="fl name" >{{item.attribute[0].name +' : '+ item.attribute[0].item}}</span>
+                                <span class="fr number">x{{item.goods_num}}</span>
+                            </p>
+                            <p class="clearfix price-main" v-if="$route.params.order_type == 2">
+                                <span class="fl price">￥{{item.goods_price}}</span>
+                                <button class="fr btn" v-if="$route.params.status == 1" @click="toService('refund',index)">退款</button>
+                                <button class="fr btn" v-if="$route.params.status == 4" @click="toService('rGoods',index)">申请售后</button>
+                            </p>
+                            <p class="clearfix price-main" v-if="$route.params.order_type == 1">
+                                <span class="fl price">{{item.integral}}&nbsp;积分</span>
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+                <!--<div class="status"><span>还有1件</span><em></em></div>-->
+            </div>
+            <div class="sundry-wrap">
+                <p class="mode clearfix" v-if="$route.params.order_type == 2">
+                    <span class="title fl">支付方式：</span>
+                    <span class="answer fr">{{payArr[$store.state.order_details.pay_type]}}</span>
+                </p>
+                <p class="mode clearfix" v-if="$route.params.order_type == 2">
+                    <span class="title fl">配送方式：</span>
+                    <span class="answer fr">{{$store.state.order_details.shipping}}</span>
+                </p>
+               <!--  <p class="mode clearfix" v-if="$route.params.order_type == 2">
+                    <span class="title fl">开具发票：</span>
+                    <span class="answer fr">{{$store.state.order_details.invoice}}</span>
+                </p> -->
+                <div class="clearfix msg-wrap" v-if="$route.params.order_type == 2">
+                    <span class="title">买家留言：</span><br>
+                    <textarea class="answer" placeholder="买家没有留下备注哦！" readonly="readonly" v-model="$store.state.order_details.remarks"></textarea>
+                </div>
+                <div class="money-wrap" v-if="$route.params.order_type == 2">
+                    <p class="clearfix">
+                        <span class="fl name">商品总额</span>
+                        <span class="fr price">￥{{$store.state.order_details.price_sum}}</span>
+                    </p>
+                    <p class="clearfix">
+                        <span class="fl name">优惠</span>
+                        <span class="fr price">- <em>￥0</em></span>
+                    </p>
+                    <p class="clearfix">
+                        <span class="fl name">运费</span>
+                        <span class="fr price">- <em>￥{{$store.state.order_details.shipping_monery}}</em></span>
+                    </p>
+                    <p class="clearfix">
+                        <span class="fl name">优惠券</span>
+                        <span class="fr price">- ￥{{$store.state.order_details.coupon_money}}</span>
+                    </p>
+                    <p class="clearfix">
+                        <span class="fl name">实付款</span>
+                        <span class="fr price">￥{{Number($store.state.order_details.price_sum ) - Number($store.state.order_details.shipping_monery) - Number($store.state.order_details.coupon_money)}}</span>
+                    </p>
+                </div>
+                <p class="timer-main">创建时间：{{$store.state.order_details.create_time*1000 | timeFormat}}</p>
+                <p class="timer-main">付款时间：{{$store.state.order_details.pay_time*1000 | timeFormat}}</p>
+                <p class="timer-main">发货时间：{{$store.state.order_details.delivery_time*1000 | timeFormat}}</p>
+            </div>
         </div>
-        <div class="sundry-wrap">
-            <p class="mode clearfix" v-if="$route.params.order_type == 2">
-                <span class="title fl">支付方式：</span>
-                <span class="answer fr">{{payArr[$store.state.order_details.pay_type]}}</span>
-            </p>
-            <p class="mode clearfix" v-if="$route.params.order_type == 2">
-                <span class="title fl">配送方式：</span>
-                <span class="answer fr">{{$store.state.order_details.shipping}}</span>
-            </p>
-           <!--  <p class="mode clearfix" v-if="$route.params.order_type == 2">
-                <span class="title fl">开具发票：</span>
-                <span class="answer fr">{{$store.state.order_details.invoice}}</span>
-            </p> -->
-            <div class="clearfix msg-wrap" v-if="$route.params.order_type == 2">
-                <span class="title">买家留言：</span><br>
-                <textarea class="answer" placeholder="买家没有留下备注哦！" readonly="readonly" v-model="$store.state.order_details.remarks"></textarea>
-            </div>
-            <div class="money-wrap" v-if="$route.params.order_type == 2">
-                <p class="clearfix">
-                    <span class="fl name">商品总额</span>
-                    <span class="fr price">￥{{$store.state.order_details.price_sum}}</span>
-                </p>
-                <p class="clearfix">
-                    <span class="fl name">优惠</span>
-                    <span class="fr price">- <em>￥0</em></span>
-                </p>
-                <p class="clearfix">
-                    <span class="fl name">运费</span>
-                    <span class="fr price">- <em>￥{{$store.state.order_details.shipping_monery}}</em></span>
-                </p>
-                <p class="clearfix">
-                    <span class="fl name">优惠券</span>
-                    <span class="fr price">- ￥{{$store.state.order_details.coupon_money}}</span>
-                </p>
-                <p class="clearfix">
-                    <span class="fl name">实付款</span>
-                    <span class="fr price">￥{{Number($store.state.order_details.price_sum ) - Number($store.state.order_details.shipping_monery) - Number($store.state.order_details.coupon_money)}}</span>
-                </p>
-            </div>
-            <p class="timer-main">创建时间：{{$store.state.order_details.create_time*1000 | timeFormat}}</p>
-            <p class="timer-main">付款时间：{{$store.state.order_details.pay_time*1000 | timeFormat}}</p>
-            <p class="timer-main">发货时间：{{$store.state.order_details.delivery_time*1000 | timeFormat}}</p>
-        </div>
-        <footer>
-            <div class="btn-wrap">
-                <button class="fr" v-if="$route.params.status == 3" @click="conReceipt">确认收货</button>
-                <button class="fr" v-if="$route.params.status == 3 || $route.params.status == 2" @click="toLogis">查看物流</button>
-                <button class="fr" v-if="$route.params.status == 4 || $route.params.status == -1" @click="gobay">再次购买</button>
-                <button class="fr" v-if="$route.params.status == 0" @click="pay">马上付款</button>
-            </div>
-        </footer>
         <Shopsn></Shopsn>
+        <footer>
+                <div class="btn-wrap">
+                    <button class="fr" v-if="$route.params.status == 3" @click="conReceipt">确认收货</button>
+                    <button class="fr" v-if="$route.params.status == 3 || $route.params.status == 2" @click="toLogis">查看物流</button>
+                    <button class="fr" v-if="$route.params.status == 4 || $route.params.status == -1" @click="gobay">再次购买</button>
+                    <button class="fr" v-if="$route.params.status == 0" @click="pay">马上付款</button>
+                </div>
+            </footer>
         <div class="load-wrap" v-show="load_wrap" @touchmove.prevent><mt-spinner type="triple-bounce" color="rgb(38, 162, 255)"></mt-spinner></div>
     </div>
 </template>

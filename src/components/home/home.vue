@@ -165,7 +165,7 @@
         padding:.2rem;
         img{
             width: 7.1rem;
-            height: 1.66rem;
+            height: auto;
             border-radius:5px;
         }
     }

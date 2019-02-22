@@ -13,9 +13,14 @@
                 datas:'power by shopsn'
            }
         }
-    }
+    };
 </script>
 <style lang="less" scoped>
+    .minHeight100{
+      &+.shopsn{
+        margin-top: -2.5rem;
+      }
+    }
    .shopsn{
      width: 100%;
      height: 1.5rem;

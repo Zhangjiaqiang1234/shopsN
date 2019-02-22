@@ -1,55 +1,57 @@
 <!-- 个人中心组件 -->
 <template>
     <div class="per-center">
-        <div v-title data-title="个人中心">个人中心</div>
-        <div class="header-wrap">
-            <div class="header-hd">个人中心</div>
-            <div class="header-dd-center">
-                <!--<div class="setUp"></div>-->
-                <div class="icon-wrap">
-                    <img :src="require('@/assets/my_user_pic.png')">
+        <div class="minHeight100">
+            <div v-title data-title="个人中心">个人中心</div>
+            <div class="header-wrap">
+                <div class="header-hd">个人中心</div>
+                <div class="header-dd-center">
+                    <!--<div class="setUp"></div>-->
+                    <div class="icon-wrap">
+                        <img :src="require('@/assets/my_user_pic.png')">
+                    </div>
+                    <div class="admin" @click="signOut"><span></span>退出登录</div>
                 </div>
-                <div class="admin" @click="signOut"><span></span>退出登录</div>
+                <div class="status">
+                    <span class="name">{{data.user_name}}</span>
+                    <!--<span class="member">黄金会员</span>-->
+                </div>
             </div>
-            <div class="status">
-                <span class="name">{{data.user_name}}</span>
-                <!--<span class="member">黄金会员</span>-->
+            <div class="myOrder clearfix">
+                <div class="title fl"><span class="icon"></span>我的订单</div>
+                <div class="see fr" @click="toOrder(-2)"><span class="icon-right"></span>查看订单</div>
             </div>
+            <ul class="nav-link clearfix">
+                <li class="fl" v-for="(item,index) in navCon" :key="item.id" @click="toOrder(item.status)">
+                    <div class="icon-wrap">
+                        <img :src="item.imgData" alt="">
+                    </div>
+                    <p>{{item.text}}</p>
+                </li>
+            </ul>
+            <div class="myOrder clearfix">
+                <div class="title fl"><span class="icon-wallet"></span>我的钱包</div>
+                <div class="see fr" @click="toLink('/myWallet')"><span class="icon-right"></span>查看详情</div>
+            </div>
+            <ul class="account clearfix">
+                <li class="fl" @click="toLink('/myWallet')">
+                    <p class="number"><span class="money">￥</span><span class="min">{{$store.state.my_wallet.balance || 0}}</span></p>
+                    <p class="balance">账户余额</p>
+                </li>
+                <li class="fl" @click="toLink('/Integral')">
+                    <p class="number">{{$store.state.my_wallet.integral || 0}}</p>
+                    <p class="balance">积分</p>
+                </li>
+            </ul>
+            <ul class="more clearfix">
+                <li class="fl" v-for="(item,index) in more.icon" :key="item.id" @click="toLink(index)">
+                    <div class="icon-main">
+                        <img :src="item">
+                    </div>
+                    <p>{{more.name[index]}}</p>
+                </li>
+            </ul>
         </div>
-        <div class="myOrder clearfix">
-            <div class="title fl"><span class="icon"></span>我的订单</div>
-            <div class="see fr" @click="toOrder(-2)"><span class="icon-right"></span>查看订单</div>
-        </div>
-        <ul class="nav-link clearfix">
-            <li class="fl" v-for="(item,index) in navCon" :key="item.id" @click="toOrder(item.status)">
-                <div class="icon-wrap">
-                    <img :src="item.imgData" alt="">
-                </div>
-                <p>{{item.text}}</p>
-            </li>
-        </ul>
-        <div class="myOrder clearfix">
-            <div class="title fl"><span class="icon-wallet"></span>我的钱包</div>
-            <div class="see fr" @click="toLink('/myWallet')"><span class="icon-right"></span>查看详情</div>
-        </div>
-        <ul class="account clearfix">
-            <li class="fl" @click="toLink('/myWallet')">
-                <p class="number"><span class="money">￥</span><span class="min">{{$store.state.my_wallet.balance || 0}}</span></p>
-                <p class="balance">账户余额</p>
-            </li>
-            <li class="fl" @click="toLink('/Integral')">
-                <p class="number">{{$store.state.my_wallet.integral || 0}}</p>
-                <p class="balance">积分</p>
-            </li>
-        </ul>
-        <ul class="more clearfix">
-            <li class="fl" v-for="(item,index) in more.icon" :key="item.id" @click="toLink(index)">
-                <div class="icon-main">
-                    <img :src="item">
-                </div>
-                <p>{{more.name[index]}}</p>
-            </li>
-        </ul>
         <Shopsn></Shopsn>
     </div>
 </template>
@@ -185,11 +187,11 @@
         wacth:{
             
         }
-    }
+    };
 </script>
 <style lang="less" scoped>
     .per-center{
-        background:#f1f1f1;
+        background:#f8f8f8;
     }
     .header-wrap{
         width:100%;

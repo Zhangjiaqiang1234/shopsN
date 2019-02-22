@@ -1,7 +1,7 @@
 <template>
     <div class="product">
         <div v-title data-title="商品详情">商品详情</div>
-        <pr-header :text="title"></pr-header>
+        <pr-header :text="title" :showCart="showCart"></pr-header>
         <mt-swipe :auto="0">
             <mt-swipe-item v-for="item in $store.state.commodity_data.goods_img || $store.state.commodity_data.pic_url" :key="item.id">
                 <img v-lazy="URL + item">
@@ -69,7 +69,8 @@
                 title:'商品详情',
                 dataLeave:'',
                 load_wrap:true,
-                link_id:this.$route.params.id
+                link_id:this.$route.params.id,
+                showCart: true
             }
         },
         methods:{
@@ -133,6 +134,7 @@
             this.$store.commit('shops_switch',this.$store.state.const_join);
             if(localStorage.getItem('user_ID')){this.lv_switch = true}
             if(this.$route.params.status == 2){ // 如果是积分商城商品
+                this.showCart = false;
                 this.axios.post(API_URL + 'Home/Integral/integral_goodsdetail',qs.stringify({
                     goods_id:this.link_id
                 })).then((res) => {

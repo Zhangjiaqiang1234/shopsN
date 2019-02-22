@@ -5,7 +5,7 @@
             {{text}}
             <div class="integral-title" v-if="title" @click="screen">{{title}}<i class="icon"></i></div>
             <div class="input-main fl" v-if="sea"><input type="text" placeholder="请输入商品名称..."></div>
-            <span class="cartBtn" v-if="$store.state.catr_number" @click="toCart"><em>{{$store.state.catr_number}}</em></span>
+            <span class="cartBtn" v-if="$store.state.catr_number&&showCart" @click="toCart"><em>{{$store.state.catr_number}}</em></span>
             <div class="btn-search" v-if="search"></div>
             <div class="btn-ng clearfix" v-if="!btn" v-show="!set" @click="addClass">
                 <span class="fl"></span>
@@ -46,6 +46,7 @@
             }
         },
         props:{
+            showCart:true, // 是否显示购物车按钮
             text:null,
             // number:null,
             btn:null,
