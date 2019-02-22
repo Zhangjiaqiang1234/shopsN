@@ -1,3 +1,4 @@
+<!-- 个人中心组件 -->
 <template>
     <div class="per-center">
         <div v-title data-title="个人中心">个人中心</div>
@@ -60,9 +61,13 @@
         name : 'MyAiguxuan',
         data(){
             return {
+                // more:{
+                //     icon:[require('@/assets/yhq.png'),require('@/assets/jfsc.png'),require('@/assets/my_ico_01.png'),require('@/assets/my_ico_04.png'),require('@/assets/wdpj.png'),require('@/assets/my_ico_02@3x.png'),require('@/assets/my_ico_03.png'),require('@/assets/my_ico_08.png')],
+                //     name:['优惠券','积分商城','我的收藏','足迹','我的评价','收货地址','客服中心','意见反馈']
+                // },
                 more:{
-                    icon:[require('@/assets/yhq.png'),require('@/assets/jfsc.png'),require('@/assets/my_ico_02@3x.png')],
-                    name:['优惠券','积分商城','收货地址']
+                    icon:[require('@/assets/yhq.png'),require('@/assets/jfsc.png'),require('@/assets/wdpj.png'),require('@/assets/my_ico_02@3x.png')],
+                    name:['优惠券','积分商城','我的评价','收货地址']
                 },
                 Imag:'',
                 navCon:[
@@ -124,16 +129,28 @@
                     });
                 }else{
                     switch(link){
+                        // case -1:
+                        //     this.$router.push('/Collection'); // 我的收藏
+                        //     break;
+                        // case -1:
+                        //     this.$router.push('/footprint') // 足迹
+                        //     break;
+                        // case -1:
+                        //     this.$router.push('/customer'); // 客服中心
+                        //     break;
+                        // case -1:
+                        //     this.$router.push('/Feedback'); // 意见反馈
+                        //     break;
                         case 0:
                             this.$router.push('/coupon'); // 优惠券
                             break;
                         case 1:
                             this.$router.push('/Integral') // 积分商城
                             break;
-                        case -1:
-                            this.$router.push('/Collection'); // 我的收藏
-                            break;
                         case 2:
+                            this.$router.push('/myComment') // 我的评价
+                            break;
+                        case 3:
                             this.$router.push({ // 收货地址
                                 name:'address',
                                 params:{

@@ -40,7 +40,14 @@ axios.interceptors.request.use(config => {
         config.params.app_user_id = localStorage.getItem('user_ID');
         config.params.access_token = localStorage.getItem('token');
     }else if(undefined === config.data || '' === config.data){ // 如果没有参数，直接加参数
-        config.data = 'access_token='+localStorage.getItem('token')+'&app_user_id='+localStorage.getItem('user_ID');
+        if(config.method == 'get'){
+            config.params = {
+                access_token: localStorage.getItem('token'),
+                app_user_id: localStorage.getItem('user_ID')
+            }
+        }else if(config.method == 'post'){
+            config.data = 'access_token='+localStorage.getItem('token')+'&app_user_id='+localStorage.getItem('user_ID');
+        }
     }else if(typeof config.data === 'string'){ // 如果是字符串
         if(isJson(config.data)){ // 如果是 JSON 形式的字符串
             config.data = JSON.parse(config.data);

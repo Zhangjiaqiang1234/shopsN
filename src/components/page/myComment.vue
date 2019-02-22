@@ -20,10 +20,10 @@
                 </div>
                 <p class="text text2-hidden">{{item.content}}</p>
                 <div class="clearfix img-wrap">
-                    <img class="fl" v-for="items in item.imgs" :src="URL + items">
+                    <img class="fl" v-for="items in item.imgs" :src="OURL + items">
                 </div>
                 <div class="inf-wrap clearfix">
-                    <div class="inf fl">{{create_time*1000 | timeFormat}}&nbsp;&nbsp;&nbsp;<span v-for="items in item.attra">{{items.name+':'+items.item}}</span></div>
+                    <div class="inf fl">{{item.create_time*1000 | timeFormat}}&nbsp;&nbsp;&nbsp;<span v-for="items in item.attra">{{items.name+':'+items.item}}</span></div>
                     <div class="status fr" v-if="item.status == 3">差评</div>
                     <div class="status fr" v-if="item.status == 2">中评</div>
                     <div class="status fr" v-if="item.status == 1">好评</div>
@@ -38,10 +38,10 @@
                 </div>
                 <p class="text text2-hidden">{{item.content}}</p>
                 <div class="clearfix img-wrap">
-                    <img class="fl" v-for="items in item.imgs" :src="URL + items">
+                    <img class="fl" v-for="items in item.imgs" :src="OURL + items">
                 </div>
                 <div class="inf-wrap clearfix">
-                    <div class="inf fl">{{create_time*1000 | timeFormat}}&nbsp;&nbsp;&nbsp;<span v-for="items in item.attra">{{items.name+':'+items.item}}</span></div>
+                    <div class="inf fl">{{item.create_time*1000 | timeFormat}}&nbsp;&nbsp;&nbsp;<span v-for="items in item.attra">{{items.name+':'+items.item}}</span></div>
                     <div class="status fr" v-if="item.status == 3">差评</div>
                     <div class="status fr" v-if="item.status == 2">中评</div>
                     <div class="status fr" v-if="item.status == 1">好评</div>
@@ -154,6 +154,7 @@
                 }
             }
             .text{
+                margin-top: .2rem;
                 font-size:.24rem;
                 color:#333;
                 height: .7rem;
