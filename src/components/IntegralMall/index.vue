@@ -1,18 +1,19 @@
 <template>
     <div class="integral-wrap">
-        <div v-title data-title="积分兑换">积分兑换</div>
-        <integral-header :title="title" :popupVisible="popupVisible" @screen="screen"></integral-header>
-        <list-lop :data="data" :integral="integral" :load="load"></list-lop>
-        <mt-popup
-            v-model="popupVisible"
-            position="bottom">
-            <div class="picker-toolbar">  
-                <span class="mint-datetime-action mint-datetime-cancel" @click="cancel">取消</span>  
-                <span class="mint-datetime-action mint-datetime-confirm" @click="determine">确定</span>  
-              </div> 
-            <mt-picker :slots="slots" @change="onValuesChange"></mt-picker>
-        </mt-popup>
-
+        <div class="minHeight100">
+            <div v-title data-title="积分兑换">积分兑换</div>
+            <integral-header :title="title" :popupVisible.sync="popupVisible"></integral-header>
+            <list-lop :data="data" :integral="integral" :load="load"></list-lop>
+            <mt-popup
+                v-model="popupVisible"
+                position="bottom">
+                <div class="picker-toolbar">  
+                    <span class="mint-datetime-action mint-datetime-cancel" @click="cancel">取消</span>  
+                    <span class="mint-datetime-action mint-datetime-confirm" @click="determine">确定</span>  
+                  </div> 
+                <mt-picker :slots="slots" @change="onValuesChange"></mt-picker>
+            </mt-popup>
+        </div>
         <Shopsn></Shopsn>
         <div class="load-wrap" v-show="load_wrap" @touchmove.prevent><mt-spinner type="triple-bounce" color="rgb(38, 162, 255)"></mt-spinner></div>
     </div>
@@ -47,7 +48,6 @@
         methods: {
             onValuesChange(picker, values) {
                 this.num = values[0];
-                console.log(this.num)
             },
             cancel(){
                 this.popupVisible = false;

@@ -59,11 +59,10 @@
             id:'',
             delData:null,
             fooptStatus:null,
-            checklist:''
-        },
-        computed:{
-            popupVisible(){
-                return this.popupVisible;
+            checklist:'',
+            popupVisible: {
+                type: Boolean,
+                default: false
             }
         },
         methods:{
@@ -130,8 +129,8 @@
                 this.$emit('addShow')
             },
             screen(){
-                this.popupVisible = true;
-                this.$emit('screen');
+                this.$emit('update:popupVisible', true);
+                // this.$emit('screen');
             }
         }
     }
@@ -151,6 +150,7 @@
     }
     .header {
         width: 100%;
+        max-width:750px;
         height: .62rem;
         background: #4591f2;
         padding: .16rem 0;
@@ -162,6 +162,8 @@
         position:fixed;
         top:0;
         left:0;
+        right:0;
+        margin:auto;
         z-index:20;
         .integral-title{
             font-size: .32rem;

@@ -2,7 +2,7 @@
   <div class="logist-wrap">
       <div v-title :data-title="title">{{title}}</div>
       <logis-header :text="title"></logis-header>
-      <div class="status-wrap">
+      <div v-if="search_data" class="status-wrap">
           <div class="list-hide-top"></div>
           <div class="list-hide-bottom"></div>
           <div class="list-item" :class="{active:index == 0}" v-for="(item,index) in $store.state.logis_data" :key="index">
@@ -16,6 +16,12 @@
                 <p class="con">{{item.context}}</p>
           </div>
       </div>
+      <div v-if="!search_data" class="comm-null">
+        <div class="con-wrap text-center">
+            <img src="../../assets/null_com.png">
+            <p>暂无物流信息</p>
+        </div>
+    </div>
   </div>
 </template>
 <script>
@@ -25,7 +31,8 @@
         name : 'logistics',
         data(){
             return {
-                title:'物流查询'
+                title: '物流查询',
+                search_data: ''
             }
         },
         components:{
@@ -43,6 +50,14 @@
     }
 </script>
 <style lang="less" scoped>
+    .comm-null{
+        padding-top:.5rem;
+        p{
+            font-size:.28rem;
+            color:#666;
+            padding-top:.2rem;
+        }
+    }
     .status-wrap{
         margin:0 .2rem 0 .35rem;
         border-left:1px solid #bbb;

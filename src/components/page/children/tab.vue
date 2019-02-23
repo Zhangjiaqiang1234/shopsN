@@ -1,63 +1,68 @@
 <template>
     <div class="pr-tab-wrap">
+        <div class="minHeight100">
         <pr-header :text="title" :number="number"></pr-header>
-        <mt-navbar v-model="selected">
-            <mt-tab-item id="1">图文详情</mt-tab-item>
-            <mt-tab-item id="2">规格参数</mt-tab-item>
-            <mt-tab-item id="3">商品评论</mt-tab-item>
-        </mt-navbar>
-        <mt-tab-container v-model="selected">
-            <mt-tab-container-item id="1">
-                <div class="list-img-wrap" v-html="datas">
-                    <!-- <img src="" alt=""> --> 
-                    {{datas}}
-                </div>
-            </mt-tab-container-item>
-            <mt-tab-container-item id="2">
-                <ul class="list-wrap">
-                    <li class="clearfix">
-                        <span class="title fl">商品名称</span>
-                        <p class="con fl">{{data.title}}</p>
-                    </li>
-                    <li class="clearfix">
-                        <span class="title fl">品牌</span>
-                        <p class="con fl">{{data.brand}}</p>
-                    </li>
-                    <li class="clearfix">
-                        <span class="title fl">分类名称</span>
-                        <p class="con fl">{{data.className}}</p>
-                    </li>
-                    <li class="clearfix">
-                        <span class="title fl">类型</span>
-                        <p class="con fl">{{data.typename}}</p>
-                    </li>
-                    <li class="clearfix">
-                        <span class="title fl">单位</span>
-                         <p class="con fl" v-if="isNotNullArray(data.attra)">{{data.attra[0].item}}</p>
-                    </li>
-                </ul>
-            </mt-tab-container-item>
-            <mt-tab-container-item id="3">
-                <div class="comment-wrap">
-                    <h2>评论<span>({{dataItem.length}})</span></h2>
-                    <div class="list-wrap" v-for="item in dataItem" :key="item.id">
-                        <div class="list-hd clearfix">
-                            <div class="pull-left fl">
-                                <img src="../../../assets/user-d.jpg">
-                                {{item.user_name}}
-                            </div>
-                            <div class="pull-right fr"></div>
-                        </div>
-                        <div class="list-com">{{item.content}}</div>
-                        <div class="list-img-main clearfix">
-                            <img class="fl" v-for="img in item.imgs" :key="img.id" :src="OURL + img"/>
-                        </div>
-                        <div class="list-purTimer">购买日期： {{item.create_time* 1000 | timeFormat}}</div>
+            <mt-navbar v-model="selected">
+                <mt-tab-item id="1">图文详情</mt-tab-item>
+                <mt-tab-item id="2">规格参数</mt-tab-item>
+                <mt-tab-item id="3">商品评论</mt-tab-item>
+            </mt-navbar>
+            <mt-tab-container v-model="selected">
+                <mt-tab-container-item id="1">
+                    <div class="list-img-wrap" v-html="datas">
+                        <!-- <img src="" alt=""> --> 
+                        {{datas}}
                     </div>
-                </div>
-            </mt-tab-container-item>
-        </mt-tab-container>
-        <pr-foot></pr-foot>
+                </mt-tab-container-item>
+                <mt-tab-container-item id="2">
+                    <ul class="list-wrap">
+                        <li class="clearfix">
+                            <span class="title fl">商品名称</span>
+                            <p class="con fl">{{data.title}}</p>
+                        </li>
+                        <li class="clearfix">
+                            <span class="title fl">品牌</span>
+                            <p class="con fl">{{data.brand}}</p>
+                        </li>
+                        <li class="clearfix">
+                            <span class="title fl">分类名称</span>
+                            <p class="con fl">{{data.className}}</p>
+                        </li>
+                        <li class="clearfix">
+                            <span class="title fl">类型</span>
+                            <p class="con fl">{{data.typename}}</p>
+                        </li>
+                        <li class="clearfix">
+                            <span class="title fl">单位</span>
+                             <p class="con fl" v-if="isNotNullArray(data.attra)">{{data.attra[0].item}}</p>
+                        </li>
+                    </ul>
+                </mt-tab-container-item>
+                <mt-tab-container-item id="3">
+                    <div class="comment-wrap">
+                        <h2>评论<span>({{dataItem.length}})</span></h2>
+                        <div class="list-wrap" v-for="item in dataItem" :key="item.id">
+                            <div class="list-hd clearfix">
+                                <div class="pull-left fl">
+                                    <img src="../../../assets/user-d.jpg">
+                                    {{item.user_name}}
+                                </div>
+                                <div class="pull-right fr"></div>
+                            </div>
+                            <div v-show="!item.content && !isNotNullArray(item.imgs)">
+                                此用户暂时未填写评价
+                            </div>
+                            <div v-show="item.content" class="list-com">{{item.content}}</div>
+                            <div v-show="isNotNullArray(item.imgs)" class="list-img-main clearfix">
+                                <img class="fl" v-for="img in item.imgs" :key="img.id" :src="OURL + img"/>
+                            </div>
+                            <div class="list-purTimer">购买日期： {{item.create_time* 1000 | timeFormat}}</div>
+                        </div>
+                    </div>
+                </mt-tab-container-item>
+            </mt-tab-container>
+            <pr-foot></pr-foot>
+        </div>
         <Shopsn></Shopsn>
     </div>
 </template>
@@ -183,7 +188,7 @@
                 }
             }
             .list-com{
-                height:.65rem;
+                min-height:.65rem;
                 line-height:.65rem;
                 font-size:.24rem;
                 color:#333;
@@ -204,14 +209,13 @@
             }
             .list-wrap{
                 width:7.1rem;
-                padding:0 .2rem;
-                height:3rem;
+                padding:0 .2rem .12rem;
                 background:#fff;
                 margin-bottom:.1rem;
                 .list-hd{
                     padding:.2rem 0;
                     line-height:.32rem;
-                    height:.3rem;
+                    height: auto;
                     .pull-left{
                         padding-left:.46rem;
                         font-size:.2rem;

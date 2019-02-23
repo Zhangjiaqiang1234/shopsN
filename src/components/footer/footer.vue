@@ -1,7 +1,7 @@
 <template>
     <div class="foot2017">
         <ul class="footer clearfix">
-            <li class="fl" :class="{isSelected:index == parseInt(isClass)}" v-for="(item,index) in tabbar.font" :key="item.id" @click="tab(index)">
+            <li class="fl" :class="{isSelected:index == indexArr[parseInt(isClass)]}" v-for="(item,index) in tabbar.font" :key="item.id" @click="tab(index)">
                 <div class="icon"><img :src="tabbar.Icon[index]"></div>
                 <div class="icon active"><img :src="tabbar.isIcon[index]"></div>
                 <div class="font">{{item}}</div>
@@ -15,6 +15,11 @@
         data() {
             return {
                 isClass:sessionStorage.getItem('router_index'),
+                indexArr:{
+                    '0': 0,
+                    '2': 1,
+                    '3': 2
+                },
                 // tabbar:{
                 //     isIcon:[require('@/assets/tab_icon_home-active.png'),require('@/assets/tab_icon_class_active.png'),require('@/assets/tab_icon_cart_active.png'),require('@/assets/tab_icon_per_active.png')],
                 //     Icon:[require('@/assets/tab_icon_home.png'),require('@/assets/tab_icon_class.png'),require('@/assets/tab_icon_cart.png'),require('@/assets/tab_icon_per.png')],

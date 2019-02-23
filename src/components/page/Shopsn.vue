@@ -17,8 +17,13 @@
 </script>
 <style lang="less" scoped>
     .minHeight100{
-      &+.shopsn{
-        margin-top: -2.5rem;
+      &~.shopsn{
+        margin-top: -1.5rem;
+      }
+    }
+    .subject{
+      .shopsn{
+        margin-top: -1.5rem;
       }
     }
    .shopsn{

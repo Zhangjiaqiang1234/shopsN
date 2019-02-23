@@ -89,13 +89,13 @@
         </div>
         <Shopsn></Shopsn>
         <footer>
-                <div class="btn-wrap">
-                    <button class="fr" v-if="$route.params.status == 3" @click="conReceipt">确认收货</button>
-                    <button class="fr" v-if="$route.params.status == 3 || $route.params.status == 2" @click="toLogis">查看物流</button>
-                    <button class="fr" v-if="$route.params.status == 4 || $route.params.status == -1" @click="gobay">再次购买</button>
-                    <button class="fr" v-if="$route.params.status == 0" @click="pay">马上付款</button>
-                </div>
-            </footer>
+            <div class="btn-wrap">
+                <button class="fr" v-if="$route.params.status == 3" @click="conReceipt">确认收货</button>
+                <button class="fr" v-if="$route.params.status == 3 || $route.params.status == 2" @click="toLogis">查看物流</button>
+                <button class="fr" v-if="$route.params.status == 4 || $route.params.status == -1" @click="gobay">再次购买</button>
+                <button class="fr" v-if="$route.params.status == 0" @click="pay">马上付款</button>
+            </div>
+        </footer>
         <div class="load-wrap" v-show="load_wrap" @touchmove.prevent><mt-spinner type="triple-bounce" color="rgb(38, 162, 255)"></mt-spinner></div>
     </div>
 </template>
@@ -113,6 +113,7 @@
                 status:'',
                 load_wrap:true,
                 payArr:{
+                    0: '未支付',
                     1: '微信支付',
                     2: '支付宝支付',
                     3: '银联支付',
@@ -444,7 +445,9 @@
             padding:.13rem .2rem;
             position:fixed;
             left:0;
+            right:0;
             bottom:0;
+            margin:auto;
             background:rgba(0,0,0,.4);
             button{
                 width:1.71rem;

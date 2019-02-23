@@ -1,39 +1,41 @@
 <template>
     <div>
-        <div v-title data-title="商品列表">商品列表</div>
-        <list-header :sea="search"></list-header>
-        <ul class="sort-wrap clearfix text-center">
-            <li class="fl" :class="{active:sort_status == 1}" @click="sort('xl')">销量
-                <span class="icon">
-                    <em class="top" :class="{active:sort_id == 1}"></em><br>
-                    <em class="bottom" :class="{active:sort_id == 2}"></em>
-                </span>
-            </li>
-            <li class="fl" :class="{active:sort_status == 2}" @click="sort('jg')">价格
-                <span class="icon">
-                    <em class="top" :class="{active:sort_id == 3}"></em><br>
-                    <em class="bottom" :class="{active:sort_id == 4}"></em>
-                </span>
-            </li>
-            <li class="fl" @click="sort('rq')" :class="{active:sort_status == 3}">人气</li>
-        </ul>
-        <ul class="list-wrap">
-            <li class="clearfix" v-for="(item,index) in search_data" :key="item.id" @click="tolink(index)">
-                <img v-lazy="URL + item.img" class="fl">
-                <div class="list-text fl">
-                    <p class="text">{{item.title}}</p>
-                    <p class="new-price">￥
-                        <span v-if="item.price_market">{{item.price_market}}</span>
-                    <!-- <span v-if="item.price_market">{{item.price_market}}</span> -->
-                    </p>       
-                    <p class="status"><span>已有{{item.count}}条评论</span><span>{{item.sales_sum}}笔交易成功</span></p>
+        <div class="minHeight100">
+            <div v-title data-title="商品列表">商品列表</div>
+            <list-header :sea="search"></list-header>
+            <ul class="sort-wrap clearfix text-center">
+                <li class="fl" :class="{active:sort_status == 1}" @click="sort('xl')">销量
+                    <span class="icon">
+                        <em class="top" :class="{active:sort_id == 1}"></em><br>
+                        <em class="bottom" :class="{active:sort_id == 2}"></em>
+                    </span>
+                </li>
+                <li class="fl" :class="{active:sort_status == 2}" @click="sort('jg')">价格
+                    <span class="icon">
+                        <em class="top" :class="{active:sort_id == 3}"></em><br>
+                        <em class="bottom" :class="{active:sort_id == 4}"></em>
+                    </span>
+                </li>
+                <li class="fl" @click="sort('rq')" :class="{active:sort_status == 3}">人气</li>
+            </ul>
+            <ul v-if="isNotNullArray(search_data)&&search_data" class="list-wrap">
+                <li class="clearfix" v-for="(item,index) in search_data" :key="item.id" @click="tolink(index)">
+                    <img v-lazy="URL + item.img" class="fl">
+                    <div class="list-text fl">
+                        <p class="text">{{item.title}}</p>
+                        <p class="new-price">￥
+                            <span v-if="item.price_market">{{item.price_market}}</span>
+                        <!-- <span v-if="item.price_market">{{item.price_market}}</span> -->
+                        </p>       
+                        <p class="status"><span>已有{{item.count}}条评论</span><span>{{item.sales_sum}}笔交易成功</span></p>
+                    </div>
+                </li>
+            </ul>
+            <div v-if="!search_data || !isNotNullArray(search_data)" class="comm-null">
+                <div class="con-wrap text-center">
+                    <img src="../../assets/null_com.png">
+                    <p>暂无商品</p>
                 </div>
-            </li>
-        </ul>
-        <div v-if="!search_data" class="comm-null">
-            <div class="con-wrap text-center">
-                <img src="../../assets/null_com.png">
-                <p>暂无商品</p>
             </div>
         </div>
         <Shopsn></Shopsn>

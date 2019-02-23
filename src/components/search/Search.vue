@@ -3,7 +3,7 @@
         <div v-title data-title="主页">商品搜索</div>
         <div class="Search-wap clearfix">
             <div class="Search-input-main fl">
-                <input type="search" v-model="value" @input="get" placeholder="搜索宝贝、课程、讲师...">
+                <input type="search" v-model="value" @input="get" placeholder="搜索宝贝...">
             </div>
             <span @click="remove" class="return-btn fl">取消</span>
         </div>
