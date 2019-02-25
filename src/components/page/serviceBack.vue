@@ -15,10 +15,10 @@
                 </div>
             </div>
             <div class="dd clearfix" v-if="!$store.state.order_details.child">
-                <img :src="URL + $store.state.order_details.order_goods[$route.params.index].pic_url" class="fl">
+                <img :src="URL + $store.state.order_details.child[$route.params.index].pic_url" class="fl">
                 <div class="fl content">
-                    <p class="text">{{$store.state.order_details.order_goods[$route.params.index].title}}</p>
-                    <p class="number">数量：{{$store.state.order_details.order_goods[$route.params.index].goods_num}}</p>
+                    <p class="text">{{$store.state.order_details.child[$route.params.index].title}}</p>
+                    <p class="number">数量：{{$store.state.order_details.child[$route.params.index].goods_num}}</p>
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@
                 <input type="number" v-model="adAmount" @input="input">&nbsp;&nbsp;元    
             </div> 
             <p class="max" v-if="$store.state.order_details.child">您最多可申请{{$store.state.order_details.child[$route.params.index].goods_price}}元，含发货邮费0.00元</p> 
-            <p class="max" v-if="!$store.state.order_details.child">您最多可申请{{$store.state.order_details.order_goods[$route.params.index].goods_price}}元，含发货邮费0.00元</p> 
+            <p class="max" v-if="!$store.state.order_details.child">您最多可申请{{$store.state.order_details.child[$route.params.index].goods_price}}元，含发货邮费0.00元</p> 
         </div>
         <div class="amount-wrap" v-show="$route.params.status == 'rGoods'">
             <h2 class="title">申请数量</h2>
@@ -42,7 +42,7 @@
                 <button class="fl" @click="conversion('reduce')">+</button>
             </div> 
             <p class="max" v-if="$store.state.order_details.child">您最多可提交数量为{{$store.state.order_details.child[$route.params.index].goods_num}}个</p>
-            <p class="max" v-if="!$store.state.order_details.child">您最多可提交数量为{{$store.state.order_details.order_goods[$route.params.index].goods_num}}个</p> 
+            <p class="max" v-if="!$store.state.order_details.child">您最多可提交数量为{{$store.state.order_details.child[$route.params.index].goods_num}}个</p> 
         </div>
         <div class="explain-wrap">
             <h2 class="title">{{explain}}</h2>
@@ -105,6 +105,7 @@
                 }
             },
             input(){
+                console.log(this.$store.state.order_details)
                 if(this.adAmount > this.$store.state.order_details.child[this.$route.params.index].goods_price){
                     Toast({
                         message: '退款金额不能大于商品金额',

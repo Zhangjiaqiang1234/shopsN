@@ -312,6 +312,11 @@ td {
 .minHeight100>*:last-child:after{
     display: block;
     content: '';
-    /*background-color:#f8f8f8;*/
     padding-bottom: 1.5rem!important;
+}
+body .subject .minHeight100>*:last-child:after{
+    padding-bottom: 2.5rem!important;
+}
+body .minHeight100.bgf8>*:last-child:after{
+    background-color:#f8f8f8;
 }

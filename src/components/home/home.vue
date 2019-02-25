@@ -1,32 +1,33 @@
 <template>
     <div class="home">
-        <div v-title data-title="主页">主页</div>
-        <home-header :userName="getData"></home-header>
-        <mt-swipe :auto="4000">
-            <mt-swipe-item v-for="(item,index) in $store.state.home_data.banner" :key="item.id">
-                <a :href="item.ad_link">
+        <div class="minHeight100">
+            <div v-title data-title="主页">主页</div>
+            <home-header :userName="getData"></home-header>
+            <mt-swipe :auto="4000">
+                <mt-swipe-item v-for="(item,index) in $store.state.home_data.banner" :key="item.id">
+                    <a @click="judgeUrl(item.ad_link)">
+                        <img v-lazy="URL + item.pic_url">
+                    </a>
+                </mt-swipe-item>
+            </mt-swipe>
+            <news-flash :data="$store.state.home_data.getTopGoodsClass" v-if="$store.state.home_data.getTopGoodsClass"></news-flash>
+
+            <!-- 首页第一个分类 -->
+            <recommend-a :data="this.$store.state.home_data.getRecommendGoodsClass"></recommend-a>
+
+
+            <!-- 广告位 -->
+            <div class="limit-banner" v-for="item in $store.state.home_data.poopClear_img" :key="item.id">
+                <a @click="judgeUrl(item.ad_link)">
                     <img v-lazy="URL + item.pic_url">
                 </a>
-            </mt-swipe-item>
-        </mt-swipe>
-        <news-flash :data="$store.state.home_data.getTopGoodsClass" v-if="$store.state.home_data.getTopGoodsClass"></news-flash>
-
-        <!-- 首页第一个分类 -->
-        <recommend-a :data="this.$store.state.home_data.getRecommendGoodsClass"></recommend-a>
-
-
-        <!-- 广告位 -->
-        <div class="limit-banner" v-for="item in $store.state.home_data.poopClear_img" :key="item.id">
-            <a :href="item.ad_link">
-                <img v-lazy="URL + item.pic_url">
-            </a>
+            </div>
+        
+          
+            <!-- 本月特卖 -->
+            <recommend-b></recommend-b>
+            <div id="xx"></div>
         </div>
-    
-      
-        <!-- 本月特卖 -->
-        <recommend-b></recommend-b>
-
-
         <Shopsn></Shopsn>
 
         <div class="load-wrap" v-show="$store.state.load_wrap" @touchmove.prevent><mt-spinner type="triple-bounce" color="rgb(38, 162, 255)"></mt-spinner></div>
@@ -98,6 +99,21 @@
             setTimeout(function(){
                 that.$store.state.load_wrap = false;
             },1000);
+        },
+        methods:{
+            judgeUrl(adLink){ // 根据 ad_link 是跳转商品详情还是 h5 页面
+                if(isNaN(+adLink)){
+                    window.location.href = adLink;
+                }else if(adLink){ // 如果是数字那么跳商品详情页
+                    this.$router.push({
+                        name: 'product',
+                        params:{
+                            id: adLink,
+                            status: 1
+                        }
+                    });
+                }
+            }
         },
         components: {
             HomeHeader,

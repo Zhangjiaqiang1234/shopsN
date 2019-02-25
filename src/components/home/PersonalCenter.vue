@@ -1,7 +1,7 @@
 <!-- 个人中心组件 -->
 <template>
     <div class="per-center">
-        <div class="minHeight100">
+        <div class="minHeight100 bgf8">
             <div v-title data-title="个人中心">个人中心</div>
             <div class="header-wrap">
                 <div class="header-hd">个人中心</div>

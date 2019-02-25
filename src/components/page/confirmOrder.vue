@@ -1,90 +1,92 @@
 <template>
     <div class="order-wrap">
-        <div v-title data-title="确认订单">确认订单</div>
-        <order-header :text="title" :btn="btn"></order-header>
-        <div class="inf-header" @click="tolink('address')">
-            <div v-if="realname">
-                <div class="inf-name clearfix">
-                    <div class="name fl"><span></span>{{realname.realname}}</div>
-                    <div class="phone fr"><span></span>{{realname.mobile}}</div>
+        <div class="minHeight100">
+            <div v-title data-title="确认订单">确认订单</div>
+            <order-header :text="title" :btn="btn"></order-header>
+            <div class="inf-header" @click="tolink('address')">
+                <div v-if="realname">
+                    <div class="inf-name clearfix">
+                        <div class="name fl"><span></span>{{realname.realname}}</div>
+                        <div class="phone fr"><span></span>{{realname.mobile}}</div>
+                    </div>
+                    <div class="address">{{realname.prov+realname.city+realname.dist+realname.address}}</div>
                 </div>
-                <div class="address">{{realname.prov+realname.city+realname.dist+realname.address}}</div>
+                <div class="status text-center" v-if="!realname">您还没有填写收货地址，请填写！</div>
+                <span class="btn-right"></span>
             </div>
-            <div class="status text-center" v-if="!realname">您还没有填写收货地址，请填写！</div>
-            <span class="btn-right"></span>
-        </div>
-        <div class="bottom-bg"><img src="../../assets/bottom-bj.jpg"></div>
-        <ul v-if="data" class="mark-wrap">
-            <li class="clearfix" v-for="(item,index) in data.goods" :key="item.id">
-                <img :src="URL + item.fatherImg" class="fl">
-                <div class="pull-right fl">
-                    <p class="text">{{item.title}}</p>
-                    <p class="price-wrap clearfix">
-                        <span class="fl price" v-if="$route.params.id != 3">￥<span>{{item.price_market}}</span></span>
-                        <span class="fl price" v-if="$route.params.id == 3">市场参考价：￥{{item.price_market}}</span>
-                        <span class="number fr">x{{item.num}}</span>
-                    </p>
+            <div class="bottom-bg"><img src="../../assets/bottom-bj.jpg"></div>
+            <ul v-if="data" class="mark-wrap">
+                <li class="clearfix" v-for="(item,index) in data.goods" :key="item.id">
+                    <img :src="URL + item.fatherImg" class="fl">
+                    <div class="pull-right fl">
+                        <p class="text">{{item.title}}</p>
+                        <p class="price-wrap clearfix">
+                            <span class="fl price" v-if="$route.params.id != 3">￥<span>{{item.price_market}}</span></span>
+                            <span class="fl price" v-if="$route.params.id == 3">市场参考价：￥{{item.price_market}}</span>
+                            <span class="number fr">x{{item.num}}</span>
+                        </p>
+                    </div>
+                </li>
+            </ul>
+            <div v-if="data" class="dist-wrap">
+                <!-- <div class="hd active clearfix">
+                    <div class="title fl">配送方式</div>
+                    <div class="busi fr">顺丰包邮</div>
+                </div> -->
+                <div class="hd clearfix" v-if="$route.params.id != 3">
+                    <div class="title fl">选择优惠券</div>
+                    <div class="busi fr">{{coupon}}</div>
                 </div>
-            </li>
-        </ul>
-        <div v-if="data" class="dist-wrap">
-            <!-- <div class="hd active clearfix">
-                <div class="title fl">配送方式</div>
-                <div class="busi fr">顺丰包邮</div>
-            </div> -->
-            <div class="hd clearfix" v-if="$route.params.id != 3">
-                <div class="title fl">选择优惠券</div>
-                <div class="busi fr">{{coupon}}</div>
+                <!-- <div class="hd clearfix" @click="tolink('/invoice')" v-if="$route.params.id != 3">
+                    <div class="title fl">开具发票</div>
+                    <div class="busi fr">{{invoice_type}}</div>
+                </div> -->
+                <div class="dd">
+                    <div class="title">给商家留言：</div>
+                    <textarea placeholder="选填：备注限字在45个字以内" @blur="limit" v-model="message"></textarea>
+                    <p class="ind">共<span v-if="data.goods">{{data.goods.length}}</span>件商品</p>
+                </div>
             </div>
-            <!-- <div class="hd clearfix" @click="tolink('/invoice')" v-if="$route.params.id != 3">
-                <div class="title fl">开具发票</div>
-                <div class="busi fr">{{invoice_type}}</div>
-            </div> -->
-            <div class="dd">
-                <div class="title">给商家留言：</div>
-                <textarea placeholder="选填：备注限字在45个字以内" @blur="limit" v-model="message"></textarea>
-                <p class="ind">共<span v-if="data.goods">{{data.goods.length}}</span>件商品</p>
-            </div>
-        </div>
-        <div class="price-set-wrap" v-if="data">
-            <div class="total price clearfix" v-if="$route.params.id != 3">
-                <span class="fl">税前商品总额</span>
-                <span class="fr">￥{{data.total_price}}</span>
-            </div>
-            <div class="dis price clearfix" v-if="$route.params.id != 3">
-                <span class="fl">优惠</span>
-                <span class="fr">-&nbsp;&nbsp;<i>￥0</i></span>
-            </div>
-            <div class="freight price clearfix" v-if="$route.params.id != 3">
-                <span class="fl">运费</span>
-                <span class="fr">+&nbsp;&nbsp;<i>￥{{data.freight}}</i></span>
-            </div>
-            <div class="freight price clearfix" v-if="$route.params.id != 3">
-                <span class="fl">优惠券</span>
-                <span class="fr">-&nbsp;&nbsp;￥0</span>
-            </div>
-            <div class="tax price clearfix" v-if="$route.params.id != 3">
-                <span class="fl">税金</span>
-                <span class="fr">￥0</span>
-            </div>
-            <div class="curInt price clearfix" v-if="$route.params.id != 3">
-                <span class="fl">当前积分</span>
-                <span class="fr">0</span>
-            </div>
-            
-        </div>
-        <div v-if="data" class="footer-wrap">
-            <div class="foot-seat"></div>
-            <div class="footer clearfix" v-if="$route.params.id != 3">
-                <button class="fr btn" @click="toCashier">提交订单</button>
-                <div class="fr money">实付款&nbsp;:&nbsp;<span class="price">￥<span>{{Number(data.total_price) + Number(data.freight)}}</span></span></div>
-            </div>
-            <div class="footer clearfix" v-if="$route.params.id == 3">
-                <button class="fr btn" @click="toCashier">立即支付</button>
-                <div class="fr money">实付款&nbsp;:&nbsp;<span class="price"><span>{{data.pay_integral}} 积分</span></span></div>
+            <div class="price-set-wrap" v-if="data">
+                <div class="total price clearfix" v-if="$route.params.id != 3">
+                    <span class="fl">税前商品总额</span>
+                    <span class="fr">￥{{data.total_price}}</span>
+                </div>
+                <div class="dis price clearfix" v-if="$route.params.id != 3">
+                    <span class="fl">优惠</span>
+                    <span class="fr">-&nbsp;&nbsp;<i>￥0</i></span>
+                </div>
+                <div class="freight price clearfix" v-if="$route.params.id != 3">
+                    <span class="fl">运费</span>
+                    <span class="fr">+&nbsp;&nbsp;<i>￥{{data.freight}}</i></span>
+                </div>
+                <div class="freight price clearfix" v-if="$route.params.id != 3">
+                    <span class="fl">优惠券</span>
+                    <span class="fr">-&nbsp;&nbsp;￥0</span>
+                </div>
+                <div class="tax price clearfix" v-if="$route.params.id != 3">
+                    <span class="fl">税金</span>
+                    <span class="fr">￥0</span>
+                </div>
+                <div class="curInt price clearfix" v-if="$route.params.id != 3">
+                    <span class="fl">当前积分</span>
+                    <span class="fr">0</span>
+                </div>
+                
             </div>
         </div>
         <Shopsn></Shopsn>
+        <div v-if="data" class="footer-wrap">
+                <div class="foot-seat"></div>
+                <div class="footer clearfix" v-if="$route.params.id != 3">
+                    <button class="fr btn" @click="toCashier">提交订单</button>
+                    <div class="fr money">实付款&nbsp;:&nbsp;<span class="price">￥<span>{{Number(data.total_price) + Number(data.freight)}}</span></span></div>
+                </div>
+                <div class="footer clearfix" v-if="$route.params.id == 3">
+                    <button class="fr btn" @click="toCashier">立即支付</button>
+                    <div class="fr money">实付款&nbsp;:&nbsp;<span class="price"><span>{{data.pay_integral}} 积分</span></span></div>
+                </div>
+            </div>
         <div class="load" v-show="load" @touchmove.prevent><mt-spinner type="triple-bounce" color="rgb(38, 162, 255)"></mt-spinner></div>
         <div class="load-wrap" v-show="load_wrap" @touchmove.prevent><mt-spinner type="triple-bounce" color="rgb(38, 162, 255)"></mt-spinner></div>
     </div>

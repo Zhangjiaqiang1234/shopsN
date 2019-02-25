@@ -24,9 +24,9 @@
                 <img :src="maximg">
             </div>
             <div class="com_grade clearfix text-center">
-                <span class="fl" :class="{active:rev_data == 1}" @click="rev(1)"><em class="icon"></em>好评</span>
+                <span class="fl" :class="{active:rev_data == 3}" @click="rev(3)"><em class="icon"></em>好评</span>
                 <span class="fl" :class="{active:rev_data == 2}" @click="rev(2)"><em class="icon"></em>中评</span>
-                <span class="fl" :class="{active:rev_data == 3}" @click="rev(3)"><em class="icon"></em>差评</span>
+                <span class="fl" :class="{active:rev_data == 1}" @click="rev(1)"><em class="icon"></em>差评</span>
             </div>
         </div>
 
@@ -51,7 +51,7 @@
                 maximg:null,
                 msg:'',
                 status:'',
-                rev_data:1,//中评 差评 好评 如果不选择默认为好评
+                rev_data:3,//1.差评 2.一般 3.好评 如果不选择默认为好评
                 load:false,
                 img_type:'',
             }

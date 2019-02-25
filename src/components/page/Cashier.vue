@@ -1,57 +1,59 @@
 <!-- 支付详情页 -->
 <template>
     <div class="cashier">
-        <div v-title :data-title="title">{{title}}</div>
-        <cashier-header :text="title" :btn="btn"></cashier-header>
-        <div class="payment-wrap" v-if="$route.params.id != 3">
-            <div class="status">
-                <div class="pull-left fl">订单金额</div>
-                <div class="pull-right fr">
-                    <span>{{$store.state.price}}</span>元</div>
-            </div>
-        </div>
-        <div class="payment-wrap" v-if="$route.params.id == 3">
-            <div class="status">
-                <div class="pull-left fl">需付积分</div>
-                <div class="pull-right fr">
-                    <span>{{$store.state.price}}</span>积分</div>
-            </div>
-        </div>
-        <div class="choice" @click="theChecked" v-if="$route.params.id != 3">
-            <input type="radio" class="radio-input" value="使用账户余额" :checked="disabled">
-            <span class="radio-core"></span>
-            <span class="radio-label">使用账户余额
-                <span class="span-main">(当前余额：
-                    <span>{{my_wallet.balance || 0}}</span>元)</span>
-            </span>
-        </div>
-        <div class="choice" @click="theChecked" v-if="$route.params.id == 3">
-            <span class="radio-label">扣除账户积分 -{{$store.state.price}}
-                <span class="span-main">（当前积分:
-                    <span>{{data.sum || 0}}</span> 积分）</span>
-            </span>
-        </div>
-        <btn :text="text" :bt="this.disabled"></btn>
-        <dl class="other" v-if="$route.params.id != 3">
-            <dt>其他支付方式</dt>
-            <dd   v-if="zfb_notes" class="clearfix" @click="zfb">
-                <img src="../../assets/alipay.jpg" class="fl">
-                <div class="fl pull-right">
-                    <h6 class="title">支付宝支付</h6>
-                    <p class="con">支付宝安全支付</p>
+        <div class="minHeight100">
+            <div v-title :data-title="title">{{title}}</div>
+            <cashier-header :text="title" :btn="btn"></cashier-header>
+            <div class="payment-wrap" v-if="$route.params.id != 3">
+                <div class="status">
+                    <div class="pull-left fl">订单金额</div>
+                    <div class="pull-right fr">
+                        <span>{{$store.state.price}}</span>元</div>
                 </div>
-                <span class="icon"></span>
-            </dd>
-
-            <dd  v-if="wx_notes" class="clearfix" @click="wxPay">
-                    <img src="../../assets/wx.jpg" class="fl" >
+            </div>
+            <div class="payment-wrap" v-if="$route.params.id == 3">
+                <div class="status">
+                    <div class="pull-left fl">需付积分</div>
+                    <div class="pull-right fr">
+                        <span>{{$store.state.price}}</span>积分</div>
+                </div>
+            </div>
+            <div class="choice" @click="theChecked" v-if="$route.params.id != 3">
+                <input type="radio" class="radio-input" value="使用账户余额" :checked="disabled">
+                <span class="radio-core"></span>
+                <span class="radio-label">使用账户余额
+                    <span class="span-main">(当前余额：
+                        <span>{{my_wallet.balance || 0}}</span>元)</span>
+                </span>
+            </div>
+            <div class="choice" @click="theChecked" v-if="$route.params.id == 3">
+                <span class="radio-label">扣除账户积分 -{{$store.state.price}}
+                    <span class="span-main">（当前积分:
+                        <span>{{data.sum || 0}}</span> 积分）</span>
+                </span>
+            </div>
+            <btn :text="text" :bt="this.disabled"></btn>
+            <dl class="other" v-if="$route.params.id != 3">
+                <dt>其他支付方式</dt>
+                <dd   v-if="zfb_notes" class="clearfix" @click="zfb">
+                    <img src="../../assets/alipay.jpg" class="fl">
                     <div class="fl pull-right">
-                        <h6 class="title">微信支付</h6>
-                        <p class="con">微信安全支付</p>
+                        <h6 class="title">支付宝支付</h6>
+                        <p class="con">支付宝安全支付</p>
                     </div>
                     <span class="icon"></span>
                 </dd>
-        </dl>
+
+                <dd  v-if="wx_notes" class="clearfix" @click="wxPay">
+                        <img src="../../assets/wx.jpg" class="fl" >
+                        <div class="fl pull-right">
+                            <h6 class="title">微信支付</h6>
+                            <p class="con">微信安全支付</p>
+                        </div>
+                        <span class="icon"></span>
+                    </dd>
+            </dl>
+        </div>
         <Shopsn></Shopsn>
         <div class="load" v-show="load" @touchmove.prevent>
             <mt-spinner type="triple-bounce" color="rgb(38, 162, 255)"></mt-spinner>

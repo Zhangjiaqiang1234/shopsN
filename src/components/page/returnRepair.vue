@@ -19,7 +19,7 @@
                     </div>
                     <div class="time">申请时间：{{item.create_time * 1000 | timeFormat}}</div>
                 </div>
-                <div class="dd clearfix" v-for="(items,index) in item.order_goods" :key="items.id">
+                <div class="dd clearfix" v-for="(items,index) in item.child" :key="items.id">
                     <img :src="URL + items.pic_url" class="fl">
                     <div class="text-wrap fl">
                         <p class="text text2-hidden">{{items.title}}</p>

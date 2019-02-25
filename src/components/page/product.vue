@@ -96,7 +96,6 @@
                 });
             },
             ax(){
-                console.log(111)
                 this.axios({
                     url:API_URL + 'Home/Goods/goods',
                     method:'get',

@@ -1,67 +1,69 @@
 <template>
     <div class="goos">
-        <div v-title data-title="我的购物车">我的购物车</div>
-        <header class="cart-header">我的购物车({{$store.state.cart_data.length}})<router-link to="/myNews"><span></span></router-link></header>
-        <dl class="mark-wrap" v-if="$store.state.cart_data">
-            <dt>ABO商城
-                <span class="clearfix" @click="deit">
-                    <i class="fl">{{total.fn}}</i>
-                    <em class="fl"></em>
-                </span>
-            </dt>
-            <dd class="clearfix" v-for="(item,index) in $store.state.cart_data" :key="item.id" :class="{active:!total.deit}">
-                <label class="checkBox" :class="{active:status[index]}" @click="addCom(index,item)"><span></span></label>
-                <img v-lazy="URL + item.pic_url" class="fl">
-                <div class="pull-right fl" v-show="total.deit">
-                    <p class="text">{{item.title}}</p>
-                    <p class="price-wrap clearfix">
-                        <span class="fl price">￥<span>{{item.price_new}}</span></span>
-                        <span class="number fr">x{{item.goods_num}}</span>
-                    </p>
-                </div>
-                <div class="delete fr" v-show="!total.deit" @click="remove(index,item)">
-                    <div class="icon"></div>
-                    <div class="text">删除</div>
-                </div>
-                <div class="input-wrap fr" v-show="!total.deit">
-                    <button @click="reduce(index,item)">-</button>
-                    <input type="number" v-model="item.goods_num">
-                    <button @click="add(index,item)">+</button>
-                </div>
-            </dd>
-        </dl>
-            <div class="interested" v-show="total.deit" v-if="$store.state.cart_data">
-                <div class="title">
-                    <span></span>
-                    <span></span>
-                    您可能感兴趣的产品
-                </div>
-                <hot-goods :data="$store.state.computer"></hot-goods>
-            </div>
-        <div class="footer-wrap" v-if="$store.state.cart_data">
-            <div class="seat"></div>
-            <div class="footer clearfix">
-                <label class="chicked fl" :class="{active:this.total.seat}" @click="seat">
-                    <span></span>{{total.setData}}
-                </label>
-                <button class="set-btn fr" v-show="total.deit" @click="toOrder">去结算({{total.seleNumber}})</button>
-                <div class="total fl" v-show="total.deit">
-                    <div class="total-metre clearfix">
-                        <span class="title fl">总计&nbsp;:&nbsp;</span>
-                        <span class="con fl">￥<span>{{total.price.toFixed(2)}}</span></span>
+        <div class="minHeight100">
+            <div v-title data-title="我的购物车">我的购物车</div>
+            <header class="cart-header">我的购物车({{$store.state.cart_data.length}})<router-link to="/myNews"><span></span></router-link></header>
+            <dl class="mark-wrap" v-if="$store.state.cart_data">
+                <dt>ABO商城
+                    <span class="clearfix" @click="deit">
+                        <i class="fl">{{total.fn}}</i>
+                        <em class="fl"></em>
+                    </span>
+                </dt>
+                <dd class="clearfix" v-for="(item,index) in $store.state.cart_data" :key="item.id" :class="{active:!total.deit}">
+                    <label class="checkBox" :class="{active:status[index]}" @click="addCom(index,item)"><span></span></label>
+                    <img v-lazy="URL + item.pic_url" class="fl">
+                    <div class="pull-right fl" v-show="total.deit">
+                        <p class="text">{{item.title}}</p>
+                        <p class="price-wrap clearfix">
+                            <span class="fl price">￥<span>{{item.price_new}}</span></span>
+                            <span class="number fr">x{{item.goods_num}}</span>
+                        </p>
                     </div>
-                    <div class="total-price">
-                        总额：￥{{total.price.toFixed(2)}}&nbsp;&nbsp;优惠：￥{{total.dis}}
+                    <div class="delete fr" v-show="!total.deit" @click="remove(index,item)">
+                        <div class="icon"></div>
+                        <div class="text">删除</div>
                     </div>
+                    <div class="input-wrap fr" v-show="!total.deit">
+                        <button @click="reduce(index,item)">-</button>
+                        <input type="number" v-model="item.goods_num">
+                        <button @click="add(index,item)">+</button>
+                    </div>
+                </dd>
+            </dl>
+                <div class="interested" v-show="total.deit" v-if="$store.state.cart_data">
+                    <div class="title">
+                        <span></span>
+                        <span></span>
+                        您可能感兴趣的产品
+                    </div>
+                    <hot-goods :data="$store.state.computer"></hot-goods>
                 </div>
-                <div class="immig fr" v-show="!total.deit" @click="collection">移入收藏</div>
-                <div class="share fr" v-show="!total.deit">分享</div>
+            <div class="footer-wrap" v-if="$store.state.cart_data">
+                <div class="seat"></div>
+                <div class="footer clearfix">
+                    <label class="chicked fl" :class="{active:this.total.seat}" @click="seat">
+                        <span></span>{{total.setData}}
+                    </label>
+                    <button class="set-btn fr" v-show="total.deit" @click="toOrder">去结算({{total.seleNumber}})</button>
+                    <div class="total fl" v-show="total.deit">
+                        <div class="total-metre clearfix">
+                            <span class="title fl">总计&nbsp;:&nbsp;</span>
+                            <span class="con fl">￥<span>{{total.price.toFixed(2)}}</span></span>
+                        </div>
+                        <div class="total-price">
+                            总额：￥{{total.price.toFixed(2)}}&nbsp;&nbsp;优惠：￥{{total.dis}}
+                        </div>
+                    </div>
+                    <div class="immig fr" v-show="!total.deit" @click="collection">移入收藏</div>
+                    <div class="share fr" v-show="!total.deit">分享</div>
+                </div>
             </div>
-        </div>
 
-        <div class="cart-active text-center" v-if="!$store.state.cart_data">
-            <img src="../../assets/cart.png">
-            <p class="text">您的购物车没有任何商品，快去逛逛吧！</p>
+            <div class="cart-active text-center" v-if="!$store.state.cart_data">
+                <img src="../../assets/cart.png">
+                <p class="text">您的购物车没有任何商品，快去逛逛吧！</p>
+            </div>
         </div>
          <Shopsn></Shopsn>
         <div class="load" v-show="load" @touchmove.prevent><mt-spinner type="triple-bounce" color="rgb(38, 162, 255)"></mt-spinner></div>

@@ -84,7 +84,7 @@
                 </div>
                 <p class="timer-main">创建时间：{{$store.state.order_details.create_time*1000 | timeFormat}}</p>
                 <p class="timer-main">付款时间：{{$store.state.order_details.pay_time*1000 | timeFormat}}</p>
-                <p class="timer-main">发货时间：{{$store.state.order_details.delivery_time*1000 | timeFormat}}</p>
+                <p class="timer-main" v-show="$store.state.order_details.delivery_time">发货时间：{{$store.state.order_details.delivery_time*1000 | timeFormat}}</p>
             </div>
         </div>
         <Shopsn></Shopsn>

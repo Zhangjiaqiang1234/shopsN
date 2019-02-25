@@ -97,6 +97,7 @@
     .foot2017{
         width:100%;
         height:1rem;
+        position: fixed;
         .footer{
             width:100%;
             max-width:750px;
