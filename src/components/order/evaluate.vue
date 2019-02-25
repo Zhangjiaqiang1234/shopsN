@@ -93,7 +93,7 @@
                     this.$router.push({
                         name:'orderWrap',
                         params:{
-                            status:6
+                            status:-2
                         }
                     });
                 })

@@ -8,7 +8,7 @@
                 <p class="time">下单时间&nbsp;:&nbsp;{{$store.state.order_details.create_time*1000 | timeFormat}}</p>
             </div>
             <div class="dd clearfix" v-if="$store.state.order_details.child">
-                <img :src="URL + $store.state.order_details.child[$route.params.index].img" class="fl">
+                <img :src="URL + $store.state.order_details.child[$route.params.index].pic_url" class="fl">
                 <div class="fl content">
                     <p class="text">{{$store.state.order_details.child[$route.params.index].goods_title}}</p>
                     <p class="number">数量：{{$store.state.order_details.child[$route.params.index].goods_num}}</p>

@@ -1,55 +1,58 @@
 <template>
     <div class="whole-wrap">
-        <div v-title :data-title="$store.state.order_title" v-if="$store.state.order_title">{{$store.state.order_title}}</div>
-        <div class="order-wrap">
-            <div class="order-list" v-for="(item,index) in $store.state.order" :key="item.id">
-                <div class="hd clearfix">
-                    <span class="title fl">ABO商城</span>
-                    <span class="status fr" v-if="item.order_status == 0">待付款</span>
-                    <span class="status fr" v-if="item.order_status == 1">待发货</span>
-                    <span class="status fr" v-if="item.order_status == 3">待收货</span>
-                    <span class="status fr" v-if="item.order_status == 4 && item.order_state != '1'">已完成</span>
-                    <span class="status fr" v-if="item.order_state == '1'">待评论</span>
-                    <span class="status fr" v-if="item.order_status == -1">已取消</span>
-                </div>
-                <div class="describe clearfix" v-for="text in item.goods" :key="text.id">
-                    <img :src="URL + text.selfImg" class="fl" @click="toDetails(item,text,index)">
-                    <div class="fl words" @click="toDetails(item,text,index)">
-                        <p class="text">{{text.title}}</p>
-                        <p class="clearfix company">
-                            <span class="fl" v-if="text.selfAttr[0]">{{text.selfAttr[0].name}}&nbsp;:&nbsp;</span>
-                            <span class="fl" v-if="text.selfAttr[0]">{{text.selfAttr[0].item}}</span>
-                        </p>
+        <div class="minHeight100">
+            <div v-title :data-title="$store.state.order_title" v-if="$store.state.order_title">{{$store.state.order_title}}</div>
+            <div class="order-wrap">
+                <div class="order-list" v-for="(item,index) in $store.state.order" :key="item.id">
+                    <div class="hd clearfix">
+                        <span class="title fl">ABO商城</span>
+                        <span class="status fr" v-if="item.order_status == 0">待付款</span>
+                        <span class="status fr" v-if="item.order_status == 1">待发货</span>
+                        <span class="status fr" v-if="item.order_status == 3">待收货</span>
+                        <span class="status fr" v-if="item.order_status == 4 && item.order_state != '1'">已完成</span>
+                        <span class="status fr" v-if="item.order_state == '1'">待评论</span>
+                        <span class="status fr" v-if="item.order_status == -1">已取消</span>
                     </div>
-                    <button class="btn" @click="toRouter('/evaluate',item,text)" v-if="item.order_state == '1'">马上评论</button>
+
+                    <div v-show="!(item.order_state=='1'&&text.comment==1)" class="describe clearfix" v-for="text in item.goods" :key="text.id">
+                        <img :src="URL + text.selfImg" class="fl" @click="toDetails(item,text,index)">
+                        <div class="fl words" @click="toDetails(item,text,index)">
+                            <p class="text">{{text.title}}</p>
+                            <p class="clearfix company">
+                                <span class="fl" v-if="text.selfAttr[0]">{{text.selfAttr[0].name}}&nbsp;:&nbsp;</span>
+                                <span class="fl" v-if="text.selfAttr[0]">{{text.selfAttr[0].item}}</span>
+                            </p>
+                        </div>
+                        <button class="btn" @click="toRouter('/evaluate',item,text)" v-if="item.order_state == '1'">马上评论</button>
+                    </div>
+                    <div class="commod clearfix">
+                        <span class="fl total">共{{item.count}}件商品</span> 
+                        <span class="fl actual">实付款&nbsp;:&nbsp;<span>￥{{item.price_sum}}</span></span>
+                        <!-- <span class="icon" @click="del(item,index)" v-if="item.order_status == 4 || item.order_status == -1"></span> -->
+                    </div>
+                    <div class="operation clearfix">
+                        <span class="timer fl">下单时间：{{item.create_time * 1000 | timeFormat}}</span>
+                        <button class="btn fr" style="margin-left:.1rem;" @click="toRouter('/pay',item,false)" v-if="item.order_status == 0">马上付款</button>
+                        <button class="btn fr" style="margin-left:.1rem;" @click="toRouter('/Cart',item,1)" v-if="item.order_status == 4 || item.order_status == -1" v-show="item.order_state != '1'">再次购买</button>
+                        <button class="btn fr" @click="toCancel(item,'-2')" v-if="item.order_status == -1">删除订单</button>
+                        <button class="btn fr" @click="toCancel(item,'-1')" v-if="item.order_status == 0">取消订单</button>
+                        <button class="btn fr" @click="toRouter('/order',item,false)" v-if="item.order_status == 1">查看订单</button>
+                        <button class="btn fr" @click="toRouter('/logis',item,false)" v-if="item.order_status == 3">查看物流</button>
+                        
+                    </div>
                 </div>
-                <div class="commod clearfix">
-                    <span class="fl total">共{{item.count}}件商品</span> 
-                    <span class="fl actual">实付款&nbsp;:&nbsp;<span>￥{{item.price_sum}}</span></span>
-                    <!-- <span class="icon" @click="del(item,index)" v-if="item.order_status == 4 || item.order_status == -1"></span> -->
+                <div class="comm-null" v-if="!$store.state.order">
+                    <div class="con-wrap text-center">
+                        <img src="../../assets/null_com.png">
+                        <p>暂时没有商品</p>
+                    </div>
                 </div>
-                <div class="operation clearfix">
-                    <span class="timer fl">下单时间：{{item.create_time * 1000 | timeFormat}}</span>
-                    <button class="btn fr" style="margin-left:.1rem;" @click="toRouter('/pay',item,false)" v-if="item.order_status == 0">马上付款</button>
-                    <button class="btn fr" style="margin-left:.1rem;" @click="toRouter('/Cart',item,1)" v-if="item.order_status == 4 || item.order_status == -1" v-show="item.order_state != '1'">再次购买</button>
-                    <button class="btn fr" @click="toCancel(item,'-2')" v-if="item.order_status == -1">删除订单</button>
-                    <button class="btn fr" @click="toCancel(item,'-1')" v-if="item.order_status == 0">取消订单</button>
-                    <button class="btn fr" @click="toRouter('/order',item,false)" v-if="item.order_status == 1">查看订单</button>
-                    <button class="btn fr" @click="toRouter('/logis',item,false)" v-if="item.order_status == 3">查看物流</button>
-                    
-                </div>
+                <p class="page-infinite-loading" v-show="$store.state.queryLoading">
+                    <mt-spinner type="fading-circle" color="#666" :size="20" v-show="$store.state.moreLoading"></mt-spinner>
+                    <span style="font-size:.2rem;color:#666;" v-show="$store.state.allLoaded">暂无更多数据</span>
+                    <span style="font-size:.2rem;color:#666;" v-show="$store.state.loading">加载中...</span>
+                </p>
             </div>
-            <div class="comm-null" v-if="!$store.state.order">
-                <div class="con-wrap text-center">
-                    <img src="../../assets/null_com.png">
-                    <p>暂时没有商品</p>
-                </div>
-            </div>
-            <p class="page-infinite-loading" v-show="$store.state.queryLoading">
-                <mt-spinner type="fading-circle" color="#666" :size="20" v-show="$store.state.moreLoading"></mt-spinner>
-                <span style="font-size:.2rem;color:#666;" v-show="$store.state.allLoaded">暂无更多数据</span>
-                <span style="font-size:.2rem;color:#666;" v-show="$store.state.loading">加载中...</span>
-            </p>
         </div>
         <Shopsn></Shopsn>
         <div class="load" v-show="$store.state.order_load" @touchmove.prevent><mt-spinner type="triple-bounce" color="rgb(38, 162, 255)"></mt-spinner></div>

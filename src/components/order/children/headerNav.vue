@@ -194,6 +194,7 @@
     .nav-wrap{
         position:fixed;
         width:100%;
+        max-width: 750px;
         z-index: 1;
         overflow-x:auto;
         background:#fff;

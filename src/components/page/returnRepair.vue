@@ -1,64 +1,66 @@
 <template>
     <div>
-        <div v-title :data-title="title">{{title}}</div>
-        <repair-header :text="title"></repair-header>
-        <ol class="tab-hd clearfix text-center">
-            <li class="fl" :class="{active:status == 0}" @click="toAjax(0)"><span>售后申请</span></li>
-            <li class="fl" :class="{active:status == 1}" @click="toAjax(1)"><span>进度查询</span></li>
-        </ol>
-        <div class="search-hd clearfix">
-            <input type="search" placeholder="商品名称 , 订单编号" class="fl">
-            <button class="fl">搜索</button>
-        </div>
-        <ul class="list-wrap" v-if="status == 0 && sta">
-            <li v-for="item in $store.state.repair" :key="item.id">
-                <div class="hd">
-                    <div class="oddNumbers clearfix">
-                        <span class="name fl">服务单号：{{item.order_sn_id}}</span>
-                        <!--<span class="status fr">待收货</span>-->
+        <div class="minHeight100">
+            <div v-title :data-title="title">{{title}}</div>
+            <repair-header :text="title"></repair-header>
+            <ol class="tab-hd clearfix text-center">
+                <li class="fl" :class="{active:status == 0}" @click="toAjax(0)"><span>售后申请</span></li>
+                <li class="fl" :class="{active:status == 1}" @click="toAjax(1)"><span>进度查询</span></li>
+            </ol>
+            <div class="search-hd clearfix">
+                <input type="search" placeholder="商品名称 , 订单编号" class="fl">
+                <button class="fl">搜索</button>
+            </div>
+            <ul class="list-wrap" v-if="status == 0 && sta">
+                <li v-for="item in $store.state.repair" :key="item.id">
+                    <div class="hd">
+                        <div class="oddNumbers clearfix">
+                            <span class="name fl">服务单号：{{item.order_sn_id}}</span>
+                            <!--<span class="status fr">待收货</span>-->
+                        </div>
+                        <div class="time">申请时间：{{item.create_time * 1000 | timeFormat}}</div>
                     </div>
-                    <div class="time">申请时间：{{item.create_time * 1000 | timeFormat}}</div>
-                </div>
-                <div class="dd clearfix" v-for="(items,index) in item.child" :key="items.id">
-                    <img :src="URL + items.pic_url" class="fl">
-                    <div class="text-wrap fl">
-                        <p class="text text2-hidden">{{items.title}}</p>
-                        <div class="btn-wrap clearfix">
-                            <span class="fl">数量：{{items.goods_num}}</span>
-                            <button class="fr active" @click="toService('rGoods',index,item)">申请售后</button>
+                    <div class="dd clearfix" v-for="(items,index) in item.child" :key="items.id">
+                        <img :src="URL + items.pic_url" class="fl">
+                        <div class="text-wrap fl">
+                            <p class="text text2-hidden">{{items.title}}</p>
+                            <div class="btn-wrap clearfix">
+                                <span class="fl">数量：{{items.goods_num}}</span>
+                                <button class="fr active" @click="toService('rGoods',index,item)">申请售后</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </li>
-        </ul>
+                </li>
+            </ul>
 
-        <ul class="list-wrap" v-if="status == 1 && sta">
-            <li v-for="item in $store.state.repair" :key="item.id">
-                <div class="hd">
-                    <div class="oddNumbers clearfix">
-                        <span class="name fl">服务单号：{{item.order_sn_id}}</span>
-                        <!--<span class="status fr">待收货</span>-->
+            <ul class="list-wrap" v-if="status == 1 && sta">
+                <li v-for="item in $store.state.repair" :key="item.id">
+                    <div class="hd">
+                        <div class="oddNumbers clearfix">
+                            <span class="name fl">服务单号：{{item.order_sn_id}}</span>
+                            <!--<span class="status fr">待收货</span>-->
+                        </div>
+                        <div class="time">申请时间：{{item.create_time * 1000 | timeFormat}}</div>
                     </div>
-                    <div class="time">申请时间：{{item.create_time * 1000 | timeFormat}}</div>
-                </div>
-                <div class="dd clearfix" @click="tolink(item)">
-                    <img :src="URL + item.pic_url" class="fl">
-                    <div class="text-wrap fl">
-                        <p class="text text2-hidden">{{item.title}}</p>
-                        <div class="btn-wrap clearfix">
-                            <span class="fl">数量：{{item.number}}</span>
-                            <button class="fr" v-if="item.status == 0">审核中</button>
-                            <button class="fr" v-if="item.status == 1">审核失败</button>
-                            <button class="fr" v-if="item.status == 2">审核通过</button>
-                            <button class="fr" v-if="item.status == 3">退货中</button>
-                            <button class="fr" v-if="item.status == 4">退款中</button>
-                            <button class="fr" v-if="item.status == 5">完成</button>
-                            <button class="fr" v-if="item.status == 6">已撤销</button>
+                    <div class="dd clearfix" @click="tolink(item)">
+                        <img :src="URL + item.pic_url" class="fl">
+                        <div class="text-wrap fl">
+                            <p class="text text2-hidden">{{item.title}}</p>
+                            <div class="btn-wrap clearfix">
+                                <span class="fl">数量：{{item.number}}</span>
+                                <button class="fr" v-if="item.status == 0">审核中</button>
+                                <button class="fr" v-if="item.status == 1">审核失败</button>
+                                <button class="fr" v-if="item.status == 2">审核通过</button>
+                                <button class="fr" v-if="item.status == 3">退货中</button>
+                                <button class="fr" v-if="item.status == 4">退款中</button>
+                                <button class="fr" v-if="item.status == 5">完成</button>
+                                <button class="fr" v-if="item.status == 6">已撤销</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </li>
-        </ul>
+                </li>
+            </ul>
+        </div>
         <Shopsn></Shopsn>
         <div class="load" v-show="load" @touchmove.prevent><mt-spinner type="triple-bounce" color="rgb(38, 162, 255)"></mt-spinner></div>
         <div class="load-wrap" v-show="load_wrap" @touchmove.prevent><mt-spinner type="triple-bounce" color="rgb(38, 162, 255)"></mt-spinner></div>
