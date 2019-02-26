@@ -4,32 +4,32 @@
         <div class="rule-wrap" v-show="rule">
             <div class="rule-bg" @click="addShow"></div>
             <div class="content-wrap">
-                <div class="title text-center">积分规则</div>
+                <div class="title text-center">钻石规则</div>
                 <div class="rule-main">
                     <div class="item-list">
-                        <h5>如何获取积分</h5>
+                        <h5>如何获取钻石</h5>
                         <dl>
-                            <dt>1.新客户注册得积分</dt>
-                            <dd>首次在ABO官网(www.abochain.io)注册的新客户，即可免费获得积分。</dd>
+                            <dt>1.新客户注册得钻石</dt>
+                            <dd>首次在ABO官网(www.abochain.io)注册的新客户，即可免费获得钻石。</dd>
                         </dl>
                         <dl>
-                            <dt>2.网站购物得积分</dt>
-                            <dd>10元=1积分(现金卡券类商品不可获得积分)</dd>
-                            <dd>注: 积分数量计算结果采用去尾数结算，不支持四舍五入结算。</dd>
+                            <dt>2.网站购物得钻石</dt>
+                            <dd>10元=1钻石(现金卡券类商品不可获得钻石)</dd>
+                            <dd>注: 钻石数量计算结果采用去尾数结算，不支持四舍五入结算。</dd>
                         </dl>
                         <dl>
-                            <dt>3.首单额外奖励积分</dt>
-                            <dd>新客户首单额外赠送积分。</dd>
+                            <dt>3.首单额外奖励钻石</dt>
+                            <dd>新客户首单额外赠送钻石。</dd>
                         </dl>
                     </div>
                     <div class="item-list">
-                        <h5>如何使用积分?</h5>
+                        <h5>如何使用钻石?</h5>
                         <dl>
                             <dt>1.兑换礼品</dt>
                         </dl>
                         <dl>
                             <dt>2.抵扣运费</dt>
-                            <dd>当您订购商品时,订单金额未达到免运条件需要支付运费,可使用积分抵扣运费。</dd>
+                            <dd>当您订购商品时,订单金额未达到免运条件需要支付运费,可使用钻石抵扣运费。</dd>
                         </dl>
                     </div>
                 </div>

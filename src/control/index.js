@@ -66,7 +66,7 @@ const state = { //创建数据仓库
     repair: '', //退货返修
 
     /*
-        积分
+        钻石
     */
     integral: 0,
 

@@ -9,7 +9,7 @@
                         <img :src="URL + $store.state.commodity_data.pic_url[0]" v-if="$store.state.commodity_data.pic_url">
                         <p class="item">{{$store.state.commodity_data.title || $store.state.commodity_data.goods.title}}</p>
                         <p class="price" v-if="$route.params.status == 1">￥<span>{{$store.state.commodity_data.price_market}}</span></p>
-                        <p class="price" v-if="$store.state.commodity_data.goods"><span>{{$store.state.commodity_data.goods.integral}}</span> 积分</p>
+                        <p class="price" v-if="$store.state.commodity_data.goods"><span>{{$store.state.commodity_data.goods.integral}}</span> 钻石</p>
                         <span class="delete-btn" @click="remove">×</span>
                     </div>
                     <dl class="gui clearfix" v-if="allattrcha">
@@ -34,7 +34,7 @@
                     <div class="com">
                         共<span>{{Number($store.state.commodity_val)}} </span>件&nbsp;&nbsp;
                         共计<span v-if="$store.state.commodity_data.price_market"><i>￥</i>{{$store.state.commodity_val * $store.state.commodity_data.price_market}}</span>
-                        <span v-if="$store.state.commodity_data.goods"> {{$store.state.commodity_val * $store.state.commodity_data.goods.integral}} <i>积分</i></span>
+                        <span v-if="$store.state.commodity_data.goods"> {{$store.state.commodity_val * $store.state.commodity_data.goods.integral}} <i>钻石</i></span>
                     </div>
                 </div>
                 

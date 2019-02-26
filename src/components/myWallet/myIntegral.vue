@@ -3,7 +3,7 @@
       <div v-title :data-title="title">{{title}}</div>
       <integ-header :text="title" :rule="rule" @addShow="addShow"></integ-header>
       <div class="myInte-banner text-center">
-        <p class="title">可用积分</p>
+        <p class="title">可用钻石</p>
         <p class="number">{{data.sum}}</p>
         <p class="link" @click="tolink('/intOrder')">我的兑换</p>
       </div>
@@ -24,11 +24,11 @@
         name : 'myIntegral',
         data(){
             return {
-                title:'我的积分',
+                title:'我的钻石',
                 rule:true,
                 ruleCon:false,
                 accDetails:{
-                    title:'积分明细',
+                    title:'钻石明细',
                     content:''
                 },
                 btnText:'马上兑换商品',

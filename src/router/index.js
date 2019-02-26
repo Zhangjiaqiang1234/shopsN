@@ -7,8 +7,8 @@ const braDetails = r => require(['@/components/brandMuseum/listDetails'], r); //
 const latestProm = r => require(['@/components/latestProm/latestProm'], r); //最新促销
 const poopClearance = r => require(['@/components/poopClearance/index'], r); //尾货清仓
 const list = r => require(['@/components/page/list'], r); //商品列表
-const IntegralMall = r => require(['@/components/IntegralMall/index'], r); //积分商城-列表
-const myIntegral = r => require(['@/components/myWallet/myIntegral'], r); //我的积分
+const IntegralMall = r => require(['@/components/IntegralMall/index'], r); //钻石商城-列表
+const myIntegral = r => require(['@/components/myWallet/myIntegral'], r); //我的钻石
 const coupon = r => require(['@/components/page/coupon'], r); //优惠券
 const footprint = r => require(['@/components/page/footprint'], r); //我的足迹
 const myComment = r => require(['@/components/page/myComment'], r); //我的评论
@@ -39,7 +39,7 @@ const modifyPassword = r => require(['@/components/page/modifyPassword'], r); //
 const wholeOrder = r => require(['@/components/order/whole'], r); //订单入口
 const orderWrap = r => require(['@/components/order/order'], r); //订单
 const orderDetails = r => require(['@/components/order/orderDetails'], r); //订单详情
-const intOrder = r => require(['@/components/page/integral_order'], r); //积分订单
+const intOrder = r => require(['@/components/page/integral_order'], r); //钻石订单
 const serviceBack = r => require(['@/components/page/serviceBack'], r); //申请售后
 const evaluate = r => require(['@/components/order/evaluate'], r); //商品评价
 const logis = r => require(['@/components/page/logistics'], r); //物流查询
@@ -175,7 +175,7 @@ const router = new Router({
                 name: 'comList',
                 component: list
             },
-            { //积分商城-列表
+            { //钻石商城-列表
                 path: '/IntegralMall',
                 name: 'IntegralMall',
                 component: IntegralMall
@@ -235,7 +235,7 @@ const router = new Router({
                 name: 'product',
                 component: product
             },
-            { //积分订单
+            { //钻石订单
                 path: '/intOrder',
                 name: 'intOrder',
                 component: intOrder
@@ -261,7 +261,7 @@ const router = new Router({
                 name: 'seetin',
                 component: seetin
             },
-            { //积分
+            { //钻石
                 path: '/Integral',
                 name: 'myIntegral',
                 component: myIntegral

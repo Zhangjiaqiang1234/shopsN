@@ -7,7 +7,7 @@
             <div class="imm fl" @click="hide">立即购买</div>
         </div>
         <div class="btn-main clearfix" v-if="$route.params.status == 2">
-            <!--<span class="fl ex">我的积分：<em>1000</em>积分</span>-->
+            <!--<span class="fl ex">我的钻石：<em>1000</em>钻石</span>-->
             <div class="imm fr" @click="hide">立即兑换</div>
         </div>
     </div>

@@ -13,9 +13,9 @@
             </div>
             <div class="payment-wrap" v-if="$route.params.id == 3">
                 <div class="status">
-                    <div class="pull-left fl">需付积分</div>
+                    <div class="pull-left fl">需付钻石</div>
                     <div class="pull-right fr">
-                        <span>{{$store.state.price}}</span>积分</div>
+                        <span>{{$store.state.price}}</span>钻石</div>
                 </div>
             </div>
             <div class="choice" @click="theChecked" v-if="$route.params.id != 3">
@@ -27,9 +27,9 @@
                 </span>
             </div>
             <div class="choice" @click="theChecked" v-if="$route.params.id == 3">
-                <span class="radio-label">扣除账户积分 -{{$store.state.price}}
-                    <span class="span-main">（当前积分:
-                        <span>{{data.sum || 0}}</span> 积分）</span>
+                <span class="radio-label">扣除账户钻石 -{{$store.state.price}}
+                    <span class="span-main">（当前钻石:
+                        <span>{{data.sum || 0}}</span> 钻石）</span>
                 </span>
             </div>
             <btn :text="text" :bt="this.disabled"></btn>
@@ -194,7 +194,7 @@ export default {
     },
     mounted() {      
         document.body.scrollTop = 0;
-        if (this.$route.params.id == 3) { // id == 3 此时是需要使用积分去支付的
+        if (this.$route.params.id == 3) { // id == 3 此时是需要使用钻石去支付的
             this.axios.post(API_URL + 'Home/Integral/integral').then((res) => {
                 this.data = res.data.data;
             }).catch((err) => {

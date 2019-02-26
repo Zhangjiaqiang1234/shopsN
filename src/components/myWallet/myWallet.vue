@@ -26,7 +26,7 @@
         <li class="fl clearfix" @click="toRecharge('/Integral')">
           <span class="icon fl"></span>
           <div class="text fl">
-            <div class="title">我的积分</div>
+            <div class="title">我的钻石</div>
             <div class="number">{{Number($store.state.my_wallet.integral)}}</div>
           </div>
         </li>

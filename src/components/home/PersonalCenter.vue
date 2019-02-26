@@ -40,7 +40,7 @@
                 </li>
                 <li class="fl" @click="toLink('/Integral')">
                     <p class="number">{{$store.state.my_wallet.integral || 0}}</p>
-                    <p class="balance">积分</p>
+                    <p class="balance">钻石</p>
                 </li>
             </ul>
             <ul class="more clearfix">
@@ -65,11 +65,11 @@
             return {
                 // more:{
                 //     icon:[require('@/assets/yhq.png'),require('@/assets/jfsc.png'),require('@/assets/my_ico_01.png'),require('@/assets/my_ico_04.png'),require('@/assets/wdpj.png'),require('@/assets/my_ico_02@3x.png'),require('@/assets/my_ico_03.png'),require('@/assets/my_ico_08.png')],
-                //     name:['优惠券','积分商城','我的收藏','足迹','我的评价','收货地址','客服中心','意见反馈']
+                //     name:['优惠券','钻石商城','我的收藏','足迹','我的评价','收货地址','客服中心','意见反馈']
                 // },
                 more:{
                     icon:[require('@/assets/yhq.png'),require('@/assets/jfsc.png'),require('@/assets/wdpj.png'),require('@/assets/my_ico_02@3x.png')],
-                    name:['优惠券','积分商城','我的评价','收货地址']
+                    name:['优惠券','钻石商城','我的评价','收货地址']
                 },
                 Imag:'',
                 navCon:[
@@ -147,7 +147,7 @@
                             this.$router.push('/coupon'); // 优惠券
                             break;
                         case 1:
-                            this.$router.push('/Integral') // 积分商城
+                            this.$router.push('/Integral') // 钻石商城
                             break;
                         case 2:
                             this.$router.push('/myComment') // 我的评价

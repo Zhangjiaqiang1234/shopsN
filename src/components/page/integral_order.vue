@@ -26,7 +26,7 @@
                 </div>
                 <div class="commod clearfix">
                     <span class="fl total">共{{item.count}}件商品</span> 
-                    <span class="fl actual">积分兑换&nbsp;:&nbsp;<span>-{{item.integral}}</span></span>
+                    <span class="fl actual">钻石兑换&nbsp;:&nbsp;<span>-{{item.integral}}</span></span>
                     <span class="icon" @click="del(item,index)" v-if="item.order_status == 4 || item.order_status == -1"></span>
                 </div>
                 <div class="operation clearfix">
@@ -78,7 +78,7 @@
                     params:{
                         status:item.order_status,
                         order:item.id,
-                        order_type:1 //1为积分订单 2 为商品订单
+                        order_type:1 //1为钻石订单 2 为商品订单
                     }
                 });
             },
@@ -99,7 +99,7 @@
                             params:{
                                 status:4,
                                 order:item.id,
-                                order_type:1 //1为积分订单 2 为商品订单
+                                order_type:1 //1为钻石订单 2 为商品订单
                             }
                         })
                         break;
@@ -109,7 +109,7 @@
                             params:{
                                 status:3,
                                 id:item.id,
-                                order_type:1 //1为积分订单 2 为商品订单
+                                order_type:1 //1为钻石订单 2 为商品订单
                             }
                         });
                         break;
@@ -119,7 +119,7 @@
                             params:{
                                 status:2,
                                 order:item.id,
-                                 order_type:1 //1为积分订单 2 为商品订单
+                                 order_type:1 //1为钻石订单 2 为商品订单
                             }
                         });
                         break;

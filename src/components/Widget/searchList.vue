@@ -5,7 +5,7 @@
                 <img v-lazy="URL + item.pic_url" class="fl">
                 <div class="list-text fl">
                     <p class="text">{{item.title}}</p>
-                    <p class="new-price" v-if="integral"><span>{{item.integral}}&nbsp;<em>积分</em></span></p>
+                    <p class="new-price" v-if="integral"><span>{{item.integral}}&nbsp;<em>钻石</em></span></p>
                     <p class="new-price" v-if="!integral">￥<span>{{item.price_market}}</span></p>
                     <p class="status" v-if="!integral"><span>已有{{item.comment}}条评论</span><span>{{item.trade}}笔交易成功</span></p>
                     <p class="status" v-if="integral" style="padding-top:.2rem;"><span>市场参考价：{{item.price_market}}元</span></p>
@@ -38,10 +38,10 @@
         },
         methods:{
             tolink(item){
-                // 判断积分是否足够
+                // 判断钻石是否足够
                 if(1*item.integral > 1*this.$store.state.integral){
                     Toast({
-                        message: '积分不足',
+                        message: '钻石不足',
                         position: 'middle'
                     });
                     return false;

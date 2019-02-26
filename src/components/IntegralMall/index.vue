@@ -1,7 +1,7 @@
 <template>
     <div class="integral-wrap">
         <div class="minHeight100">
-            <div v-title data-title="积分兑换">积分兑换</div>
+            <div v-title data-title="钻石兑换">钻石兑换</div>
             <integral-header :title="title" :popupVisible.sync="popupVisible"></integral-header>
             <list-lop :data="data" :integral="integral" :load="load"></list-lop>
             <mt-popup
@@ -28,7 +28,7 @@
         name : 'IntegralMall',
         data(){
             return {
-                title:'积分筛选',
+                title:'钻石筛选',
                 num:'',
                 data:'',
                 integral:'',

@@ -36,7 +36,7 @@
                                 <button class="fr btn" v-if="$route.params.status == 4" @click="toService('rGoods',index)">申请售后</button>
                             </p>
                             <p class="clearfix price-main" v-if="$route.params.order_type == 1">
-                                <span class="fl price">{{item.integral}}&nbsp;积分</span>
+                                <span class="fl price">{{item.integral}}&nbsp;钻石</span>
                             </p>
                         </div>
                     </li>

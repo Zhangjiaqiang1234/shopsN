@@ -132,7 +132,7 @@
             this.$store.commit('value',this.$store.state.commodity_val);
             this.$store.commit('shops_switch',this.$store.state.const_join);
             if(localStorage.getItem('user_ID')){this.lv_switch = true}
-            if(this.$route.params.status == 2){ // 如果是积分商城商品
+            if(this.$route.params.status == 2){ // 如果是钻石商城商品
                 this.showCart = false;
                 this.axios.post(API_URL + 'Home/Integral/integral_goodsdetail',qs.stringify({
                     goods_id:this.link_id

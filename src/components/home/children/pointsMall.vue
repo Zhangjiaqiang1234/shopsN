@@ -19,7 +19,7 @@
         },
         data(){
            return {
-                title:'积分商场',
+                title:'钻石商场',
                 imgSrc:require('@/assets/mall.jpg'),
                 bannerSrc:require('@/assets/con13.jpg'),
                 content:{

@@ -197,7 +197,7 @@
                     params:{
                         status:item.order_status,
                         order:item.id,
-                        order_type:2 //1为积分订单 2 为商品订单
+                        order_type:2 //1为钻石订单 2 为商品订单
                     }
                 });
             },
@@ -218,7 +218,7 @@
                             params:{
                                 status:4,
                                 order:item.id,
-                                order_type:2 //1为积分订单 2 为商品订单
+                                order_type:2 //1为钻石订单 2 为商品订单
                             }
                         })
                         break;
@@ -228,7 +228,7 @@
                             params:{
                                 status:3,
                                 id:item.id,
-                                order_type:2 //1为积分订单 2 为商品订单
+                                order_type:2 //1为钻石订单 2 为商品订单
                             }
                         });
                         break;
@@ -238,7 +238,7 @@
                             params:{
                                 status:2,
                                 order:item.id,
-                                order_type:2 //1为积分订单 2 为商品订单
+                                order_type:2 //1为钻石订单 2 为商品订单
                             }
                         });
                         break;
@@ -248,7 +248,7 @@
                             params:{
                                 status:item.order_status,
                                 order:item.id,
-                                order_type:2 //1为积分订单 2 为商品订单
+                                order_type:2 //1为钻石订单 2 为商品订单
                             }
                         });
                         break;

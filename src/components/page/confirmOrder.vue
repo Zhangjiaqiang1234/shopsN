@@ -69,7 +69,7 @@
                     <span class="fr">￥0</span>
                 </div>
                 <div class="curInt price clearfix" v-if="$route.params.id != 3">
-                    <span class="fl">当前积分</span>
+                    <span class="fl">当前钻石</span>
                     <span class="fr">0</span>
                 </div>
                 
@@ -84,7 +84,7 @@
                 </div>
                 <div class="footer clearfix" v-if="$route.params.id == 3">
                     <button class="fr btn" @click="toCashier">立即支付</button>
-                    <div class="fr money">实付款&nbsp;:&nbsp;<span class="price"><span>{{data.pay_integral}} 积分</span></span></div>
+                    <div class="fr money">实付款&nbsp;:&nbsp;<span class="price"><span>{{data.pay_integral}} 钻石</span></span></div>
                 </div>
             </div>
         <div class="load" v-show="load" @touchmove.prevent><mt-spinner type="triple-bounce" color="rgb(38, 162, 255)"></mt-spinner></div>
@@ -119,10 +119,10 @@
         methods: {
             toCashier() {//创建订单
                 let that = this;
-                if (this.$route.params.id == 3) {//积分订单生成
+                if (this.$route.params.id == 3) {//钻石订单生成
                     this.axios.post(API_URL + 'Home/Integral/integral_order', qs.stringify({
                         goods: this.$store.state.goods,  //将要兑换的商品 二维数组
-                        integral: this.data.pay_integral,//商品所需积分
+                        integral: this.data.pay_integral,//商品所需钻石
                         price_sum: 0,//所需金额
                         address_id: this.realname.id,//收货地址ID
                         remarks: this.message, //留言
@@ -159,7 +159,7 @@
                 this.$router.push({
                     name: 'cashier',
                     params: {
-                        id: this.$route.params.id //2为商品 1为积分兑换
+                        id: this.$route.params.id //2为商品 1为钻石兑换
                     }
                 });
             },
@@ -210,7 +210,7 @@
                 let Local_data = sessionStorage.getItem('set_address');
                 this.realname = JSON.parse(Local_data)
             }else{
-                if (this.$route.params.id == 1) { //积分商品
+                if (this.$route.params.id == 1) { //钻石商品
                     if (localStorage.getItem('user_ID')) {
                         this.axios.post(API_URL + 'Home/Order/goBuy', qs.stringify({
                             goods: this.$store.state.goods,
@@ -264,7 +264,7 @@
                     this.invoice_type = '无需发票';
                 }
             }
-            if (this.$route.params.id == 1) { //积分商品
+            if (this.$route.params.id == 1) { //钻石商品
                 if (localStorage.getItem('user_ID')) {
                     this.axios.post(API_URL + 'Home/Order/goBuy', qs.stringify({
                         goods: this.$store.state.goods,

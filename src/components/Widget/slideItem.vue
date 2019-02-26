@@ -29,7 +29,7 @@
                     name:'product',
                     params:{
                         id:this.data[index].id,
-                        status:1 //1 代表普通商品 2代表积分商品
+                        status:1 //1 代表普通商品 2代表钻石商品
                     }
                 });
             }
