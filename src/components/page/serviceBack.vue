@@ -168,7 +168,7 @@
                     order_sn_id:this.$store.state.order_details.order_sn_id,
                     goods_id:this.$store.state.order_details.child[this.$route.params.index].goods_id,
                     type:this.ser_type,
-                    apply:this.imgs,
+                    apply:JSON.stringify(this.imgs),
                     number:this.isNumber,
                     explain:this.explain_type,
                     price:this.$store.state.order_details.child[this.$route.params.index].goods_price
