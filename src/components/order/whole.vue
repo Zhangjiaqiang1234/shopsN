@@ -190,8 +190,6 @@
                     });
             },
             toDetails(item,text,index){
-                console.log('到达 toDetails 方法 ')
-                console.log(item.order_status,item.id)
                 this.$router.push({
                     name:'orderDetails',
                     params:{

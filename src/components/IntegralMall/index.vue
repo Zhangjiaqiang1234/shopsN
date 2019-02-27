@@ -61,6 +61,7 @@
                     this.data = res.data.data;
                     this.load = false;
                 }).catch((err) => {
+                    this.load = false;
                     console.log(err);
                 });
                 if(this.num == ''){
@@ -75,8 +76,11 @@
             this.axios.post(API_URL + 'Home/Integral/integral_goods',qs.stringify({
                 num:this.num
             })).then((res) => {
-                this.data = res.data.data;
-                this.integral = res.data.data[0].integral;
+                if(res.data.status == 1){
+                    this.data = res.data.data;
+                    this.integral = res.data.data[0].integral;
+                }
+                this.load_wrap = false;
             }).catch((err) => {
                 console.log(err);
             });
@@ -92,7 +96,7 @@
             listLop,
             Shopsn
         }
-    }
+    };
 </script>
 <style lang="less" scoped>
 

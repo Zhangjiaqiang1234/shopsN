@@ -8,14 +8,14 @@
                 <p class="time">下单时间&nbsp;:&nbsp;{{$store.state.order_details.create_time*1000 | timeFormat}}</p>
             </div>
             <div class="dd clearfix" v-if="$store.state.order_details.child">
-                <img :src="URL + $store.state.order_details.child[$route.params.index].pic_url" class="fl">
+                <img :src="URL + ($store.state.order_details.child[$route.params.index].pic_url?$store.state.order_details.child[$route.params.index].pic_url:$store.state.order_details.child[$route.params.index].img)" class="fl">
                 <div class="fl content">
                     <p class="text">{{$store.state.order_details.child[$route.params.index].goods_title}}</p>
                     <p class="number">数量：{{$store.state.order_details.child[$route.params.index].goods_num}}</p>
                 </div>
             </div>
             <div class="dd clearfix" v-if="!$store.state.order_details.child">
-                <img :src="URL + $store.state.order_details.child[$route.params.index].pic_url" class="fl">
+                <img :src="URL + ($store.state.order_details.child[$route.params.index].pic_url?$store.state.order_details.child[$route.params.index].pic_url:$store.state.order_details.child[$route.params.index].img)" class="fl">
                 <div class="fl content">
                     <p class="text">{{$store.state.order_details.child[$route.params.index].title}}</p>
                     <p class="number">数量：{{$store.state.order_details.child[$route.params.index].goods_num}}</p>
@@ -50,7 +50,7 @@
             <div class="img-wrap clearfix">
                 <div class="list-img fl" v-for="(imgas,index) in imgs" :key="imgas.id" v-show="imgs.length >= 1" @click="imgShow(index)">
                     <div class="del el-icon-circle-cross" @click="del(index)"></div>
-                    <img :src="imgs[index]">
+                    <img :src="imgs[index].img">
                 </div>
                 <div class="input-btn fl" v-show="imgs.length < 3">
                     <input type="file" @change="add_img($event)" ref="int">
@@ -120,7 +120,7 @@
                       that = this;
                 reader.readAsDataURL(img1);
                 reader.onload = function(){
-                    that.imgs.push(this.result)
+                    that.imgs.push({img:this.result,type:'data:'+img1.type+';base64,'})
                 }
                 this.$refs.int.value = '';
             },
@@ -128,7 +128,7 @@
                 this.imgs.splice(index,1)
             },
             imgShow(index){
-                this.maximg = this.imgs[index];
+                this.maximg = this.imgs[index].img;
             },
             hideImg(){
                 this.maximg = null;

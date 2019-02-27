@@ -86,7 +86,8 @@ axios.interceptors.response.use(
             duration: 5 * 1000
           })
           // localStorage.clear();
-          // this.$router.push({ path: '/LogoIn' });
+          console.log(Vue.prototype)
+          // Vue.$router.push({ path: '/LogoIn' });
         }
         return response;
     },
