@@ -145,20 +145,18 @@
     
     .hd-active{
         width: 100%;
-        height: .62rem;
-        padding: .16rem 0;
+        height: .98rem;
     }
     .header {
         width: 100%;
         max-width:750px;
-        height: .62rem;
-        background: #4591f2;
-        padding: .16rem 0;
+        height: .98rem;
+        background:linear-gradient(-90deg,rgba(48,115,237,1),rgba(104,193,250,1));
         text-align:center;
         color:#fff;
-        font-size:.36rem;
+        font-size:.34rem;
         font-weight:bold;
-        line-height:.62rem;
+        line-height:.98rem;
         position:fixed;
         top:0;
         left:0;
@@ -339,7 +337,7 @@
             }
         }
         .service{
-            line-height:.62rem;
+            line-height:.98rem;
             position:absolute;
             top:50%;
             right:.2rem;

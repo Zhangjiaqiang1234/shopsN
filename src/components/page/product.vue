@@ -7,22 +7,22 @@
                 <img v-lazy="URL + item">
             </mt-swipe-item>
         </mt-swipe>
+        <div class="bg-f2f2f2 H01"></div>
         <div class="describe" v-if="$store.state.commodity_data">
-            <p class="fn">{{$store.state.commodity_data.title || $store.state.commodity_data.goods.title}}</p>
-            <!--<p class="timer">促销剩余时间:365天12小时50分钟23秒</p>-->
             <p class="price" v-if="$route.params.status == 1">
                 <span class="orc">￥<em>{{$store.state.commodity_data.price_market}}</em></span>
-               <!--  <span class="new">原价 ：￥<s>{{$store.state.commodity_data.price_market}}</s></span> -->
             </p>
             <div class="price active" v-if="$store.state.commodity_data.goods">
                 <p class="orc clearfix"><em class="icon fl"></em><em class="fl">{{$store.state.commodity_data.goods.integral}}</em></p>
                 <p class="new">市场参考价：<s>{{$store.state.commodity_data.goods.price_market}}</s>元</p>
             </div>
+            <p class="fn">{{$store.state.commodity_data.title || $store.state.commodity_data.goods.title}}</p>
             <div class="share"> 
                 <i class="icon"></i>
                 <p>分享</p>
             </div>
         </div>
+        <div class="bg-f2f2f2 H01"></div>
         <div class="selected" @click="theSon">已选<span class="number">数量&nbsp;{{$store.state.commodity_val}}</span><span class="btn-right"></span></div>
         <pr-list :conItem="conItem" :data="$store.state.dataLeave" v-if="$route.params.status == 1&&lv_switch"></pr-list>
         <pr-list :conItem="conItemRe" :data="$store.state.commodity_data.recommend" v-if="$route.params.status == 1"></pr-list>
@@ -158,7 +158,7 @@
             PageOption,
             detailOption
         }
-    }
+    };
 </script>
 <style>
     .mint-swipe-indicator.is-active{
@@ -174,10 +174,11 @@
         padding:0 1rem .35rem .2rem;
         position:relative;
         .fn{
-            font-size:.36rem;
-            color:#333;
+            font-size:.28rem;
+            font-weight: bold;
+            color:#464545;
             padding-top:.3rem;
-            line-height:.5rem;
+            line-height:.44rem;
         }
         .timer{
             font-size:.25rem;
@@ -201,13 +202,13 @@
             }
         }
         .price{
-            padding-top:.2rem;
+            padding-top:.4rem;
             .orc{
                 color:#4591f2;
-                font-size:.32rem;
+                font-size:.28rem;
                 em{
                     font-style:normal;
-                    font-size:.48rem;
+                    font-size:.28rem;
                 }
             }
             .new{
@@ -233,7 +234,7 @@
             }
             p{
                 font-size:.24rem;
-                color:#555;
+                color:#676767;
                 line-height:.5rem;
             }
         }
@@ -246,7 +247,6 @@
         color:#777;
         position:relative;
         background:#fff;
-        border-top:1px solid #f1f1f1;
         .number{
             font-size:.3rem;
             color:#333;
@@ -269,7 +269,7 @@
         .mint-swipe-items-wrap{
             div{
                 width:100%;
-                height:7.22rem;
+                height:auto;
                 img{
                     width:100%;
                     height:100%;

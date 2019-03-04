@@ -7,10 +7,12 @@
                 <li class="fl" :class="{active:status == 0}" @click="toAjax(0)"><span>售后申请</span></li>
                 <li class="fl" :class="{active:status == 1}" @click="toAjax(1)"><span>进度查询</span></li>
             </ol>
-            <div class="search-hd clearfix">
+            <!-- 目前先隐藏搜索功能 -->
+            <div style="margin-bottom:.2rem;"></div>
+            <!-- <div class="search-hd clearfix">
                 <input type="search" placeholder="商品名称 , 订单编号" class="fl">
                 <button class="fl">搜索</button>
-            </div>
+            </div> -->
             <ul class="list-wrap" v-if="status == 0 && sta">
                 <li v-for="item in $store.state.repair" :key="item.id">
                     <div class="hd">

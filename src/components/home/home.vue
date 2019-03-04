@@ -17,7 +17,7 @@
 
 
             <!-- 广告位 -->
-            <div class="limit-banner" v-for="item in $store.state.home_data.poopClear_img" :key="item.id">
+            <div class="limit-banner" v-for="item in $store.state.home_data.brand_img" :key="item.id">
                 <a @click="judgeUrl(item.ad_link)">
                     <img v-lazy="URL + item.pic_url">
                 </a>

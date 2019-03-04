@@ -6,15 +6,15 @@
             <div class="inf-header" @click="tolink('address')">
                 <div v-if="realname">
                     <div class="inf-name clearfix">
-                        <div class="name fl"><span></span>{{realname.realname}}</div>
-                        <div class="phone fr"><span></span>{{realname.mobile}}</div>
+                        <div class="name">{{realname.realname}}</div>
+                        <div class="phone">{{realname.mobile}}</div>
                     </div>
-                    <div class="address">{{realname.prov+realname.city+realname.dist+realname.address}}</div>
+                    <div class="address"><img :src="require('@/assets/position.png')"><span>{{realname.prov+realname.city+realname.dist+realname.address}}</span></div>
                 </div>
                 <div class="status text-center" v-if="!realname">您还没有填写收货地址，请填写！</div>
                 <span class="btn-right"></span>
             </div>
-            <div class="bottom-bg"><img src="../../assets/bottom-bj.jpg"></div>
+            <!-- <div class="bottom-bg"><img src="../../assets/bottom-bj.jpg"></div> -->
             <ul v-if="data" class="mark-wrap">
                 <li class="clearfix" v-for="(item,index) in data.goods" :key="item.id">
                     <img :src="URL + item.fatherImg" class="fl">
@@ -47,6 +47,7 @@
                     <p class="ind">共<span v-if="data.goods">{{data.goods.length}}</span>件商品</p>
                 </div>
             </div>
+            <div class="tips">温馨提示：支付完毕后及时联系在线客服</div>
             <div class="price-set-wrap" v-if="data">
                 <div class="total price clearfix" v-if="$route.params.id != 3">
                     <span class="fl">税前商品总额</span>
@@ -80,11 +81,11 @@
                 <div class="foot-seat"></div>
                 <div class="footer clearfix" v-if="$route.params.id != 3">
                     <button class="fr btn" @click="toCashier">提交订单</button>
-                    <div class="fr money">实付款&nbsp;:&nbsp;<span class="price">￥<span>{{Number(data.total_price) + Number(data.freight)}}</span></span></div>
+                    <div class="fr money"><b>总计</b>&nbsp;:&nbsp;<span class="price">￥<span>{{Number(data.total_price) + Number(data.freight)}}</span></span></div>
                 </div>
                 <div class="footer clearfix" v-if="$route.params.id == 3">
                     <button class="fr btn" @click="toCashier">立即支付</button>
-                    <div class="fr money">实付款&nbsp;:&nbsp;<span class="price"><span>{{data.pay_integral}} 钻石</span></span></div>
+                    <div class="fr money"><b>总计</b>&nbsp;:&nbsp;<span class="price"><span>{{data.pay_integral}} 钻石</span></span></div>
                 </div>
             </div>
         <div class="load" v-show="load" @touchmove.prevent><mt-spinner type="triple-bounce" color="rgb(38, 162, 255)"></mt-spinner></div>
@@ -342,9 +343,9 @@
         background:#f1f1f1;
         .inf-header{
             width:100%;
+            margin: .1rem 0;
             box-sizing:border-box;
-            height:1.64rem;
-            padding:0 .2rem;
+            padding:0 .2rem .36rem;
             background:#fff;
             position:relative;
             .status{
@@ -354,11 +355,15 @@
             }
             .inf-name{
                 padding:.3rem 0;
-                color:#282828;
+                color:#454545;
+                font-size:0;
                 .name{
                     font-size:.36rem;
-                    padding-left:.44rem;
+                    font-weight: bold;
+                    padding-left:.7rem;
                     position:relative;
+                    display:inline-block;
+                    vertical-align:bottom;
                     span{
                         position:absolute;
                         top:50%;
@@ -372,8 +377,11 @@
                 }
                 .phone{
                     font-size:.36rem;
-                    padding-left:.38rem;
+                    padding-left:.3rem;
                     position:relative;
+                    font-size: .26rem;
+                    display:inline-block;
+                    vertical-align:bottom;
                     span{
                         position:absolute;
                         left:0;
@@ -388,35 +396,38 @@
             }
             .address{
                 width:6.4rem;
-                height:.3rem;
                 display:block;
                 white-space:nowrap; 
                 overflow:hidden; 
                 text-overflow:ellipsis;
-                font-size:.28rem;
-                color:#999;
+                color:#454545;
                 line-height:.32rem;
                 position:relative;
+                font-size:0;
+                &>img{
+                    margin-right:.2rem;
+                    display:inline-block;
+                    vertical-align:middle;
+                    width:.48rem;
+                    height:.48rem;
+                }
+                &>span{
+                    font-size:.26rem;
+                    display:inline-block;
+                    vertical-align:middle;
+                }
             }
             .btn-right{
                 width:.18rem;
                 height:.3rem;
                 position:absolute;
-                top:.9rem;
+                top:1.18rem;
                 right:.2rem;
                 background:url(../../assets/btn-right.png) no-repeat;
                 background-size:100% 100%;
             }
         }
-        .bottom-bg{
-            width:100%;
-            margin-bottom:.2rem;
-            img{
-                width:100%;
-            }
-        }
         .mark-wrap{
-            margin:.2rem 0;
             background:#fff;
             li{
                 padding:.25rem .2rem;
@@ -424,8 +435,9 @@
                 height:1.55rem;
                 position:relative;
                 img{
-                    width:1.55rem;
-                    height:1.55rem;
+                    width:1.5rem;
+                    height:1.5rem;
+                    border: 1px solid #BFBFBF;
                 }
                 .delete{
                     width:1.2rem;
@@ -491,7 +503,8 @@
                 box-sizing: border-box;
                 .title{
                     font-size:.25rem;
-                    color:#777;
+                    color:#464545;
+                    font-weight:bold;
                 }
                 .busi{
                     font-size:.25rem;
@@ -506,7 +519,8 @@
                 .title{
                     padding:.3rem 0;
                     font-size:.25rem;
-                    color:#777;
+                    color:#464545;
+                    font-weight:bold;
                 }
                 textarea{
                     border:none;
@@ -553,20 +567,34 @@
                     font-size:.36rem;
                 }
                 .money{
+                    b{
+                        font-weight:bold;
+                        font-size:.32rem;
+                    }
                     line-height:1rem;
                     font-size:.3rem;
-                    color:#757575;
+                    color:#464545;
                     padding-right:.3rem;
                     .price{
                         font-size:.3rem;
                         color:#ff7200;
                         span{
-                            font-size:.36rem;
-                            font-weight:bold;
+                            font-size:.32rem;
                         }
                     }
                 }
             }
+        }
+        .tips{
+            width:100%;
+            height:1.4rem;
+            border-bottom:1px dashed #D8D8D8;
+            background: #fff;
+            color: #4A94F2;
+            text-align:center;
+            line-height:1.4rem;
+            font-size: .26rem;
+            font-weight:bold;
         }
         .price-set-wrap{
             padding:.2rem;
@@ -576,7 +604,8 @@
                 line-height: .6rem;
                 span.fl{
                     font-size:.25rem;
-                    color:#777;
+                    color:#464545;
+                    font-weight:bold;
                 }
                 span.fr{
                     font-size:.28rem;

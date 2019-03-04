@@ -2,16 +2,15 @@
     <div class="teacher-main">
         <header class="header">
             <span @click="btnGo" class="btnGo"></span>
-            {{text}}
             <div class="integral-title" v-if="title" @click="screen">{{title}}<i class="icon"></i></div>
             <div class="input-main fl" v-if="sea"><input type="text" placeholder="请输入商品名称..."></div>
             <span class="cartBtn" v-if="$store.state.catr_number&&showCart" @click="toCart"><em>{{$store.state.catr_number}}</em></span>
             <div class="btn-search" v-if="search"></div>
-            <div class="btn-ng clearfix" v-if="!btn" v-show="!set" @click="addClass">
+          <!--   <div class="btn-ng clearfix" v-if="!btn" v-show="!set" @click="addClass">
                 <span class="fl"></span>
                 <span class="fl"></span>
                 <span class="fl"></span>
-            </div>
+            </div> -->
             <transition  name="fade">
                 <div class="box-wrap" v-if="sta">
                     <div class="box-bg" @click="addClass"></div>
@@ -20,9 +19,9 @@
                         <div class="btn" @click="toLink('/home')">
                             <span class="icon"><i></i></span>首页
                         </div>
-                        <div class="btn">
+                        <!-- <div class="btn">
                             <span class="icon" @click="toLink('/myNews')"><i></i></span>消息
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </transition>
@@ -121,7 +120,7 @@
                 this.$emit('screen');
             }
         }
-    }
+    };
 </script>
 <style lang="less" scoped>
     .fade-enter-active, .fade-leave-active {
@@ -139,7 +138,6 @@
     .header {
         width: 100%;
         height: .62rem;
-        background: #4591f2;
         padding: .16rem 0;
         text-align:center;
         position:relative;
@@ -239,7 +237,6 @@
                     background:#535353;
                 }
                 .btn:nth-child(2){
-                    border-bottom:1px solid #666;
                     .icon{
                         i{
                             width: .24rem;
@@ -295,34 +292,34 @@
             left:.2rem;
             top:50%;
             margin-top:-.23rem;
-            width:.46rem;
-            height:.46rem;
-            background:url(../../../assets/btn-return.png) no-repeat;
+            width:.48rem;
+            height:.48rem;
+            background:url(../../../assets/btn-return-gray.png) no-repeat;
             background-size:100% 100%;
         }
         .cartBtn{
             position:absolute;
-            right:1.2rem;
+            right:.46rem;
             top:50%;
             margin-top:-.23rem;
-            width:.6rem;
-            height:.46rem;
-            background:url(../../../assets/cart.btn.png) no-repeat;
+            width:.48rem;
+            height:.48rem;
+            background:url(../../../assets/cart.btn-gray.png) no-repeat;
             background-size:100% 100%;
             em{
                 position:absolute;
-                right:-.1rem;
-                top:-.05rem;
-                background:#ff883f;
+                right:-.15rem;
+                top:-.1rem;
+                background:#458DF1;
+                padding: 0 .02rem;
                 color:#fff;
-                font-size:.21rem;
+                font-size:.2rem;
                 font-style:normal;
-                height:.33rem;
-                line-height:.23rem;
-                padding:.05rem;
+                height:.3rem;
+                line-height:.33rem;
                 border-radius:100%;
                 box-sizing:border-box;
-                min-width:.33rem;
+                min-width:.3rem;
             }
         }
         .service{
